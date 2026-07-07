@@ -42,11 +42,6 @@
             padding-left: 12px;
             border-left: 4px solid #2b6cb0;
         }
-        .section h3 {
-            font-size: 1.1rem;
-            color: #2d3748;
-            margin: 16px 0 8px;
-        }
         .question {
             background: #f7fafc;
             padding: 16px 20px;
@@ -60,8 +55,7 @@
             padding: 6px 0 6px 24px;
             cursor: pointer;
         }
-        .question input[type="radio"],
-        .question input[type="checkbox"] { margin-right: 8px; }
+        .question input[type="radio"] { margin-right: 8px; }
         .question textarea {
             width: 100%;
             padding: 10px;
@@ -109,6 +103,11 @@
             transition: background 0.2s;
         }
         .btn:hover { background: #2c5282; }
+        .btn-secondary {
+            background: #718096;
+            margin-left: 12px;
+        }
+        .btn-secondary:hover { background: #4a5568; }
         .result-box {
             margin-top: 16px;
             padding: 16px;
@@ -118,6 +117,8 @@
         .result-box.show { display: block; }
         .result-box.pass { background: #c6f6d5; color: #22543d; }
         .result-box.fail { background: #fed7d7; color: #822727; }
+        .correct-mark { color: #38a169; font-weight: bold; margin-left: 8px; }
+        .wrong-mark { color: #e53e3e; font-weight: bold; margin-left: 8px; }
         .nav-links { margin-top: 30px; text-align: center; }
         .nav-links a {
             color: #2b6cb0;
@@ -139,147 +140,16 @@
         <p>Institución Educativa San Luis &mdash; Grado Noveno</p>
     </div>
     <div class="content">
-
-        <!-- INSTRUCCIONES -->
         <div class="section">
             <h2>Instrucciones</h2>
-            <p>Lee atentamente el material sobre <strong>Tecnología Inalámbrica</strong> y responde las siguientes preguntas. Puedes marcar las opciones correctas y escribir respuestas abiertas. Al final presiona "Enviar respuestas" para verificar tus resultados.</p>
+            <p>Lee atentamente el material sobre <strong>Tecnología Inalámbrica</strong> y responde. Cada vez que abras o reinicies el taller, las preguntas y opciones se generarán aleatoriamente.</p>
         </div>
 
-        <!-- SECCIÓN 1: COMPRENSIÓN LECTORA -->
-        <div class="section">
-            <h2>1. Comprensión Lectora</h2>
+        <div id="quizContainer"></div>
 
-            <div class="question" data-correct="a">
-                <p>1. ¿Qué permite la tecnología inalámbrica?</p>
-                <label><input type="radio" name="q1" value="a"> Transmisión de datos sin conexiones físicas</label>
-                <label><input type="radio" name="q1" value="b"> Transmisión de datos solo con cables de fibra óptica</label>
-                <label><input type="radio" name="q1" value="c"> Conexión exclusiva entre computadoras de escritorio</label>
-                <label><input type="radio" name="q1" value="d"> Transmisión de datos únicamente mediante señales infrarrojas</label>
-            </div>
-
-            <div class="question" data-correct="b">
-                <p>2. ¿Cuál es el propósito del Bluetooth en la tecnología inalámbrica?</p>
-                <label><input type="radio" name="q2" value="a"> Conectar dispositivos a internet a larga distancia</label>
-                <label><input type="radio" name="q2" value="b"> Conexiones de corto alcance entre dispositivos personales</label>
-                <label><input type="radio" name="q2" value="c"> Redes de largo alcance para ciudades inteligentes</label>
-                <label><input type="radio" name="q2" value="d"> Cargar dispositivos sin cables</label>
-            </div>
-
-            <div class="question" data-correct="d">
-                <p>3. Según el texto, ¿qué se recomienda para mejorar la señal WiFi en casa?</p>
-                <label><input type="radio" name="q3" value="a"> Usar la red sin contraseña para mayor velocidad</label>
-                <label><input type="radio" name="q3" value="b"> Colocar el router en el sótano</label>
-                <label><input type="radio" name="q3" value="c"> Apagar todos los dispositivos electrónicos</label>
-                <label><input type="radio" name="q3" value="d"> Colocar el router en un lugar estratégico lejos de interferencias</label>
-            </div>
-
-            <div class="question" data-correct="c">
-                <p>4. ¿Cómo funciona la carga inalámbrica?</p>
-                <label><input type="radio" name="q4" value="a"> Mediante rayos láser</label>
-                <label><input type="radio" name="q4" value="b"> A través de ondas de sonido</label>
-                <label><input type="radio" name="q4" value="c"> Utilizando campos electromagnéticos para transferir energía</label>
-                <label><input type="radio" name="q4" value="d"> Conectando un cable magnético al dispositivo</label>
-            </div>
-
-            <div class="question" data-correct="a">
-                <p>5. ¿Puede el clima afectar las señales inalámbricas?</p>
-                <label><input type="radio" name="q5" value="a"> Sí, condiciones como lluvia fuerte o tormentas pueden debilitarlas</label>
-                <label><input type="radio" name="q5" value="b"> No, el clima no tiene ningún efecto sobre las señales</label>
-                <label><input type="radio" name="q5" value="c"> Solo el viento afecta las señales inalámbricas</label>
-                <label><input type="radio" name="q5" value="d"> Solo afecta a las redes 5G</label>
-            </div>
-        </div>
-
-        <!-- SECCIÓN 2: PREGUNTAS ABIERTAS -->
-        <div class="section">
-            <h2>2. Preguntas de Desarrollo</h2>
-
-            <div class="question">
-                <label class="open-label">6. Explica con tus propias palabras cómo la tecnología inalámbrica ha revolucionado la conectividad y la comunicación entre dispositivos.</label>
-                <textarea rows="4" class="open-q" data-id="q6"></textarea>
-            </div>
-
-            <div class="question">
-                <label class="open-label">7. Nombra y describe al menos 3 tipos de tecnologías inalámbricas mencionadas en el texto, indicando un caso de uso para cada una.</label>
-                <textarea rows="4" class="open-q" data-id="q7"></textarea>
-            </div>
-
-            <div class="question">
-                <label class="open-label">8. ¿Cómo impacta la tecnología inalámbrica en los dispositivos IoT (Internet de las Cosas)? Menciona un ejemplo concreto.</label>
-                <textarea rows="4" class="open-q" data-id="q8"></textarea>
-            </div>
-        </div>
-
-        <!-- SECCIÓN 3: TABLA COMPARATIVA -->
-        <div class="section">
-            <h2>3. Análisis de la Tabla Comparativa</h2>
-
-            <p style="margin-bottom:12px;">Usa la siguiente tabla comparativa del material de lectura para responder las preguntas:</p>
-
-            <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Característica</th>
-                        <th>LoRaWAN</th>
-                        <th>Wi-Fi</th>
-                        <th>Zigbee</th>
-                        <th>Bluetooth</th>
-                        <th>Redes celulares</th>
-                        <th>RFID-IoT</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td><strong>Rango</strong></td><td>Larga distancia (hasta 15 km)</td><td>Corto alcance (hasta 100 m)</td><td>Corto alcance (hasta 100 m)</td><td>Corto alcance (hasta 100 m)</td><td>Amplio (1-30 km)</td><td>Pocos metros (&lt;10 m)</td></tr>
-                    <tr><td><strong>Tasa de datos</strong></td><td>Lenta (0.3-50 kbps)</td><td>Alta (hasta 1 Gbps)</td><td>Moderada (20-250 kbps)</td><td>Lenta-moderada (hasta 2 Mbps)</td><td>Alta (5G: 100 Mbps-20 Gbps)</td><td>Baja (10-424 kbit/s)</td></tr>
-                    <tr><td><strong>Consumo de energía</strong></td><td>Muy eficiente</td><td>Alto</td><td>Bajo</td><td>Bajo a moderado</td><td>Moderado a alto</td><td>Muy bajo</td></tr>
-                    <tr><td><strong>Costo</strong></td><td>Asequible</td><td>Moderado a elevado</td><td>Bajo</td><td>Bajo</td><td>Alto</td><td>Bajo (pasivas)</td></tr>
-                    <tr><td><strong>Escalabilidad</strong></td><td>Altamente escalable (miles)</td><td>Limitada</td><td>Moderada</td><td>Limitada</td><td>Altamente escalable (millones)</td><td>Altamente escalable</td></tr>
-                </tbody>
-            </table>
-            </div>
-
-            <div class="question" data-correct="lorawan">
-                <p>9. ¿Cuál tecnología inalámbrica es la más adecuada para aplicaciones IoT de largo alcance como ciudades inteligentes?</p>
-                <label><input type="radio" name="q9" value="wifi"> Wi-Fi</label>
-                <label><input type="radio" name="q9" value="bluetooth"> Bluetooth</label>
-                <label><input type="radio" name="q9" value="lorawan"> LoRaWAN</label>
-                <label><input type="radio" name="q9" value="rfid"> RFID-IoT</label>
-            </div>
-
-            <div class="question" data-correct="alto">
-                <p>10. Según la tabla, ¿qué tecnología inalámbrica tiene el mayor consumo de energía?</p>
-                <label><input type="radio" name="q10" value="zigbee"> Zigbee</label>
-                <label><input type="radio" name="q10" value="alto"> Wi-Fi</label>
-                <label><input type="radio" name="q10" value="rfid"> RFID-IoT</label>
-                <label><input type="radio" name="q10" value="lorawan"> LoRaWAN</label>
-            </div>
-
-            <div class="question">
-                <label class="open-label">11. Compara LoRaWAN y Wi-Fi en términos de rango, tasa de datos y consumo de energía. ¿En qué escenarios usarías cada una?</label>
-                <textarea rows="4" class="open-q" data-id="q11"></textarea>
-            </div>
-        </div>
-
-        <!-- SECCIÓN 4: APLICACIÓN -->
-        <div class="section">
-            <h2>4. Aplicación Práctica</h2>
-
-            <div class="question">
-                <label class="open-label">12. Imagina que eres el encargado de diseñar la red de una casa inteligente. ¿Qué tecnologías inalámbricas usarías para: (a) conectar luces y sensores, (b) transmitir video en alta definición, (c) cargar dispositivos móviles? Justifica tu respuesta.</label>
-                <textarea rows="5" class="open-q" data-id="q12"></textarea>
-            </div>
-
-            <div class="question">
-                <label class="open-label">13. Investiga y menciona una ventaja y una desventaja de la tecnología 5G frente a WiFi 6 (puedes apoyarte en el texto y en tu conocimiento).</label>
-                <textarea rows="4" class="open-q" data-id="q13"></textarea>
-            </div>
-        </div>
-
-        <!-- BOTÓN -->
         <div style="text-align:center; margin-top: 20px;">
             <button class="btn" id="submitBtn">Enviar respuestas</button>
+            <button class="btn btn-secondary" id="retryBtn">Reintentar con nuevas preguntas</button>
         </div>
 
         <div id="result" class="result-box"></div>
@@ -292,30 +162,643 @@
 </div>
 
 <script>
-    document.getElementById('submitBtn').addEventListener('click', function() {
-        let total = 0, correctas = 0;
+const questionPool = [
+    // === COMPRENSIÓN LECTORA (multiple choice) ===
+    {
+        type: "mc", section: 1,
+        q: "¿Qué permite la tecnología inalámbrica?",
+        opts: [
+            "Transmisión de datos sin conexiones físicas",
+            "Transmisión de datos solo con cables de fibra óptica",
+            "Conexión exclusiva entre computadoras de escritorio",
+            "Transmisión de datos únicamente mediante señales infrarrojas"
+        ],
+        correct: 0
+    },
+    {
+        type: "mc", section: 1,
+        q: "¿Cuál es el propósito del Bluetooth en la tecnología inalámbrica?",
+        opts: [
+            "Conectar dispositivos a internet a larga distancia",
+            "Conexiones de corto alcance entre dispositivos personales",
+            "Redes de largo alcance para ciudades inteligentes",
+            "Cargar dispositivos sin cables"
+        ],
+        correct: 1
+    },
+    {
+        type: "mc", section: 1,
+        q: "Según el texto, ¿qué se recomienda para mejorar la señal WiFi en casa?",
+        opts: [
+            "Usar la red sin contraseña para mayor velocidad",
+            "Colocar el router en el sótano",
+            "Apagar todos los dispositivos electrónicos",
+            "Colocar el router en un lugar estratégico lejos de interferencias"
+        ],
+        correct: 3
+    },
+    {
+        type: "mc", section: 1,
+        q: "¿Cómo funciona la carga inalámbrica?",
+        opts: [
+            "Mediante rayos láser",
+            "A través de ondas de sonido",
+            "Utilizando campos electromagnéticos para transferir energía",
+            "Conectando un cable magnético al dispositivo"
+        ],
+        correct: 2
+    },
+    {
+        type: "mc", section: 1,
+        q: "¿Puede el clima afectar las señales inalámbricas?",
+        opts: [
+            "Sí, condiciones como lluvia fuerte o tormentas pueden debilitarlas",
+            "No, el clima no tiene ningún efecto sobre las señales",
+            "Solo el viento afecta las señales inalámbricas",
+            "Solo afecta a las redes 5G"
+        ],
+        correct: 0
+    },
+    {
+        type: "mc", section: 1,
+        q: "¿Qué tipo de ondas utiliza la tecnología inalámbrica para transmitir datos?",
+        opts: [
+            "Ondas de radio o señales infrarrojas",
+            "Ondas de sonido de alta frecuencia",
+            "Ondas de luz visible",
+            "Ondas mecánicas"
+        ],
+        correct: 0
+    },
+    {
+        type: "mc", section: 1,
+        q: "Según el texto, ¿qué beneficio principal ha traído la tecnología inalámbrica?",
+        opts: [
+            "Aumentar la velocidad de los procesadores",
+            "Eliminar cables y simplificar la interacción con dispositivos",
+            "Reducir el costo de los dispositivos electrónicos",
+            "Mejorar la resolución de las pantallas"
+        ],
+        correct: 1
+    },
+    {
+        type: "mc", section: 1,
+        q: "¿Qué dispositivos menciona el texto que usan tecnología inalámbrica?",
+        opts: [
+            "Computadoras, notebooks, teléfonos móviles y audífonos",
+            "Solo teléfonos móviles",
+            "Microondas y lavadoras",
+            "Exclusivamente computadoras de escritorio"
+        ],
+        correct: 0
+    },
+    {
+        type: "mc", section: 1,
+        q: "¿Qué significa IoT según el contexto del texto?",
+        opts: [
+            "Internet de las Cosas (Internet of Things)",
+            "Tecnología de fibra óptica",
+            "Red de área local",
+            "Sistema operativo inalámbrico"
+        ],
+        correct: 0
+    },
+    {
+        type: "mc", section: 1,
+        q: "¿Qué tecnología emergente usa luz visible para comunicarse según el texto?",
+        opts: [
+            "Li-Fi",
+            "WiFi 6",
+            "Bluetooth 5.0",
+            "NFC"
+        ],
+        correct: 0
+    },
+    {
+        type: "mc", section: 1,
+        q: "¿Qué protocolos inalámbricos menciona el texto para la transmisión de datos?",
+        opts: [
+            "Bluetooth y WiFi",
+            "USB y HDMI",
+            "Ethernet y fibra óptica",
+            "VGA y DVI"
+        ],
+        correct: 0
+    },
+    {
+        type: "mc", section: 1,
+        q: "¿Para qué sirve la tecnología NFC según el texto?",
+        opts: [
+            "Para pagos y transferencias de datos a corta distancia",
+            "Para conectar dispositivos a larga distancia",
+            "Para cargar baterías de forma inalámbrica",
+            "Para transmitir video en alta definición"
+        ],
+        correct: 0
+    },
+    {
+        type: "mc", section: 1,
+        q: "¿Cuál de las siguientes NO es una tecnología inalámbrica mencionada en el texto?",
+        opts: [
+            "Li-Fi",
+            "USB-C",
+            "Zigbee",
+            "RFID"
+        ],
+        correct: 1
+    },
+    // === TABLA COMPARATIVA (multiple choice) ===
+    {
+        type: "mc", section: 3,
+        q: "¿Cuál tecnología inalámbrica tiene el menor rango de alcance?",
+        opts: [
+            "LoRaWAN (hasta 15 km)",
+            "Redes celulares (1-30 km)",
+            "RFID-IoT (menos de 10 m)",
+            "Wi-Fi (hasta 100 m)"
+        ],
+        correct: 2
+    },
+    {
+        type: "mc", section: 3,
+        q: "¿Cuál tecnología inalámbrica es la más adecuada para aplicaciones IoT de largo alcance como ciudades inteligentes?",
+        opts: [
+            "Wi-Fi",
+            "Bluetooth",
+            "LoRaWAN",
+            "RFID-IoT"
+        ],
+        correct: 2
+    },
+    {
+        type: "mc", section: 3,
+        q: "Según la tabla, ¿qué tecnología inalámbrica tiene el mayor consumo de energía?",
+        opts: [
+            "Zigbee",
+            "Wi-Fi",
+            "RFID-IoT",
+            "LoRaWAN"
+        ],
+        correct: 1
+    },
+    {
+        type: "mc", section: 3,
+        q: "¿Qué tecnología ofrece la tasa de datos más alta (hasta 1 Gbps)?",
+        opts: [
+            "LoRaWAN",
+            "Zigbee",
+            "Wi-Fi",
+            "Bluetooth"
+        ],
+        correct: 2
+    },
+    {
+        type: "mc", section: 3,
+        q: "¿Qué tecnología tiene el menor consumo de energía según la tabla?",
+        opts: [
+            "Redes celulares",
+            "Wi-Fi",
+            "RFID-IoT (muy bajo)",
+            "Bluetooth"
+        ],
+        correct: 2
+    },
+    {
+        type: "mc", section: 3,
+        q: "¿Cuál tecnología es más escalable para soportar millones de dispositivos?",
+        opts: [
+            "Wi-Fi",
+            "Redes celulares",
+            "Zigbee",
+            "Bluetooth"
+        ],
+        correct: 1
+    },
+    {
+        type: "mc", section: 3,
+        q: "¿Qué tecnología funciona en la banda de 2.4 GHz y enfrenta interferencia moderada?",
+        opts: [
+            "LoRaWAN",
+            "Zigbee",
+            "Redes celulares 5G",
+            "RFID-IoT"
+        ],
+        correct: 1
+    },
+    {
+        type: "mc", section: 3,
+        q: "¿Qué tecnología inalámbrica tiene el costo más asequible para infraestructura?",
+        opts: [
+            "Redes celulares",
+            "Wi-Fi",
+            "LoRaWAN",
+            "Bluetooth"
+        ],
+        correct: 2
+    },
+    {
+        type: "mc", section: 3,
+        q: "Según la tabla, ¿qué tecnología usa topología en estrella?",
+        opts: [
+            "Zigbee (malla)",
+            "Wi-Fi (estrella o malla)",
+            "LoRaWAN (estrella)",
+            "Bluetooth (estrella)"
+        ],
+        correct: 2
+    },
+    // === APLICACIÓN (multiple choice) ===
+    {
+        type: "mc", section: 4,
+        q: "¿Qué tecnología inalámbrica es ideal para conectar luces y sensores en una casa inteligente?",
+        opts: [
+            "Redes celulares",
+            "Zigbee por su bajo consumo y bajo costo",
+            "Wi-Fi por su alta velocidad",
+            "Satelital"
+        ],
+        correct: 1
+    },
+    {
+        type: "mc", section: 4,
+        q: "¿Qué tecnología es mejor para transmitir video en alta definición en un hogar?",
+        opts: [
+            "LoRaWAN",
+            "RFID",
+            "Wi-Fi por su alta tasa de datos",
+            "Zigbee"
+        ],
+        correct: 2
+    },
+    {
+        type: "mc", section: 4,
+        q: "¿Qué tecnología usa campos electromagnéticos para transferir energía?",
+        opts: [
+            "NFC",
+            "Carga inalámbrica",
+            "Bluetooth",
+            "Li-Fi"
+        ],
+        correct: 1
+    },
+    {
+        type: "mc", section: 4,
+        q: "¿Para qué tipo de aplicaciones es ideal LoRaWAN?",
+        opts: [
+            "Streaming de video en 4K",
+            "Llamadas telefónicas",
+            "IoT de largo alcance como agricultura y ciudades inteligentes",
+            "Conexión de audífonos"
+        ],
+        correct: 2
+    }
+];
 
-        document.querySelectorAll('.question[data-correct]').forEach(q => {
-            total++;
-            const correct = q.dataset.correct;
-            const selected = q.querySelector('input[type="radio"]:checked');
-            if (selected && selected.value === correct) correctas++;
-        });
+const openPool = [
+    // === DESARROLLO ===
+    {
+        type: "open", section: 2,
+        q: "Explica con tus propias palabras cómo la tecnología inalámbrica ha revolucionado la conectividad y la comunicación entre dispositivos."
+    },
+    {
+        type: "open", section: 2,
+        q: "Nombra y describe al menos 3 tipos de tecnologías inalámbricas mencionadas en el texto, indicando un caso de uso para cada una."
+    },
+    {
+        type: "open", section: 2,
+        q: "¿Cómo impacta la tecnología inalámbrica en los dispositivos IoT (Internet de las Cosas)? Menciona un ejemplo concreto."
+    },
+    {
+        type: "open", section: 2,
+        q: "¿Qué ventajas tiene la tecnología inalámbrica frente a las conexiones por cable? Menciona al menos tres."
+    },
+    {
+        type: "open", section: 2,
+        q: "Explica la diferencia entre WiFi y Bluetooth según el texto. ¿En qué situaciones usarías cada uno?"
+    },
+    {
+        type: "open", section: 2,
+        q: "¿Cómo funciona la carga inalámbrica? Describe el proceso según el material de lectura."
+    },
+    {
+        type: "open", section: 2,
+        q: "¿Qué es RFID y para qué se utiliza según el texto? Da un ejemplo de aplicación."
+    },
+    {
+        type: "open", section: 2,
+        q: "Explica qué es Li-Fi y cómo se diferencia de otras tecnologías inalámbricas."
+    },
+    {
+        type: "open", section: 2,
+        q: "¿Qué recomendaciones da el texto para mejorar la señal WiFi en el hogar? Menciona al menos tres."
+    },
+    // === TABLA ===
+    {
+        type: "open", section: 3,
+        q: "Compara LoRaWAN y Wi-Fi en términos de rango, tasa de datos y consumo de energía. ¿En qué escenarios usarías cada una?"
+    },
+    {
+        type: "open", section: 3,
+        q: "Analiza la tabla comparativa: ¿qué tecnología inalámbrica elegirías para un proyecto de ciudad inteligente y por qué?"
+    },
+    {
+        type: "open", section: 3,
+        q: "Según la tabla, ¿cuáles son las ventajas y desventajas de las redes celulares frente a Zigbee?"
+    },
+    {
+        type: "open", section: 3,
+        q: "¿Qué relación existe entre el consumo de energía y el rango en las tecnologías inalámbricas de la tabla? Ejemplifica."
+    },
+    // === APLICACIÓN ===
+    {
+        type: "open", section: 4,
+        q: "Imagina que eres el encargado de diseñar la red de una casa inteligente. ¿Qué tecnologías inalámbricas usarías para: (a) conectar luces y sensores, (b) transmitir video en alta definición, (c) cargar dispositivos móviles? Justifica tu respuesta."
+    },
+    {
+        type: "open", section: 4,
+        q: "Investiga y menciona una ventaja y una desventaja de la tecnología 5G frente a WiFi 6 (puedes apoyarte en el texto y en tu conocimiento)."
+    },
+    {
+        type: "open", section: 4,
+        q: "Diseña un pequeño plan para mejorar la señal WiFi en una casa de dos pisos. Menciona al menos tres estrategias basadas en el texto."
+    },
+    {
+        type: "open", section: 4,
+        q: "¿Cómo conectarías tu consola de videojuegos de forma inalámbrica? ¿Qué recomendaciones darías para una experiencia óptima?"
+    },
+    {
+        type: "open", section: 4,
+        q: "¿Qué consideraciones de seguridad deberías tener al implementar una red inalámbrica en una institución educativa?"
+    }
+];
 
-        const resultado = document.getElementById('result');
-        resultado.classList.add('show');
-        const pct = Math.round((correctas / total) * 100);
+const sectionTitles = {
+    1: "1. Comprensión Lectora",
+    2: "2. Preguntas de Desarrollo",
+    3: "3. Análisis de la Tabla Comparativa",
+    4: "4. Aplicación Práctica"
+};
 
-        if (pct >= 60) {
-            resultado.className = 'result-box pass show';
-            resultado.innerHTML = `<strong>¡Bien hecho!</strong> Obtuviste ${correctas} de ${total} respuestas correctas (${pct}%). Revisa las preguntas de desarrollo con tu docente.`;
-        } else {
-            resultado.className = 'result-box fail show';
-            resultado.innerHTML = `<strong>Puedes mejorar.</strong> Obtuviste ${correctas} de ${total} respuestas correctas (${pct}%). Te sugerimos releer el material e intentar de nuevo.`;
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+function pickRandom(arr, n) {
+    const shuffled = shuffleArray([...arr]);
+    return shuffled.slice(0, n);
+}
+
+function generateQuiz() {
+    const mcPerSection = { 1: 5, 3: 3, 4: 2 };
+    const openPerSection = { 2: 3, 3: 1, 4: 2 };
+
+    const mcBySection = {};
+    const openBySection = {};
+
+    questionPool.forEach(q => {
+        if (!mcBySection[q.section]) mcBySection[q.section] = [];
+        mcBySection[q.section].push(q);
+    });
+    openPool.forEach(q => {
+        if (!openBySection[q.section]) openBySection[q.section] = [];
+        openBySection[q.section].push(q);
+    });
+
+    let selectedMC = [];
+    let selectedOpen = [];
+
+    Object.keys(mcPerSection).forEach(s => {
+        const section = parseInt(s);
+        const pool = mcBySection[section] || [];
+        const needed = Math.min(mcPerSection[s], pool.length);
+        selectedMC.push(...pickRandom(pool, needed));
+    });
+
+    Object.keys(openPerSection).forEach(s => {
+        const section = parseInt(s);
+        const pool = openBySection[section] || [];
+        const needed = Math.min(openPerSection[s], pool.length);
+        selectedOpen.push(...pickRandom(pool, needed));
+    });
+
+    const allQuestions = [];
+    let globalIndex = 0;
+
+    const sections = [1, 2, 3, 4];
+    sections.forEach(s => {
+        const mcHere = selectedMC.filter(q => q.section === s);
+        const openHere = selectedOpen.filter(q => q.section === s);
+        if (mcHere.length > 0 || openHere.length > 0) {
+            allQuestions.push({ type: "sectionHeader", title: sectionTitles[s] });
         }
 
-        window.scrollTo({ top: document.getElementById('result').offsetTop - 20, behavior: 'smooth' });
+        shuffleArray(mcHere);
+        mcHere.forEach(q => {
+            globalIndex++;
+            const shuffledOpts = q.opts.map((text, idx) => ({ text, origIdx: idx }));
+            shuffleArray(shuffledOpts);
+            allQuestions.push({
+                type: "mc",
+                index: globalIndex,
+                question: q.q,
+                options: shuffledOpts.map((o, i) => ({ ...o, displayIdx: i })),
+                correctOrigIdx: q.correct
+            });
+        });
+
+        shuffleArray(openHere);
+        openHere.forEach(q => {
+            globalIndex++;
+            allQuestions.push({
+                type: "open",
+                index: globalIndex,
+                question: q.q
+            });
+        });
     });
+
+    return allQuestions;
+}
+
+let currentQuiz = [];
+
+function renderQuiz(quiz) {
+    const container = document.getElementById('quizContainer');
+    container.innerHTML = '';
+
+    let mcCounter = 0;
+
+    quiz.forEach(item => {
+        if (item.type === "sectionHeader") {
+            const div = document.createElement('div');
+            div.className = 'section';
+            const h2 = document.createElement('h2');
+            h2.textContent = item.title;
+
+            if (item.title.startsWith("3.")) {
+                const p = document.createElement('p');
+                p.style.marginBottom = '12px';
+                p.textContent = 'Usa la siguiente tabla comparativa del material de lectura para responder las preguntas:';
+                div.appendChild(h2);
+                div.appendChild(p);
+                div.appendChild(createTable());
+                container.appendChild(div);
+            } else {
+                div.appendChild(h2);
+                container.appendChild(div);
+            }
+            return;
+        }
+
+        if (item.type === "mc") {
+            mcCounter++;
+            const div = document.createElement('div');
+            div.className = 'question';
+            div.dataset.mcIndex = mcCounter - 1;
+
+            const p = document.createElement('p');
+            p.textContent = mcCounter + '. ' + item.question;
+            div.appendChild(p);
+
+            item.options.forEach((opt, idx) => {
+                const label = document.createElement('label');
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.name = 'mc_' + mcCounter;
+                input.value = idx;
+                label.appendChild(input);
+                label.appendChild(document.createTextNode(' ' + opt.text));
+                div.appendChild(label);
+            });
+
+            container.appendChild(div);
+        } else if (item.type === "open") {
+            const div = document.createElement('div');
+            div.className = 'question';
+
+            const label = document.createElement('label');
+            label.className = 'open-label';
+            label.textContent = item.index + '. ' + item.question;
+            div.appendChild(label);
+
+            const textarea = document.createElement('textarea');
+            textarea.rows = 4;
+            textarea.className = 'open-q';
+            div.appendChild(textarea);
+
+            container.appendChild(div);
+        }
+    });
+}
+
+function createTable() {
+    const wrap = document.createElement('div');
+    wrap.className = 'table-wrap';
+    wrap.innerHTML = `
+    <table>
+        <thead><tr>
+            <th>Característica</th><th>LoRaWAN</th><th>Wi-Fi</th><th>Zigbee</th><th>Bluetooth</th><th>Redes celulares</th><th>RFID-IoT</th>
+        </tr></thead>
+        <tbody>
+            <tr><td><strong>Rango</strong></td><td>Larga distancia (hasta 15 km)</td><td>Corto alcance (hasta 100 m)</td><td>Corto alcance (hasta 100 m)</td><td>Corto alcance (hasta 100 m)</td><td>Amplio (1-30 km)</td><td>Pocos metros (<10 m)</td></tr>
+            <tr><td><strong>Tasa de datos</strong></td><td>Lenta (0.3-50 kbps)</td><td>Alta (hasta 1 Gbps)</td><td>Moderada (20-250 kbps)</td><td>Lenta-moderada (hasta 2 Mbps)</td><td>Alta (5G: 100 Mbps-20 Gbps)</td><td>Baja (10-424 kbit/s)</td></tr>
+            <tr><td><strong>Consumo de energía</strong></td><td>Muy eficiente</td><td>Alto</td><td>Bajo</td><td>Bajo a moderado</td><td>Moderado a alto</td><td>Muy bajo</td></tr>
+            <tr><td><strong>Costo</strong></td><td>Asequible</td><td>Moderado a elevado</td><td>Bajo</td><td>Bajo</td><td>Alto</td><td>Bajo (pasivas)</td></tr>
+            <tr><td><strong>Escalabilidad</strong></td><td>Altamente escalable (miles)</td><td>Limitada</td><td>Moderada</td><td>Limitada</td><td>Altamente escalable (millones)</td><td>Altamente escalable</td></tr>
+        </tbody>
+    </table>`;
+    return wrap;
+}
+
+function loadNewQuiz() {
+    currentQuiz = generateQuiz();
+    renderQuiz(currentQuiz);
+    document.getElementById('result').classList.remove('show');
+}
+
+document.getElementById('submitBtn').addEventListener('click', function() {
+    let total = 0, correctas = 0;
+    const mcQuestions = currentQuiz.filter(q => q.type === "mc");
+
+    mcQuestions.forEach((q, idx) => {
+        total++;
+        const divs = document.querySelectorAll('.question[data-mc-index]');
+        let selectedDiv = null;
+        divs.forEach(d => {
+            if (parseInt(d.dataset.mcIndex) === idx) selectedDiv = d;
+        });
+        if (selectedDiv) {
+            const selected = selectedDiv.querySelector('input[type="radio"]:checked');
+            if (selected) {
+                const chosenIdx = parseInt(selected.value);
+                if (q.options[chosenIdx].origIdx === q.correctOrigIdx) {
+                    correctas++;
+                    const p = selectedDiv.querySelector('p');
+                    if (!p.querySelector('.correct-mark')) {
+                        const span = document.createElement('span');
+                        span.className = 'correct-mark';
+                        span.textContent = ' ✓';
+                        p.appendChild(span);
+                    }
+                } else {
+                    const p = selectedDiv.querySelector('p');
+                    if (!p.querySelector('.wrong-mark')) {
+                        const span = document.createElement('span');
+                        span.className = 'wrong-mark';
+                        span.textContent = ' ✗';
+                        p.appendChild(span);
+                    }
+                    q.options.forEach((opt, i) => {
+                        if (opt.origIdx === q.correctOrigIdx) {
+                            const labels = selectedDiv.querySelectorAll('label');
+                            labels.forEach(l => {
+                                if (l.querySelector('input') && parseInt(l.querySelector('input').value) === i) {
+                                    const corrSpan = document.createElement('span');
+                                    corrSpan.style.cssText = 'color:#38a169;font-weight:bold;margin-left:4px';
+                                    corrSpan.textContent = ' (correcta)';
+                                    l.appendChild(corrSpan);
+                                }
+                            });
+                        }
+                    });
+                }
+            } else {
+                const p = selectedDiv.querySelector('p');
+                if (!p.querySelector('.wrong-mark')) {
+                    const span = document.createElement('span');
+                    span.className = 'wrong-mark';
+                    span.textContent = ' ✗';
+                    p.appendChild(span);
+                }
+            }
+        }
+    });
+
+    const resultado = document.getElementById('result');
+    resultado.classList.add('show');
+    const pct = Math.round((correctas / total) * 100);
+
+    if (pct >= 60) {
+        resultado.className = 'result-box pass show';
+        resultado.innerHTML = `<strong>¡Bien hecho!</strong> Obtuviste ${correctas} de ${total} respuestas correctas (${pct}%). Revisa las preguntas de desarrollo con tu docente.`;
+    } else {
+        resultado.className = 'result-box fail show';
+        resultado.innerHTML = `<strong>Puedes mejorar.</strong> Obtuviste ${correctas} de ${total} respuestas correctas (${pct}%). Te sugerimos releer el material e intentar de nuevo.`;
+    }
+
+    window.scrollTo({ top: document.getElementById('result').offsetTop - 20, behavior: 'smooth' });
+});
+
+document.getElementById('retryBtn').addEventListener('click', function() {
+    loadNewQuiz();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+loadNewQuiz();
 </script>
 </body>
 </html>
