@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller - Tecnología Inalámbrica</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            color: #1a202c;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #2b6cb0, #2c5282);
+            color: white;
+            padding: 40px;
+            border-radius: 16px 16px 0 0;
+            text-align: center;
+        }
+        .header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+        .header p { font-size: 1.1rem; opacity: 0.9; }
+        .content {
+            background: white;
+            padding: 40px;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+        }
+        .section {
+            margin-bottom: 36px;
+            padding-bottom: 28px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .section h2 {
+            font-size: 1.5rem;
+            color: #2b6cb0;
+            margin-bottom: 16px;
+            padding-left: 12px;
+            border-left: 4px solid #2b6cb0;
+        }
+        .section h3 {
+            font-size: 1.1rem;
+            color: #2d3748;
+            margin: 16px 0 8px;
+        }
+        .question {
+            background: #f7fafc;
+            padding: 16px 20px;
+            margin-bottom: 14px;
+            border-radius: 8px;
+            border-left: 4px solid #3182ce;
+        }
+        .question p { margin-bottom: 8px; font-weight: 600; }
+        .question label {
+            display: block;
+            padding: 6px 0 6px 24px;
+            cursor: pointer;
+        }
+        .question input[type="radio"],
+        .question input[type="checkbox"] { margin-right: 8px; }
+        .question textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            resize: vertical;
+        }
+        .question .open-label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        .table-wrap {
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        th, td {
+            border: 1px solid #cbd5e0;
+            padding: 10px 8px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #2b6cb0;
+            color: white;
+            font-weight: 600;
+        }
+        tr:nth-child(even) { background: #f7fafc; }
+        .btn {
+            display: inline-block;
+            background: #2b6cb0;
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn:hover { background: #2c5282; }
+        .result-box {
+            margin-top: 16px;
+            padding: 16px;
+            border-radius: 8px;
+            display: none;
+        }
+        .result-box.show { display: block; }
+        .result-box.pass { background: #c6f6d5; color: #22543d; }
+        .result-box.fail { background: #fed7d7; color: #822727; }
+        .nav-links { margin-top: 30px; text-align: center; }
+        .nav-links a {
+            color: #2b6cb0;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+        .nav-links a:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .header { padding: 24px; }
+            .header h1 { font-size: 1.5rem; }
+            .content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Taller: Tecnología Inalámbrica</h1>
+        <p>Institución Educativa San Luis &mdash; Grado Noveno</p>
+    </div>
+    <div class="content">
+
+        <!-- INSTRUCCIONES -->
+        <div class="section">
+            <h2>Instrucciones</h2>
+            <p>Lee atentamente el material sobre <strong>Tecnología Inalámbrica</strong> y responde las siguientes preguntas. Puedes marcar las opciones correctas y escribir respuestas abiertas. Al final presiona "Enviar respuestas" para verificar tus resultados.</p>
+        </div>
+
+        <!-- SECCIÓN 1: COMPRENSIÓN LECTORA -->
+        <div class="section">
+            <h2>1. Comprensión Lectora</h2>
+
+            <div class="question" data-correct="a">
+                <p>1. ¿Qué permite la tecnología inalámbrica?</p>
+                <label><input type="radio" name="q1" value="a"> Transmisión de datos sin conexiones físicas</label>
+                <label><input type="radio" name="q1" value="b"> Transmisión de datos solo con cables de fibra óptica</label>
+                <label><input type="radio" name="q1" value="c"> Conexión exclusiva entre computadoras de escritorio</label>
+                <label><input type="radio" name="q1" value="d"> Transmisión de datos únicamente mediante señales infrarrojas</label>
+            </div>
+
+            <div class="question" data-correct="b">
+                <p>2. ¿Cuál es el propósito del Bluetooth en la tecnología inalámbrica?</p>
+                <label><input type="radio" name="q2" value="a"> Conectar dispositivos a internet a larga distancia</label>
+                <label><input type="radio" name="q2" value="b"> Conexiones de corto alcance entre dispositivos personales</label>
+                <label><input type="radio" name="q2" value="c"> Redes de largo alcance para ciudades inteligentes</label>
+                <label><input type="radio" name="q2" value="d"> Cargar dispositivos sin cables</label>
+            </div>
+
+            <div class="question" data-correct="d">
+                <p>3. Según el texto, ¿qué se recomienda para mejorar la señal WiFi en casa?</p>
+                <label><input type="radio" name="q3" value="a"> Usar la red sin contraseña para mayor velocidad</label>
+                <label><input type="radio" name="q3" value="b"> Colocar el router en el sótano</label>
+                <label><input type="radio" name="q3" value="c"> Apagar todos los dispositivos electrónicos</label>
+                <label><input type="radio" name="q3" value="d"> Colocar el router en un lugar estratégico lejos de interferencias</label>
+            </div>
+
+            <div class="question" data-correct="c">
+                <p>4. ¿Cómo funciona la carga inalámbrica?</p>
+                <label><input type="radio" name="q4" value="a"> Mediante rayos láser</label>
+                <label><input type="radio" name="q4" value="b"> A través de ondas de sonido</label>
+                <label><input type="radio" name="q4" value="c"> Utilizando campos electromagnéticos para transferir energía</label>
+                <label><input type="radio" name="q4" value="d"> Conectando un cable magnético al dispositivo</label>
+            </div>
+
+            <div class="question" data-correct="a">
+                <p>5. ¿Puede el clima afectar las señales inalámbricas?</p>
+                <label><input type="radio" name="q5" value="a"> Sí, condiciones como lluvia fuerte o tormentas pueden debilitarlas</label>
+                <label><input type="radio" name="q5" value="b"> No, el clima no tiene ningún efecto sobre las señales</label>
+                <label><input type="radio" name="q5" value="c"> Solo el viento afecta las señales inalámbricas</label>
+                <label><input type="radio" name="q5" value="d"> Solo afecta a las redes 5G</label>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2: PREGUNTAS ABIERTAS -->
+        <div class="section">
+            <h2>2. Preguntas de Desarrollo</h2>
+
+            <div class="question">
+                <label class="open-label">6. Explica con tus propias palabras cómo la tecnología inalámbrica ha revolucionado la conectividad y la comunicación entre dispositivos.</label>
+                <textarea rows="4" class="open-q" data-id="q6"></textarea>
+            </div>
+
+            <div class="question">
+                <label class="open-label">7. Nombra y describe al menos 3 tipos de tecnologías inalámbricas mencionadas en el texto, indicando un caso de uso para cada una.</label>
+                <textarea rows="4" class="open-q" data-id="q7"></textarea>
+            </div>
+
+            <div class="question">
+                <label class="open-label">8. ¿Cómo impacta la tecnología inalámbrica en los dispositivos IoT (Internet de las Cosas)? Menciona un ejemplo concreto.</label>
+                <textarea rows="4" class="open-q" data-id="q8"></textarea>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3: TABLA COMPARATIVA -->
+        <div class="section">
+            <h2>3. Análisis de la Tabla Comparativa</h2>
+
+            <p style="margin-bottom:12px;">Usa la siguiente tabla comparativa del material de lectura para responder las preguntas:</p>
+
+            <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>LoRaWAN</th>
+                        <th>Wi-Fi</th>
+                        <th>Zigbee</th>
+                        <th>Bluetooth</th>
+                        <th>Redes celulares</th>
+                        <th>RFID-IoT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Rango</strong></td><td>Larga distancia (hasta 15 km)</td><td>Corto alcance (hasta 100 m)</td><td>Corto alcance (hasta 100 m)</td><td>Corto alcance (hasta 100 m)</td><td>Amplio (1-30 km)</td><td>Pocos metros (&lt;10 m)</td></tr>
+                    <tr><td><strong>Tasa de datos</strong></td><td>Lenta (0.3-50 kbps)</td><td>Alta (hasta 1 Gbps)</td><td>Moderada (20-250 kbps)</td><td>Lenta-moderada (hasta 2 Mbps)</td><td>Alta (5G: 100 Mbps-20 Gbps)</td><td>Baja (10-424 kbit/s)</td></tr>
+                    <tr><td><strong>Consumo de energía</strong></td><td>Muy eficiente</td><td>Alto</td><td>Bajo</td><td>Bajo a moderado</td><td>Moderado a alto</td><td>Muy bajo</td></tr>
+                    <tr><td><strong>Costo</strong></td><td>Asequible</td><td>Moderado a elevado</td><td>Bajo</td><td>Bajo</td><td>Alto</td><td>Bajo (pasivas)</td></tr>
+                    <tr><td><strong>Escalabilidad</strong></td><td>Altamente escalable (miles)</td><td>Limitada</td><td>Moderada</td><td>Limitada</td><td>Altamente escalable (millones)</td><td>Altamente escalable</td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <div class="question" data-correct="lorawan">
+                <p>9. ¿Cuál tecnología inalámbrica es la más adecuada para aplicaciones IoT de largo alcance como ciudades inteligentes?</p>
+                <label><input type="radio" name="q9" value="wifi"> Wi-Fi</label>
+                <label><input type="radio" name="q9" value="bluetooth"> Bluetooth</label>
+                <label><input type="radio" name="q9" value="lorawan"> LoRaWAN</label>
+                <label><input type="radio" name="q9" value="rfid"> RFID-IoT</label>
+            </div>
+
+            <div class="question" data-correct="alto">
+                <p>10. Según la tabla, ¿qué tecnología inalámbrica tiene el mayor consumo de energía?</p>
+                <label><input type="radio" name="q10" value="zigbee"> Zigbee</label>
+                <label><input type="radio" name="q10" value="alto"> Wi-Fi</label>
+                <label><input type="radio" name="q10" value="rfid"> RFID-IoT</label>
+                <label><input type="radio" name="q10" value="lorawan"> LoRaWAN</label>
+            </div>
+
+            <div class="question">
+                <label class="open-label">11. Compara LoRaWAN y Wi-Fi en términos de rango, tasa de datos y consumo de energía. ¿En qué escenarios usarías cada una?</label>
+                <textarea rows="4" class="open-q" data-id="q11"></textarea>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 4: APLICACIÓN -->
+        <div class="section">
+            <h2>4. Aplicación Práctica</h2>
+
+            <div class="question">
+                <label class="open-label">12. Imagina que eres el encargado de diseñar la red de una casa inteligente. ¿Qué tecnologías inalámbricas usarías para: (a) conectar luces y sensores, (b) transmitir video en alta definición, (c) cargar dispositivos móviles? Justifica tu respuesta.</label>
+                <textarea rows="5" class="open-q" data-id="q12"></textarea>
+            </div>
+
+            <div class="question">
+                <label class="open-label">13. Investiga y menciona una ventaja y una desventaja de la tecnología 5G frente a WiFi 6 (puedes apoyarte en el texto y en tu conocimiento).</label>
+                <textarea rows="4" class="open-q" data-id="q13"></textarea>
+            </div>
+        </div>
+
+        <!-- BOTÓN -->
+        <div style="text-align:center; margin-top: 20px;">
+            <button class="btn" id="submitBtn">Enviar respuestas</button>
+        </div>
+
+        <div id="result" class="result-box"></div>
+
+        <div class="nav-links">
+            <a href="index.html">Volver al inicio</a>
+            <a href="https://github.com/colegioSanluisTame/taller-noveno" target="_blank">Ver en GitHub</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('submitBtn').addEventListener('click', function() {
+        let total = 0, correctas = 0;
+
+        document.querySelectorAll('.question[data-correct]').forEach(q => {
+            total++;
+            const correct = q.dataset.correct;
+            const selected = q.querySelector('input[type="radio"]:checked');
+            if (selected && selected.value === correct) correctas++;
+        });
+
+        const resultado = document.getElementById('result');
+        resultado.classList.add('show');
+        const pct = Math.round((correctas / total) * 100);
+
+        if (pct >= 60) {
+            resultado.className = 'result-box pass show';
+            resultado.innerHTML = `<strong>¡Bien hecho!</strong> Obtuviste ${correctas} de ${total} respuestas correctas (${pct}%). Revisa las preguntas de desarrollo con tu docente.`;
+        } else {
+            resultado.className = 'result-box fail show';
+            resultado.innerHTML = `<strong>Puedes mejorar.</strong> Obtuviste ${correctas} de ${total} respuestas correctas (${pct}%). Te sugerimos releer el material e intentar de nuevo.`;
+        }
+
+        window.scrollTo({ top: document.getElementById('result').offsetTop - 20, behavior: 'smooth' });
+    });
+</script>
+</body>
+</html>
