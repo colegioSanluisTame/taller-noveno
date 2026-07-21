@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taller + Juego: Circuitos Digitales - Grado 9°</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a1a2e;padding:20px}
+.container{max-width:1000px;margin:0 auto}
+
+/* TABS */
+.tabs{display:flex;gap:4px;margin-bottom:0}
+.tab{padding:14px 24px;border-radius:12px 12px 0 0;cursor:pointer;font-weight:600;font-size:1rem;border:none;transition:all .2s;position:relative}
+.tab.info{background:#1a1a2e;color:#fff}
+.tab.info.active{background:#2b6cb0}
+.tab.juego{background:#ff6b35;color:#fff}
+.tab.juego.active{background:#e85d2c}
+.tab:hover{transform:translateY(-2px)}
+.tab-content{display:none;padding:30px;border-radius:0 12px 12px 12px}
+.tab-content.info{background:#fff;display:block}
+.tab-content.juego{background:#fff;display:none}
+
+/* STUDY CONTENT */
+h2{font-size:1.5rem;margin:28px 0 12px;color:#1a1a2e;border-bottom:2px solid #e0e0e0;padding-bottom:5px}
+h3{font-size:1.15rem;margin:18px 0 8px;color:#2d2d5e}
+p{margin-bottom:10px;text-align:justify}
+ul,ol{margin:8px 0 12px 22px}
+li{margin-bottom:4px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem}
+th,td{border:1px solid #999;padding:6px 10px;text-align:center}
+th{background:#1a1a2e;color:#fff;font-weight:600}
+tr:nth-child(even){background:#f5f5f5}
+.destacado{background:#f0f4ff;border-left:4px solid #1a1a2e;padding:12px 16px;margin:12px 0;border-radius:0 8px 8px 0}
+.ejemplo{background:#fafafa;border:1px solid #ddd;border-radius:8px;padding:12px;margin:12px 0}
+.ejemplo h4{color:#1a1a2e;margin-bottom:5px}
+.gate-tag{display:inline-block;background:#1a1a2e;color:#fff;padding:3px 10px;border-radius:4px;font-weight:700;font-size:.85rem;margin:2px;font-family:monospace}
+
+/* GAME */
+.game-header{text-align:center;margin-bottom:20px}
+.game-header h2{font-size:1.8rem;border:none;color:#e85d2c;margin-bottom:4px}
+.game-header p{text-align:center;color:#666;font-size:.95rem}
+.level-info{background:linear-gradient(135deg,#ff6b35,#e85d2c);color:#fff;padding:16px 24px;border-radius:12px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.level-info h3{margin:0;color:#fff;font-size:1.3rem}
+.level-badge{background:rgba(255,255,255,.2);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600}
+.stars{display:flex;gap:4px}
+.star{font-size:1.5rem;color:#ffd700;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+.star.empty{color:rgba(255,255,255,.25)}
+
+/* TRUTH TABLE */
+.target-section{display:flex;gap:20px;margin-bottom:20px;flex-wrap:wrap}
+.target-table{flex:1;min-width:200px}
+.target-table h4{font-size:1rem;margin-bottom:8px;color:#2d2d5e}
+.target-table table{font-size:.85rem}
+.target-desc{flex:2;min-width:250px}
+.target-desc h4{font-size:1rem;margin-bottom:6px;color:#2d2d5e}
+.target-desc p{text-align:left;font-size:.95rem}
+
+/* CIRCUIT WORKBENCH */
+.workbench{background:#fafbfc;border:2px solid #ddd;border-radius:12px;padding:24px;margin-bottom:16px;min-height:260px;position:relative}
+.workbench h4{font-size:.95rem;color:#666;margin-bottom:12px;text-align:center}
+.circuit-canvas{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;min-height:160px}
+.input-group{display:flex;flex-direction:column;align-items:center;gap:8px}
+.input-label{font-weight:700;font-size:.9rem;background:#e8e8e8;padding:4px 14px;border-radius:6px;font-family:monospace}
+.wire-h{width:30px;height:2px;background:#555;position:relative}
+.wire-v{width:2px;height:30px;background:#555;margin:0 auto}
+
+.gate-slot{width:90px;height:65px;border:2px dashed #bbb;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;position:relative}
+.gate-slot.filled{border-style:solid;background:#f0f4ff;border-color:#2b6cb0}
+.gate-slot select{width:80px;padding:4px;border:1px solid #ccc;border-radius:6px;font-size:.8rem;text-align:center;cursor:pointer}
+.gate-slot .gate-label{font-size:.7rem;color:#999;margin-top:2px}
+.gate-slot .slot-name{font-size:.7rem;color:#2b6cb0;font-weight:600;position:absolute;top:-12px;background:#fff;padding:0 6px}
+.connector{display:flex;flex-direction:column;align-items:center;gap:4px}
+.output-box{background:#2b6cb0;color:#fff;padding:8px 16px;border-radius:8px;font-weight:700;font-size:.85rem;font-family:monospace}
+
+/* PALETTE */
+.palette{display:flex;gap:10px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
+.palette-item{padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:600;font-size:.9rem;border:2px solid transparent;transition:all .2s;text-align:center;min-width:80px}
+.palette-item.and{border-color:#2b6cb0;color:#2b6cb0;background:#ebf4ff}
+.palette-item.or{border-color:#38a169;color:#38a169;background:#f0fff4}
+.palette-item.not{border-color:#e53e3e;color:#e53e3e;background:#fff5f5}
+.palette-item:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.12)}
+.palette-item.selected{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.palette-item.and.selected{background:#2b6cb0;color:#fff}
+.palette-item.or.selected{background:#38a169;color:#fff}
+.palette-item.not.selected{background:#e53e3e;color:#fff}
+
+/* CONTROLS */
+.controls{display:flex;gap:12px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
+.btn{padding:12px 32px;border-radius:8px;border:none;font-weight:600;font-size:1rem;cursor:pointer;transition:all .2s}
+.btn-primary{background:#2b6cb0;color:#fff}
+.btn-primary:hover{background:#2c5282;transform:translateY(-1px)}
+.btn-success{background:#38a169;color:#fff}
+.btn-success:hover{background:#2f855a;transform:translateY(-1px)}
+.btn-danger{background:#e53e3e;color:#fff}
+.btn-danger:hover{background:#c53030;transform:translateY(-1px)}
+.btn-warning{background:#ff6b35;color:#fff}
+.btn-warning:hover{background:#e85d2c;transform:translateY(-1px)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+/* FEEDBACK */
+.feedback{margin-top:16px;padding:20px;border-radius:12px;display:none}
+.feedback.show{display:block}
+.feedback.success{background:#c6f6d5;color:#22543d;border:2px solid #38a169}
+.feedback.error{background:#fed7d7;color:#822727;border:2px solid #e53e3e}
+.feedback h4{font-size:1.1rem;margin-bottom:6px}
+.feedback p{text-align:left;margin-bottom:4px}
+
+/* PROGRESS BAR */
+.progress-wrap{background:#e2e8f0;border-radius:10px;height:10px;margin-bottom:20px;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,#ff6b35,#e85d2c);border-radius:10px;transition:width .5s ease;width:0}
+
+/* LEVEL SELECTOR */
+.level-selector{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
+.level-btn{padding:8px 18px;border-radius:8px;border:2px solid #ddd;background:#fff;cursor:pointer;font-weight:600;font-size:.85rem;transition:all .2s}
+.level-btn:hover{transform:translateY(-1px)}
+.level-btn.completed{border-color:#38a169;background:#f0fff4;color:#38a169}
+.level-btn.active{border-color:#ff6b35;background:#fff5f0;color:#e85d2c;transform:translateY(-2px)}
+.level-btn.locked{border-color:#e2e8f0;background:#f7fafc;color:#a0aec0;cursor:not-allowed;transform:none}
+
+@media(max-width:600px){
+.tabs .tab{padding:10px 16px;font-size:.85rem}
+.tab-content{padding:16px}
+.workbench{padding:12px}
+.circuit-canvas{gap:10px}
+.gate-slot{width:70px;height:55px}
+.gate-slot select{width:62px;font-size:.75rem}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="tabs">
+<button class="tab info active" onclick="switchTab('info')">📖 Estudiar</button>
+<button class="tab juego" onclick="switchTab('juego')">🎮 Jugar</button>
+</div>
+
+<!-- TAB: INFO -->
+<div class="tab-content info" id="tabInfo">
+
+<div class="destacado" style="margin-bottom:20px">
+<strong>🏫 Institución Educativa San Luis — Grado Noveno — Tecnología e Informática</strong>
+</div>
+
+<h2>1. ¿Qué es un circuito digital?</h2>
+<p>Un <strong>circuito digital</strong> es un circuito electrónico que trabaja con solo <strong>dos valores</strong>: <strong>0</strong> (apagado, sin voltaje) y <strong>1</strong> (encendido, con voltaje). Son los bloques que construyen todo aparato electrónico moderno: computadoras, celulares, calculadoras, semáforos inteligentes y más.</p>
+<div class="destacado"><strong>💡 Idea clave:</strong> Piensa en un circuito digital como un <strong>interruptor de luz</strong>: solo puede estar en dos posiciones — apagado (0) o encendido (1). Un circuito digital combina millones de estos "interruptores" (llamados <strong>transistores</strong>) para realizar tareas complejas.</div>
+
+<h2>2. Diferencia analógico vs digital</h2>
+<table>
+<tr><th>Característica</th><th>Analógico</th><th>Digital</th></tr>
+<tr><td><strong>Valores</strong></td><td>Infinitos (continuos)</td><td>Solo 0 y 1 (discretos)</td></tr>
+<tr><td><strong>Ejemplo</strong></td><td>Reloj de agujas</td><td>Reloj de números</td></tr>
+<tr><td><strong>Precisión</strong></td><td>Se degrada con el tiempo</td><td>No se pierde calidad al copiar</td></tr>
+<tr><td><strong>Ruido</strong></td><td>Muy sensible a interferencias</td><td>Muy resistente al ruido</td></tr>
+</table>
+<div class="ejemplo"><h4>🎯 Ejemplo</h4><p>Un <strong>tocadiscos de vinilo</strong> es analógico. Un <strong>CD o MP3</strong> es digital. Por eso el MP3 no se "raya" ni pierde calidad aunque lo copies mil veces.</p></div>
+
+<h2>3. Los bits (0 y 1)</h2>
+<p><strong>Bit</strong> viene de <strong>B</strong>inary dig<strong>it</strong> (dígito binario). Es la unidad más pequeña de información. Solo puede tener dos valores: <strong>0</strong> (apagado) y <strong>1</strong> (encendido). Con 8 bits (un <strong>byte</strong>) puedes representar 256 valores diferentes.</p>
+
+<h2>4. Compuertas lógicas básicas</h2>
+
+<h3>AND (Y) <span class="gate-tag">AND</span></h3>
+<p>La salida es <strong>1 solo si TODAS las entradas son 1</strong>.</p>
+<table><tr><th>A</th><th>B</th><th>Salida</th></tr><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td><td><strong>1</strong></td></tr></table>
+<p><strong>Ejemplo:</strong> Dos interruptores en serie. La luz enciende SOLO si ambos están encendidos.</p>
+
+<h3>OR (O) <span class="gate-tag">OR</span></h3>
+<p>La salida es <strong>1 si AL MENOS UNA entrada es 1</strong>.</p>
+<table><tr><th>A</th><th>B</th><th>Salida</th></tr><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td><strong>1</strong></td></tr><tr><td>1</td><td>0</td><td><strong>1</strong></td></tr><tr><td>1</td><td>1</td><td><strong>1</strong></td></tr></table>
+<p><strong>Ejemplo:</strong> Dos interruptores en paralelo. La luz enciende si CUALQUIERA está encendido.</p>
+
+<h3>NOT (NO) <span class="gate-tag">NOT</span></h3>
+<p><strong>Invierte</strong> la entrada: si entra 1, sale 0; si entra 0, sale 1.</p>
+<table><tr><th>A</th><th>Salida</th></tr><tr><td>0</td><td><strong>1</strong></td></tr><tr><td>1</td><td><strong>0</strong></td></tr></table>
+<p><strong>Ejemplo:</strong> Luz de nevera que se enciende al abrir la puerta.</p>
+
+<h2>5. Sistema binario</h2>
+<p>Usa solo <strong>0 y 1</strong>. Cada posición representa una potencia de 2.</p>
+<div class="destacado"><strong>Ejemplo:</strong> <code>1011₂</code> = 1×8 + 0×4 + 1×2 + 1×1 = <strong>11</strong> en decimal.</div>
+<table><tr><th>Binario</th><th>Decimal</th><th></th><th>Binario</th><th>Decimal</th></tr>
+<tr><td>0</td><td>0</td><td></td><td>1000</td><td>8</td></tr>
+<tr><td>1</td><td>1</td><td></td><td>1001</td><td>9</td></tr>
+<tr><td>10</td><td>2</td><td></td><td>1010</td><td>10</td></tr>
+<tr><td>11</td><td>3</td><td></td><td>1011</td><td>11</td></tr>
+<tr><td>100</td><td>4</td><td></td><td>1100</td><td>12</td></tr>
+<tr><td>101</td><td>5</td><td></td><td>1101</td><td>13</td></tr>
+<tr><td>110</td><td>6</td><td></td><td>1110</td><td>14</td></tr>
+<tr><td>111</td><td>7</td><td></td><td>1111</td><td>15</td></tr></table>
+
+<h2>6. Aplicaciones en la vida real</h2>
+<ul>
+<li><strong>Computadoras:</strong> La CPU ejecuta instrucciones de 0 y 1.</li>
+<li><strong>Celulares:</strong> Cada app, foto o mensaje se guarda en binario.</li>
+<li><strong>Internet:</strong> Los datos viajan como pulsos representando 0 y 1.</li>
+<li><strong>Medicina:</strong> Tomógrafos y monitores convierten señales en datos digitales.</li>
+<li><strong>Autos:</strong> La computadora del auto controla frenos, combustible y bolsas de aire.</li>
+<li><strong>Videojuegos:</strong> Cada gráfico y sonido se reduce a operaciones binarias.</li>
+</ul>
+
+<div class="destacado">
+<strong>📌 Resumen:</strong> Un circuito digital trabaja con 0 y 1. Con compuertas AND, OR y NOT se construyen desde calculadoras hasta supercomputadores. El sistema binario es el "idioma" de todos los dispositivos electrónicos.
+</div>
+</div>
+
+<!-- TAB: JUEGO -->
+<div class="tab-content juego" id="tabJuego">
+
+<div class="game-header">
+<h2>🎮 Circuit Builder</h2>
+<p>Arma circuitos digitales seleccionando las compuertas correctas. ¡Supera los 5 niveles!</p>
+</div>
+
+<div class="level-selector" id="levelSelector"></div>
+
+<div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+<div class="level-info" id="levelInfo">
+<div>
+<h3 id="levelTitle">Nivel 1: La Compuerta AND</h3>
+<span class="level-badge" id="levelBadge">Fácil</span>
+</div>
+<div class="stars" id="levelStars">
+<span class="star">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span>
+</div>
+</div>
+
+<div class="target-section" id="targetSection">
+<div class="target-table" id="targetTable"></div>
+<div class="target-desc" id="targetDesc"></div>
+</div>
+
+<div class="workbench" id="workbench">
+<h4>🔧 Área de trabajo — selecciona las compuertas correctas</h4>
+<div class="circuit-canvas" id="circuitCanvas"></div>
+</div>
+
+<div class="palette" id="palette">
+<div class="palette-item and" data-gate="AND" onclick="selectGate(this)">AND</div>
+<div class="palette-item or" data-gate="OR" onclick="selectGate(this)">OR</div>
+<div class="palette-item not" data-gate="NOT" onclick="selectGate(this)">NOT</div>
+</div>
+
+<div class="controls">
+<button class="btn btn-primary" onclick="testCircuit()">🧪 Probar circuito</button>
+<button class="btn btn-danger" onclick="resetLevel()">🔄 Reiniciar nivel</button>
+</div>
+
+<div class="feedback" id="feedback"></div>
+
+<div style="text-align:center;margin-top:12px">
+<button class="btn btn-warning" id="nextLevelBtn" style="display:none" onclick="nextLevel()">➡️ Siguiente Nivel</button>
+</div>
+</div>
+
+<footer style="text-align:center;margin-top:30px;padding:16px 0;border-top:1px solid #ddd;font-size:.85rem;color:#888">
+Institución Educativa San Luis — Tecnología e Informática — Grado Noveno — 2026
+</footer>
+</div>
+
+<script>
+// ===== LEVEL DEFINITIONS =====
+const levels = [
+{
+  id:1, title:"La Compuerta AND", badge:"⭐ Fácil",
+  desc:"Coloca una compuerta AND. La salida es 1 solo cuando AMBAS entradas son 1.",
+  inputs:["A","B"],
+  table:{h:["A","B","Salida"],rows:[
+    [0,0,0],[0,1,0],[1,0,0],[1,1,1]
+  ]},
+  slots:[
+    {id:"G1",inputs:[0,1],label:"G1"}
+  ],
+  solution:["AND"]
+},
+{
+  id:2, title:"La Compuerta OR", badge:"⭐ Fácil",
+  desc:"Coloca una compuerta OR. La salida es 1 si AL MENOS UNA entrada es 1.",
+  inputs:["A","B"],
+  table:{h:["A","B","Salida"],rows:[
+    [0,0,0],[0,1,1],[1,0,1],[1,1,1]
+  ]},
+  slots:[
+    {id:"G1",inputs:[0,1],label:"G1"}
+  ],
+  solution:["OR"]
+},
+{
+  id:3, title:"El Inversor NOT", badge:"⭐⭐ Medio",
+  desc:"Coloca una compuerta NOT. Invierte la entrada: si entra 1 sale 0 y viceversa.",
+  inputs:["A"],
+  table:{h:["A","Salida"],rows:[
+    [0,1],[1,0]
+  ]},
+  slots:[
+    {id:"G1",inputs:[0],label:"G1"}
+  ],
+  solution:["NOT"]
+},
+{
+  id:4, title:"Circuito NAND (AND + NOT)", badge:"⭐⭐⭐ Difícil",
+  desc:"Combina una AND y una NOT para crear un circuito NAND. La salida es 1 excepto cuando ambas entradas son 1.",
+  inputs:["A","B"],
+  table:{h:["A","B","Salida"],rows:[
+    [0,0,1],[0,1,1],[1,0,1],[1,1,0]
+  ]},
+  slots:[
+    {id:"G1",inputs:[0,1],label:"G1"},
+    {id:"G2",inputs:[{from:"G1"}],label:"G2"}
+  ],
+  solution:["AND","NOT"]
+},
+{
+  id:5, title:"Combinación AND + OR", badge:"⭐⭐⭐⭐⭐ Experto",
+  desc:"Último desafío: (A AND B) OR C. Las entradas A y B pasan por AND, ese resultado va a OR junto con C.",
+  inputs:["A","B","C"],
+  table:{h:["A","B","C","Salida"],rows:[
+    [0,0,0,0],[0,0,1,1],[0,1,0,0],[0,1,1,1],
+    [1,0,0,0],[1,0,1,1],[1,1,0,1],[1,1,1,1]
+  ]},
+  slots:[
+    {id:"G1",inputs:[0,1],label:"G1 (AND)"},
+    {id:"G2",inputs:[{from:"G1"},2],label:"G2 (OR)"}
+  ],
+  solution:["AND","OR"]
+}
+];
+
+let currentLevel = 0;
+let completed = [false,false,false,false,false];
+let selectedGate = null;
+let gateNames = {AND:"AND",OR:"OR",NOT:"NOT"};
+
+function switchTab(tab){
+document.getElementById('tabInfo').style.display=tab==='info'?'block':'none';
+document.getElementById('tabJuego').style.display=tab==='juego'?'block':'none';
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+if(tab==='info')document.querySelector('.tab.info').classList.add('active');
+else document.querySelector('.tab.juego').classList.add('active');
+if(tab==='juego')renderLevel(currentLevel);
+}
+
+function selectGate(el){
+document.querySelectorAll('.palette-item').forEach(p=>p.classList.remove('selected'));
+el.classList.add('selected');
+selectedGate = el.dataset.gate;
+const slots = document.querySelectorAll('.gate-slot select');
+if(slots.length>0){
+let firstEmpty = null;
+slots.forEach(s=>{if(!s.value)firstEmpty=s;});
+if(firstEmpty){firstEmpty.value=selectedGate;firstEmpty.dispatchEvent(new Event('change'));}
+}
+}
+
+function computeGate(gate,inputs){
+if(gate==='AND')return inputs.every(v=>v===1)?1:0;
+if(gate==='OR')return inputs.some(v=>v===1)?1:0;
+if(gate==='NOT')return inputs[0]===1?0:1;
+return 0;
+}
+
+function renderLevel(idx){
+const level=levels[idx];
+if(!level)return;
+completed[0]=true;
+for(let i=1;i<5;i++){
+if(!completed[i-1])completed[i]=false;
+}
+
+updateStars(idx);
+updateProgress();
+
+const sel=document.getElementById('levelSelector');
+sel.innerHTML='';
+for(let i=0;i<5;i++){
+const btn=document.createElement('button');
+btn.className='level-btn';
+btn.textContent=`Nivel ${i+1}`;
+if(i===idx)btn.classList.add('active');
+else if(completed[i])btn.classList.add('completed');
+else if(i===0||completed[i-1])btn.classList.add('active');
+else btn.classList.add('locked');
+btn.onclick=()=>{if(i===0||completed[i-1])currentLevel=i;renderLevel(currentLevel);};
+sel.appendChild(btn);
+}
+
+document.getElementById('levelTitle').textContent=`Nivel ${level.id}: ${level.title}`;
+document.getElementById('levelBadge').textContent=level.badge;
+document.getElementById('nextLevelBtn').style.display='none';
+document.getElementById('feedback').className='feedback';
+document.getElementById('feedback').innerHTML='';
+
+renderTarget(level);
+renderWorkbench(level);
+}
+
+function updateStars(idx){
+const stars=document.getElementById('levelStars');
+let html='';
+for(let i=0;i<5;i++){
+if(i<idx)html+=`<span class="star">★</span>`;
+else if(i===idx)html+=class='star'>★</span>`;
+else html+=`<span class="star empty">★</span>`;
+}
+stars.innerHTML=html;
+}
+
+function updateProgress(){
+const pct=completed.filter(c=>c).length/5*100;
+document.getElementById('progressBar').style.width=pct+'%';
+}
+
+function renderTarget(level){
+const tt=document.getElementById('targetTable');
+let html=`<h4>🎯 Tabla de verdad objetivo</h4><table><tr>`;
+level.table.h.forEach(h=>html+=`<th>${h}</th>`);
+html+=`</tr>`;
+level.table.rows.forEach(r=>{
+html+=`<tr>`;
+r.forEach(v=>html+=`<td>${v}</td>`);
+html+=`</tr>`;
+});
+html+=`</table>`;
+tt.innerHTML=html;
+
+document.getElementById('targetDesc').innerHTML=`
+<h4>📋 Descripción</h4>
+<p>${level.desc}</p>
+<p style="margin-top:8px;font-size:.85rem;color:#666">
+<strong>Entradas:</strong> ${level.inputs.join(', ')} |
+<strong>Compuertas:</strong> ${level.slots.length}
+</p>`;
+}
+
+function renderWorkbench(level){
+const canvas=document.getElementById('circuitCanvas');
+canvas.innerHTML='';
+
+const rowCount=Math.max(level.inputs.length,level.slots.length*2);
+const inputLabels=level.inputs;
+
+// Build input side
+const inputDiv=document.createElement('div');
+inputDiv.className='input-group';
+inputLabels.forEach((label,i)=>{
+const el=document.createElement('div');
+el.style.cssText='padding:4px 0;font-weight:700;font-size:.9rem;background:#e8e8e8;padding:4px 14px;border-radius:6px;font-family:monospace;margin:8px 0';
+el.textContent=label;
+inputDiv.appendChild(el);
+});
+canvas.appendChild(inputDiv);
+
+// Wire connector after inputs
+const wireDiv=document.createElement('div');
+wireDiv.className='connector';
+inputLabels.forEach(()=>{
+const w=document.createElement('div');
+w.style.cssText='width:2px;height:20px;background:#555;margin:8px 0';
+wireDiv.appendChild(w);
+});
+canvas.appendChild(wireDiv);
+
+// Gates
+level.slots.forEach((slot,si)=>{
+const slotDiv=document.createElement('div');
+slotDiv.className='gate-slot';
+slotDiv.id=`slot_${si}`;
+
+const nameSpan=document.createElement('span');
+nameSpan.className='slot-name';
+nameSpan.textContent=slot.label;
+slotDiv.appendChild(nameSpan);
+
+const sel=document.createElement('select');
+sel.id=`gate_${si}`;
+sel.innerHTML=`
+<option value="">—</option>
+<option value="AND">AND</option>
+<option value="OR">OR</option>
+<option value="NOT">NOT</option>`;
+sel.onchange=function(){
+if(this.value){
+slotDiv.classList.add('filled');
+const label=slotDiv.querySelector('.gate-label');
+if(label)label.textContent=this.value;
+} else {
+slotDiv.classList.remove('filled');
+const label=slotDiv.querySelector('.gate-label');
+if(label)label.textContent='?';
+}
+};
+slotDiv.appendChild(sel);
+
+const lbl=document.createElement('div');
+lbl.className='gate-label';
+lbl.textContent='?';
+slotDiv.appendChild(lbl);
+
+canvas.appendChild(slotDiv);
+
+if(si<level.slots.length-1){
+const w=document.createElement('div');
+w.style.cssText='display:flex;flex-direction:column;align-items:center;gap:4px';
+const l=document.createElement('div');
+l.style.cssText='width:30px;height:2px;background:#555';
+w.appendChild(l);
+canvas.appendChild(w);
+}
+});
+
+// Wire to output
+const wireDiv2=document.createElement('div');
+wireDiv2.className='connector';
+for(let i=0;i<level.slots.length;i++){
+const w=document.createElement('div');
+w.style.cssText='width:2px;height:20px;background:#555;margin:8px 0';
+wireDiv2.appendChild(w);
+}
+canvas.appendChild(wireDiv2);
+
+// Output
+const outDiv=document.createElement('div');
+outDiv.className='output-box';
+outDiv.id='outputBox';
+outDiv.textContent='Salida: ?';
+canvas.appendChild(outDiv);
+
+// Auto-fill if coming back to completed level
+if(completed[idx]){
+const sol=level.solution;
+level.slots.forEach((slot,si)=>{
+const selEl=document.getElementById(`gate_${si}`);
+if(selEl&&sol[si]){selEl.value=sol[si];selEl.dispatchEvent(new Event('change'));}
+});
+}
+}
+
+function getGateValues(level){
+const vals=[];
+level.slots.forEach((slot,si)=>{
+const sel=document.getElementById(`gate_${si}`);
+vals.push(sel?sel.value:'');
+});
+return vals;
+}
+
+function simulateCircuit(gates,level){
+const rows=level.table.rows;
+const results=[];
+
+rows.forEach(row=>{
+const inputVals=row.slice(0,level.inputs.length);
+const gateOutputs={};
+let error=false;
+
+level.slots.forEach((slot,si)=>{
+const gType=gates[si];
+if(!gType){error=true;return;}
+const inps=[];
+slot.inputs.forEach(inp=>{
+if(typeof inp==='number')inps.push(inputVals[inp]);
+else if(inp.from){
+const srcIdx=level.slots.findIndex(s=>s.id===inp.from);
+if(srcIdx>=0&&gateOutputs[inp.from]!==undefined)
+inps.push(gateOutputs[inp.from]);
+else inps.push(0);
+}
+});
+gateOutputs[slot.id]=computeGate(gType,inps);
+});
+
+if(error){results.push(null);return;}
+const finalOutput=gateOutputs[level.slots[level.slots.length-1].id];
+results.push(finalOutput);
+});
+return results;
+}
+
+function testCircuit(){
+const level=levels[currentLevel];
+const gates=getGateValues(level);
+const fb=document.getElementById('feedback');
+const nextBtn=document.getElementById('nextLevelBtn');
+
+// Check all gates are filled
+let empty=false;
+gates.forEach(g=>{if(!g)empty=true;});
+
+if(empty){
+fb.className='feedback error show';
+fb.innerHTML=`<h4>❌ Faltan compuertas</h4><p>Selecciona todas las compuertas antes de probar. Haz clic en una compuerta de la paleta y se colocará automáticamente en el primer espacio vacío.</p>`;
+return;
+}
+
+const results=simulateCircuit(gates,level);
+const expected=level.table.rows.map(r=>r[r.length-1]);
+
+let correct=true;
+results.forEach((r,i)=>{
+if(r===null||r!==expected[i])correct=false;
+});
+
+if(correct){
+fb.className='feedback success show';
+fb.innerHTML=`<h4>✅ ¡Correcto!</h4><p>El circuito funciona exactamente como la tabla de verdad objetivo.</p>`;
+completed[currentLevel]=true;
+updateProgress();
+updateStars(currentLevel);
+if(currentLevel<4){
+nextBtn.style.display='inline-block';
+} else {
+nextBtn.innerHTML='🏆 ¡Completaste todos los niveles!';
+nextBtn.style.display='inline-block';
+nextBtn.onclick=()=>{
+fb.className='feedback success show';
+fb.innerHTML=`<h4>🏆 ¡Felicidades!</h4><p>Completaste los 5 niveles del Circuit Builder. Ya sabes cómo funcionan las compuertas lógicas AND, OR y NOT, y cómo combinarlas para crear circuitos digitales.</p>`;
+nextBtn.style.display='none';
+};
+}
+} else {
+fb.className='feedback error show';
+let details='';
+results.forEach((r,i)=>{
+if(r===null||r!==expected[i]){
+details+=`${level.table.h.slice(0,-1).map((h,ji)=>`${h}=${level.table.rows[i][ji]}`).join(', ')} → esperado: <strong>${expected[i]}</strong>, obtuviste: <strong>${r!==null?r:'—'}</strong><br>`;
+}
+});
+fb.innerHTML=`<h4>❌ Incorrecto</h4><p>Revisa las compuertas que seleccionaste. La tabla no coincide en estas filas:</p><p>${details}</p><p>💡 <strong>Pista:</strong> Revisa la tabla de verdad objetivo y piensa qué compuerta produce esa salida.</p>`;
+}
+}
+
+function resetLevel(){
+const level=levels[currentLevel];
+level.slots.forEach((slot,si)=>{
+const sel=document.getElementById(`gate_${si}`);
+if(sel){sel.value='';sel.dispatchEvent(new Event('change'));}
+});
+document.getElementById('feedback').className='feedback';
+document.getElementById('feedback').innerHTML='';
+document.getElementById('nextLevelBtn').style.display='none';
+}
+
+function nextLevel(){
+if(currentLevel<4){
+currentLevel++;
+renderLevel(currentLevel);
+}
+}
+
+// Init
+completed[0]=true;
+renderLevel(0);
+</script>
+</body>
+</html>
