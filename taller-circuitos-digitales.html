@@ -315,6 +315,9 @@ NOT: A ── NOT ── Salida
 <div style="text-align:center;margin-top:12px">
 <button class="btn btn-warning" id="nextLevelBtn" style="display:none" onclick="nextLevel()">➡️ Siguiente Nivel</button>
 </div>
+<div style="text-align:center;margin-top:8px">
+<button class="btn btn-sm btn-danger" onclick="newRandomGame()">🎲 Nuevo juego aleatorio</button>
+</div>
 </div>
 
 <footer style="text-align:center;margin-top:30px;padding:16px 0;border-top:1px solid #ddd;font-size:.85rem;color:#888">
@@ -323,64 +326,248 @@ Institución Educativa San Luis — Tecnología e Informática — Grado Noveno 
 </div>
 
 <script>
-var currentLevel = 0;
-var completed = [true,false,false,false,false];
-var selectedGate = null;
-
-var levels = [
+// === POOL DE NIVELES (se eligen 5 al azar cada partida) ===
+var levelPool = [
+// --- FÁCIL (1 compuerta) ---
 {
-  id:1, title:"La Compuerta AND", badge:"F\u00e1cil",
+  diff:1, title:"La Compuerta AND", badge:"F\u00e1cil",
   desc:"Coloca una compuerta AND. La salida es 1 solo cuando AMBAS entradas son 1.",
   inputs:["A","B"],
-  table:{h:["A","B","Salida"],rows:[[0,0,0],[0,1,0],[1,0,0],[1,1,1]]},
-  slots:[
-    {id:"G1",inputs:[0,1],label:"G1"}
-  ],
+  baseTable:{h:["A","B","Salida"],rows:[[0,0,0],[0,1,0],[1,0,0],[1,1,1]]},
+  slots:[{id:"G1",inputs:[0,1],label:"G1"}],
   solution:["AND"]
 },
 {
-  id:2, title:"La Compuerta OR", badge:"F\u00e1cil",
+  diff:1, title:"La Compuerta OR", badge:"F\u00e1cil",
   desc:"Coloca una compuerta OR. La salida es 1 si AL MENOS UNA entrada es 1.",
   inputs:["A","B"],
-  table:{h:["A","B","Salida"],rows:[[0,0,0],[0,1,1],[1,0,1],[1,1,1]]},
-  slots:[
-    {id:"G1",inputs:[0,1],label:"G1"}
-  ],
+  baseTable:{h:["A","B","Salida"],rows:[[0,0,0],[0,1,1],[1,0,1],[1,1,1]]},
+  slots:[{id:"G1",inputs:[0,1],label:"G1"}],
   solution:["OR"]
 },
 {
-  id:3, title:"El Inversor NOT", badge:"Medio",
+  diff:1, title:"El Inversor NOT", badge:"F\u00e1cil",
   desc:"Coloca una compuerta NOT. Invierte la entrada: si entra 1 sale 0 y viceversa.",
   inputs:["A"],
-  table:{h:["A","Salida"],rows:[[0,1],[1,0]]},
-  slots:[
-    {id:"G1",inputs:[0],label:"G1"}
-  ],
+  baseTable:{h:["A","Salida"],rows:[[0,1],[1,0]]},
+  slots:[{id:"G1",inputs:[0],label:"G1"}],
   solution:["NOT"]
 },
 {
-  id:4, title:"Circuito NAND (AND + NOT)", badge:"Dif\u00edcil",
-  desc:"Combina una AND y una NOT para crear un circuito NAND. (\u00a1Ojo! La salida de AND va a la entrada de NOT).",
+  diff:1, title:"Puerta AND", badge:"F\u00e1cil",
+  desc:"La salida de AND es 1 \u00fanicamente cuando todas las entradas son 1.",
+  inputs:["X","Y"],
+  baseTable:{h:["X","Y","Salida"],rows:[[0,0,0],[0,1,0],[1,0,0],[1,1,1]]},
+  slots:[{id:"G1",inputs:[0,1],label:"G1"}],
+  solution:["AND"]
+},
+{
+  diff:1, title:"Puerta OR", badge:"F\u00e1cil",
+  desc:"La salida de OR es 1 si al menos una entrada es 1.",
+  inputs:["X","Y"],
+  baseTable:{h:["X","Y","Salida"],rows:[[0,0,0],[0,1,1],[1,0,1],[1,1,1]]},
+  slots:[{id:"G1",inputs:[0,1],label:"G1"}],
+  solution:["OR"]
+},
+{
+  diff:1, title:"Puerta NOT", badge:"F\u00e1cil",
+  desc:"NOT invierte la se\u00f1al. Si la entrada es 1, la salida es 0. Si la entrada es 0, la salida es 1.",
+  inputs:["E"],
+  baseTable:{h:["E","Salida"],rows:[[0,1],[1,0]]},
+  slots:[{id:"G1",inputs:[0],label:"G1"}],
+  solution:["NOT"]
+},
+// --- MEDIO (1 compuerta con nombres distintos o 2 compuertas) ---
+{
+  diff:2, title:"Compuerta con 2 entradas", badge:"Medio",
+  desc:"Identifica qu\u00E9 compuerta produce esta salida.",
   inputs:["A","B"],
-  table:{h:["A","B","Salida"],rows:[[0,0,1],[0,1,1],[1,0,1],[1,1,0]]},
+  baseTable:{h:["A","B","Salida"],rows:[[0,0,0],[0,1,1],[1,0,1],[1,1,1]]},
+  slots:[{id:"G1",inputs:[0,1],label:"G1"}],
+  solution:["OR"]
+},
+{
+  diff:2, title:"Compuerta con 2 entradas", badge:"Medio",
+  desc:"Identifica qu\u00E9 compuerta produce esta salida.",
+  inputs:["M","N"],
+  baseTable:{h:["M","N","Salida"],rows:[[0,0,0],[0,1,0],[1,0,0],[1,1,1]]},
+  slots:[{id:"G1",inputs:[0,1],label:"G1"}],
+  solution:["AND"]
+},
+{
+  diff:2, title:"Inversor de se\u00F1al", badge:"Medio",
+  desc:"Qu\u00E9 compuerta invierte la se\u00F1al de entrada.",
+  inputs:["X"],
+  baseTable:{h:["X","Salida"],rows:[[0,1],[1,0]]},
+  slots:[{id:"G1",inputs:[0],label:"G1"}],
+  solution:["NOT"]
+},
+// --- DIFÍCIL (2 compuertas en serie) ---
+{
+  diff:3, title:"NAND (AND + NOT)", badge:"Dif\u00EDcil",
+  desc:"AND seguida de NOT. La salida de AND entra a NOT.",
+  inputs:["A","B"],
+  baseTable:{h:["A","B","Salida"],rows:[[0,0,1],[0,1,1],[1,0,1],[1,1,0]]},
   slots:[
-    {id:"G1",inputs:[0,1],label:"G1 (AND)"},
-    {id:"G2",inputs:[{from:"G1"}],label:"G2 (NOT)"}
+    {id:"G1",inputs:[0,1],label:"G1"},
+    {id:"G2",inputs:[{from:"G1"}],label:"G2"}
   ],
   solution:["AND","NOT"]
 },
 {
-  id:5, title:"Combinaci\u00f3n AND + OR", badge:"Experto",
-  desc:"(\u00daltimo desaf\u00edo!) A y B pasan por AND, y ese resultado va a OR junto con C.",
-  inputs:["A","B","C"],
-  table:{h:["A","B","C","Salida"],rows:[[0,0,0,0],[0,0,1,1],[0,1,0,0],[0,1,1,1],[1,0,0,0],[1,0,1,1],[1,1,0,1],[1,1,1,1]]},
+  diff:3, title:"NOR (OR + NOT)", badge:"Dif\u00EDcil",
+  desc:"OR seguida de NOT. La salida de OR entra a NOT.",
+  inputs:["A","B"],
+  baseTable:{h:["A","B","Salida"],rows:[[0,0,1],[0,1,0],[1,0,0],[1,1,0]]},
   slots:[
-    {id:"G1",inputs:[0,1],label:"G1 (AND)"},
-    {id:"G2",inputs:[{from:"G1"},2],label:"G2 (OR)"}
+    {id:"G1",inputs:[0,1],label:"G1"},
+    {id:"G2",inputs:[{from:"G1"}],label:"G2"}
+  ],
+  solution:["OR","NOT"]
+},
+{
+  diff:3, title:"Circuito en serie", badge:"Dif\u00EDcil",
+  desc:"Dos compuertas en serie. La salida de la primera entra a la segunda.",
+  inputs:["A","B"],
+  baseTable:{h:["A","B","Salida"],rows:[[0,0,1],[0,1,1],[1,0,1],[1,1,0]]},
+  slots:[
+    {id:"G1",inputs:[0,1],label:"G1"},
+    {id:"G2",inputs:[{from:"G1"}],label:"G2"}
+  ],
+  solution:["AND","NOT"]
+},
+{
+  diff:3, title:"Circuito en serie II", badge:"Dif\u00EDcil",
+  desc:"Dos compuertas. La primera alimenta a la segunda.",
+  inputs:["P","Q"],
+  baseTable:{h:["P","Q","Salida"],rows:[[0,0,1],[0,1,0],[1,0,0],[1,1,0]]},
+  slots:[
+    {id:"G1",inputs:[0,1],label:"G1"},
+    {id:"G2",inputs:[{from:"G1"}],label:"G2"}
+  ],
+  solution:["OR","NOT"]
+},
+// --- MUY DIFÍCIL (2 compuertas, 3 entradas) ---
+{
+  diff:4, title:"AND + OR con 3 entradas", badge:"Muy Dif\u00EDcil",
+  desc:"A y B pasan por AND. Ese resultado va a OR junto con C.",
+  inputs:["A","B","C"],
+  baseTable:{h:["A","B","C","Salida"],rows:[[0,0,0,0],[0,0,1,1],[0,1,0,0],[0,1,1,1],[1,0,0,0],[1,0,1,1],[1,1,0,1],[1,1,1,1]]},
+  slots:[
+    {id:"G1",inputs:[0,1],label:"G1"},
+    {id:"G2",inputs:[{from:"G1"},2],label:"G2"}
+  ],
+  solution:["AND","OR"]
+},
+{
+  diff:4, title:"OR + AND con 3 entradas", badge:"Muy Dif\u00EDcil",
+  desc:"B y C pasan por OR. Ese resultado va a AND junto con A.",
+  inputs:["A","B","C"],
+  baseTable:{h:["A","B","C","Salida"],rows:[[0,0,0,0],[0,0,1,0],[0,1,0,0],[0,1,1,0],[1,0,0,0],[1,0,1,1],[1,1,0,1],[1,1,1,1]]},
+  slots:[
+    {id:"G1",inputs:[1,2],label:"G1"},
+    {id:"G2",inputs:[0,{from:"G1"}],label:"G2"}
+  ],
+  solution:["OR","AND"]
+},
+{
+  diff:4, title:"Circuito combinacional", badge:"Muy Dif\u00EDcil",
+  desc:"Tres entradas. Dos pasan por una compuerta, y ese resultado se combina con la tercera.",
+  inputs:["X","Y","Z"],
+  baseTable:{h:["X","Y","Z","Salida"],rows:[[0,0,0,0],[0,0,1,1],[0,1,0,0],[0,1,1,1],[1,0,0,0],[1,0,1,1],[1,1,0,1],[1,1,1,1]]},
+  slots:[
+    {id:"G1",inputs:[1,2],label:"G1"},
+    {id:"G2",inputs:[0,{from:"G1"}],label:"G2"}
+  ],
+  solution:["OR","AND"]
+},
+{
+  diff:4, title:"Circuito X+Y*Z", badge:"Muy Dif\u00EDcil",
+  desc:"Y y Z pasan por AND. Ese resultado va a OR junto con X.",
+  inputs:["X","Y","Z"],
+  baseTable:{h:["X","Y","Z","Salida"],rows:[[0,0,0,0],[0,0,1,0],[0,1,0,0],[0,1,1,1],[1,0,0,1],[1,0,1,1],[1,1,0,1],[1,1,1,1]]},
+  slots:[
+    {id:"G1",inputs:[1,2],label:"G1"},
+    {id:"G2",inputs:[0,{from:"G1"}],label:"G2"}
+  ],
+  solution:["AND","OR"]
+},
+// --- EXPERTO (2 compuertas con configuraciones complejas) ---
+{
+  diff:5, title:"Dise\u00F1o avanzado", badge:"Experto",
+  desc:"A y C pasan por OR. Ese resultado va a AND junto con B.",
+  inputs:["A","B","C"],
+  baseTable:{h:["A","B","C","Salida"],rows:[[0,0,0,0],[0,0,1,0],[0,1,0,0],[0,1,1,1],[1,0,0,0],[1,0,1,0],[1,1,0,1],[1,1,1,1]]},
+  slots:[
+    {id:"G1",inputs:[0,2],label:"G1"},
+    {id:"G2",inputs:[1,{from:"G1"}],label:"G2"}
+  ],
+  solution:["OR","AND"]
+},
+{
+  diff:5, title:"Dise\u00F1o experto", badge:"Experto",
+  desc:"A y B pasan por AND. Ese resultado va a OR junto con C.",
+  inputs:["P","Q","R"],
+  baseTable:{h:["P","Q","R","Salida"],rows:[[0,0,0,0],[0,0,1,1],[0,1,0,0],[0,1,1,1],[1,0,0,0],[1,0,1,1],[1,1,0,1],[1,1,1,1]]},
+  slots:[
+    {id:"G1",inputs:[0,1],label:"G1"},
+    {id:"G2",inputs:[{from:"G1"},2],label:"G2"}
   ],
   solution:["AND","OR"]
 }
 ];
+
+// === ESTADO DEL JUEGO ===
+var currentLevel = 0;
+var gameLevels = [];  // los 5 niveles seleccionados para esta partida
+var completed = [false,false,false,false,false];
+var selectedGate = null;
+
+function shuffleArray(arr){
+for(var i=arr.length-1;i>0;i--){
+var j=Math.floor(Math.random()*(i+1));
+var tmp=arr[i];arr[i]=arr[j];arr[j]=tmp;
+}
+return arr;
+}
+
+function shuffleRows(table){
+var rows=table.rows.slice();
+shuffleArray(rows);
+return {h:table.h.slice(),rows:rows};
+}
+
+function pickRandomLevels(pool,count){
+var shuffled=shuffleArray(pool.slice());
+return shuffled.slice(0,count);
+}
+
+function newRandomGame(){
+completed=[false,false,false,false,false];
+var picked=pickRandomLevels(levelPool,5);
+picked.sort(function(a,b){return a.diff-b.diff;});
+gameLevels=[];
+for(var i=0;i<picked.length;i++){
+var l=picked[i];
+var shuffledTable=shuffleRows(l.baseTable);
+gameLevels.push({
+idx:i+1,
+title:l.title,
+badge:l.badge,
+desc:l.desc,
+inputs:l.inputs.slice(),
+table:shuffledTable,
+slots:JSON.parse(JSON.stringify(l.slots)),
+solution:l.solution.slice()
+});
+}
+currentLevel=0;
+completed[0]=true;
+document.getElementById('feedback').className='feedback';
+document.getElementById('feedback').innerHTML='';
+document.getElementById('nextLevelBtn').style.display='none';
+renderLevel(0);
+}
 
 function switchTab(tab){
 var info=document.getElementById('tabInfo');
@@ -395,7 +582,8 @@ info.style.display='none';
 juego.style.display='block';
 document.querySelector('.tab.juego').classList.add('active');
 document.querySelector('.tab.info').classList.remove('active');
-renderLevel(currentLevel);
+if(gameLevels.length===0)newRandomGame();
+else renderLevel(currentLevel);
 }
 }
 
@@ -421,7 +609,7 @@ return 0;
 }
 
 function renderLevel(idx){
-var level=levels[idx];
+var level=gameLevels[idx];
 if(!level)return;
 
 for(var i=1;i<5;i++){
@@ -441,18 +629,18 @@ if(i===idx)btn.classList.add('active');
 else if(completed[i])btn.classList.add('completed');
 else if(i===0||completed[i-1])btn.classList.remove('locked');
 else btn.classList.add('locked');
-(function(levelIdx){
+(function(li){
 btn.onclick=function(){
-if(levelIdx===0||completed[levelIdx-1]){
-currentLevel=levelIdx;
-renderLevel(currentLevel);
+if(li===0||completed[li-1]){
+currentLevel=li;
+renderLevel(li);
 }
 };
 })(i);
 sel.appendChild(btn);
 }
 
-document.getElementById('levelTitle').textContent='Nivel '+level.id+': '+level.title;
+document.getElementById('levelTitle').textContent='Nivel '+level.idx+': '+level.title;
 document.getElementById('levelBadge').textContent=level.badge;
 document.getElementById('nextLevelBtn').style.display='none';
 var fb=document.getElementById('feedback');
@@ -576,12 +764,11 @@ canvas.appendChild(wireCon2);
 
 var outDiv=document.createElement('div');
 outDiv.className='output-box';
-outDiv.id='outputBox';
 outDiv.textContent='\u2713';
 canvas.appendChild(outDiv);
 
 if(completed[idx]){
-var sol=level.solution;
+var sol=gameLevels[idx].solution;
 level.slots.forEach(function(slot,si){
 var selEl=document.getElementById('gate_'+si);
 if(selEl&&sol[si]){selEl.value=sol[si];selEl.dispatchEvent(new Event('change'));}
@@ -614,7 +801,10 @@ var inps=[];
 slot.inputs.forEach(function(inp){
 if(typeof inp==='number')inps.push(inputVals[inp]);
 else if(inp.from){
-var srcIdx=level.slots.findIndex(function(s){return s.id===inp.from;});
+var srcIdx=-1;
+for(var si2=0;si2<level.slots.length;si2++){
+if(level.slots[si2].id===inp.from){srcIdx=si2;break;}
+}
 if(srcIdx>=0&&gateOutputs[inp.from]!==undefined)
 inps.push(gateOutputs[inp.from]);
 else inps.push(0);
@@ -631,7 +821,7 @@ return results;
 }
 
 function testCircuit(){
-var level=levels[currentLevel];
+var level=gameLevels[currentLevel];
 var gates=getGateValues(level);
 var fb=document.getElementById('feedback');
 var nextBtn=document.getElementById('nextLevelBtn');
@@ -666,7 +856,7 @@ nextBtn.innerHTML='\uD83C\uDFC6 \u00a1Completaste todos los niveles!';
 nextBtn.style.display='inline-block';
 nextBtn.onclick=function(){
 fb.className='feedback success show';
-fb.innerHTML='<h4>\uD83C\uDFC6 \u00a1Felicidades!</h4><p>Completaste los 5 niveles de Circuit Builder. Ya sabes c\u00F3mo funcionan las compuertas AND, OR y NOT, y c\u00F3mo combinarlas para crear circuitos digitales. \u00a1Sigue practicando!</p>';
+fb.innerHTML='<h4>\uD83C\uDFC6 \u00a1Felicidades!</h4><p>Completaste los 5 niveles. \u00a1Juega de nuevo con el bot\u00F3n "Nuevo juego aleatorio" para enfrentar nuevos desaf\u00EDos!</p>';
 nextBtn.style.display='none';
 };
 }
@@ -688,7 +878,7 @@ fb.innerHTML='<h4>\u274C Incorrecto</h4><p>Revisa las compuertas. La tabla no co
 }
 
 function resetLevel(){
-var level=levels[currentLevel];
+var level=gameLevels[currentLevel];
 level.slots.forEach(function(slot,si){
 var sel=document.getElementById('gate_'+si);
 if(sel){sel.value='';sel.dispatchEvent(new Event('change'));}
@@ -705,7 +895,8 @@ renderLevel(currentLevel);
 }
 }
 
-renderLevel(0);
+// Iniciar
+newRandomGame();
 </script>
 </body>
 </html>
