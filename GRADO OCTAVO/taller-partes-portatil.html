@@ -6,41 +6,89 @@
 <title>Taller: Ensambla tu Portátil - Grado 8°</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a1a2e;padding:20px}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a1a2e;padding:15px}
 .container{max-width:1100px;margin:0 auto}
 .tabs{display:flex;gap:4px;margin-bottom:0}
-.tab{padding:14px 24px;border-radius:12px 12px 0 0;cursor:pointer;font-weight:600;font-size:1rem;border:none;transition:all .2s}
+.tab{padding:12px 22px;border-radius:12px 12px 0 0;cursor:pointer;font-weight:600;font-size:.95rem;border:none;transition:all .2s}
 .tab.guia{background:#1a1a2e;color:#fff}
 .tab.guia.active{background:#2b6cb0}
-.tab.lab{background:#dd6b20;color:#fff}
-.tab.lab.active{background:#c05621}
+.tab.lab{background:#2b6cb0;color:#fff}
+.tab.lab.active{background:#1a365d}
 .tab:hover{transform:translateY(-2px)}
-.tab-content{display:none;padding:30px;border-radius:0 12px 12px 12px}
+.tab-content{display:none;padding:24px;border-radius:0 12px 12px 12px}
 .tab-content.guia{background:#fff;display:block}
 .tab-content.lab{background:#fff}
-h2{font-size:1.5rem;margin:28px 0 12px;color:#1a1a2e;border-bottom:2px solid #e0e0e0;padding-bottom:5px}
-h3{font-size:1.15rem;margin:18px 0 8px;color:#2d2d5e}
-p{margin-bottom:10px;text-align:justify}
-ul,ol{margin:8px 0 12px 22px}
-li{margin-bottom:4px}
-.destacado{background:#f0f4ff;border-left:4px solid #1a1a2e;padding:12px 16px;margin:12px 0;border-radius:0 8px 8px 0}
-.comp-card{background:#f0f7ff;border:1px solid #cce5ff;border-radius:8px;padding:12px;margin:10px 0}
-.comp-card h4{color:#2b6cb0;font-size:1rem;margin-bottom:4px}
-.game-header{text-align:center;margin-bottom:20px}
-.game-header h2{font-size:1.8rem;border:none;color:#c05621;margin-bottom:4px}
-.game-header p{text-align:center;color:#666;font-size:.95rem}
-.level-info{background:linear-gradient(135deg,#dd6b20,#c05621);color:#fff;padding:16px 24px;border-radius:12px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.level-info h3{margin:0;color:#fff;font-size:1.3rem}
-.level-badge{background:rgba(255,255,255,.2);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600}
-.stars{display:flex;gap:4px;font-size:1.5rem}
+h2{font-size:1.4rem;margin:24px 0 10px;color:#1a1a2e;border-bottom:2px solid #e0e0e0;padding-bottom:4px}
+h3{font-size:1.1rem;margin:14px 0 6px;color:#2d2d5e}
+p{margin-bottom:8px;text-align:justify}
+ul,ol{margin:6px 0 10px 20px}
+li{margin-bottom:3px}
+.destacado{background:#f0f4ff;border-left:4px solid #1a1a2e;padding:10px 14px;margin:10px 0;border-radius:0 8px 8px 0}
+.comp-card{background:#f0f7ff;border:1px solid #cce5ff;border-radius:8px;padding:10px;margin:8px 0}
+.comp-card h4{color:#2b6cb0;font-size:.95rem;margin-bottom:3px}
+.game-header{text-align:center;margin-bottom:16px}
+.game-header h2{font-size:1.6rem;border:none;color:#1a365d;margin-bottom:3px}
+.game-header p{text-align:center;color:#666;font-size:.9rem}
+.level-info{background:linear-gradient(135deg,#2b6cb0,#1a365d);color:#fff;padding:12px 20px;border-radius:10px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.level-info h3{margin:0;color:#fff;font-size:1.2rem}
+.level-badge{background:rgba(255,255,255,.2);padding:3px 12px;border-radius:20px;font-size:.8rem;font-weight:600}
+.stars{display:flex;gap:3px;font-size:1.3rem}
 .star{color:#ffd700;text-shadow:0 1px 3px rgba(0,0,0,.3)}
-.star.empty{color:rgba(255,255,255,.25)}
-.lab-area{background:#fafbfc;border:2px solid #ddd;border-radius:12px;padding:24px;margin-bottom:16px;min-height:400px;position:relative}
-.task-desc{background:#fff8f0;border-left:4px solid #dd6b20;padding:12px 16px;margin-bottom:16px;border-radius:0 8px 8px 0}
-.task-desc h4{color:#c05621;font-size:1rem;margin-bottom:4px}
-.task-desc p{text-align:left;font-size:.9rem;margin:0}
-.controls{display:flex;gap:12px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
-.btn{padding:12px 32px;border-radius:8px;border:none;font-weight:600;font-size:1rem;cursor:pointer;transition:all .2s}
+.star.empty{color:rgba(255,255,255,.2)}
+.lab-area{background:#fafbfc;border:2px solid #e2e8f0;border-radius:12px;padding:20px;margin-bottom:14px;min-height:400px;position:relative}
+
+.question-area{background:#ebf4ff;border:2px solid #2b6cb0;border-radius:12px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.question-area .q-num{background:#2b6cb0;color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
+.question-area .q-text{flex:1;font-size:.95rem;color:#1a365d;font-weight:500}
+.question-area .q-icon{font-size:1.6rem}
+
+.assemble-layout{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
+
+/* LAPTOP */
+.laptop{width:320px;flex-shrink:0;background:#e8ecf0;border-radius:14px;border:3px solid #999;padding:12px;position:relative;transition:all .3s}
+.laptop.powered{background:#d5e8d5;border-color:#38a169}
+.laptop.powered .laptop-screen{background:#0a1628;box-shadow:inset 0 0 30px rgba(0,150,255,.12)}
+.laptop.powered .power-led{background:#38a169;box-shadow:0 0 8px #38a169}
+.laptop-screen{background:#1a1a2e;border-radius:8px 8px 0 0;height:85px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:8px;transition:all .5s;position:relative;overflow:hidden}
+.laptop-screen .screen-label{color:rgba(255,255,255,.1);font-size:1.6rem;position:absolute}
+.laptop-screen .boot-msg{opacity:0;transition:opacity .6s;text-align:center;z-index:2}
+.laptop-screen .boot-msg .bi{font-size:1.8rem}
+.laptop-screen .boot-msg .bt{color:#4fc3f7;font-size:.65rem;font-family:monospace;margin-top:3px;letter-spacing:1px}
+.laptop-base{background:#c0c5cc;border-radius:0 0 8px 8px;padding:8px}
+.slots-grid{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:6px}
+.slot{width:60px;height:48px;border:2px dashed #888;border-radius:7px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,.35);transition:all .3s;position:relative}
+.slot.filled{border-style:solid;border-color:#38a169;background:#f0fff4}
+.slot.highlight{border-color:#2b6cb0;background:#ebf4ff;animation:pulse-glow 1s ease-in-out infinite;cursor:pointer}
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 0 0 rgba(43,108,176,.35)}50%{box-shadow:0 0 0 6px rgba(43,108,176,.12)}}
+.slot .s-icon{font-size:1rem;line-height:1}
+.slot .s-name{font-size:.48rem;color:#555;font-weight:600;line-height:1;margin-top:1px}
+.slot .s-label{position:absolute;top:-12px;font-size:.55rem;font-weight:600;color:#555;white-space:nowrap}
+.power-led{position:absolute;top:8px;right:12px;width:8px;height:8px;border-radius:50%;background:#888;transition:all .3s}
+
+/* PARTS TO DRAG */
+.parts-area{flex:1;min-width:220px}
+.parts-area .pa-title{text-align:center;color:#555;font-size:.8rem;font-weight:600;margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid #e2e8f0}
+.drag-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.drag-item{padding:10px 8px;border-radius:10px;border:2px solid #e2e8f0;background:#fff;text-align:center;cursor:grab;transition:all .2s;width:90px;user-select:none;touch-action:none}
+.drag-item:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.drag-item:active{cursor:grabbing}
+.drag-item.dragging{opacity:.4;transform:scale(.9)}
+.drag-item.correct{border-color:#38a169;background:#f0fff4;cursor:default;opacity:.7}
+.drag-item.wrong{border-color:#e53e3e;background:#fff5f5;animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+.drag-item .di-icon{font-size:1.4rem;display:block;margin-bottom:2px}
+.drag-item .di-label{font-size:.65rem;font-weight:600;color:#333;line-height:1.2}
+.drag-item .di-hint{font-size:.55rem;color:#aaa;display:block;margin-top:2px}
+
+.feedback{margin-top:14px;padding:16px 20px;border-radius:10px;display:none}
+.feedback.show{display:block}
+.feedback.success{background:#c6f6d5;color:#22543d;border:2px solid #38a169}
+.feedback.error{background:#fed7d7;color:#822727;border:2px solid #e53e3e}
+.feedback h4{font-size:1rem;margin-bottom:4px}
+.feedback p{text-align:left;font-size:.9rem;margin-bottom:2px}
+
+.controls{display:flex;gap:10px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
+.btn{padding:10px 28px;border-radius:8px;border:none;font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s}
 .btn-primary{background:#2b6cb0;color:#fff}
 .btn-primary:hover{background:#2c5282;transform:translateY(-1px)}
 .btn-success{background:#38a169;color:#fff}
@@ -50,90 +98,26 @@ li{margin-bottom:4px}
 .btn-warning{background:#dd6b20;color:#fff}
 .btn-warning:hover{background:#c05621;transform:translateY(-1px)}
 .btn-info{background:#319795;color:#fff}
-.btn-info:hover{background:#2c7a7b;transform:translateY(-1px)}
-.feedback{margin-top:16px;padding:20px;border-radius:12px;display:none}
-.feedback.show{display:block}
-.feedback.success{background:#c6f6d5;color:#22543d;border:2px solid #38a169}
-.feedback.error{background:#fed7d7;color:#822727;border:2px solid #e53e3e}
-.feedback h4{font-size:1.1rem;margin-bottom:6px}
-.feedback p{text-align:left;margin-bottom:4px}
-.progress-wrap{background:#e2e8f0;border-radius:10px;height:10px;margin-bottom:20px;overflow:hidden}
-.progress-bar{height:100%;background:linear-gradient(90deg,#dd6b20,#c05621);border-radius:10px;transition:width .5s ease;width:0}
-.level-selector{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
-.level-btn{padding:8px 18px;border-radius:8px;border:2px solid #ddd;background:#fff;cursor:pointer;font-weight:600;font-size:.85rem;transition:all .2s}
-.level-btn:hover{transform:translateY(-1px)}
+
+.progress-wrap{background:#e2e8f0;border-radius:10px;height:8px;margin-bottom:16px;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,#2b6cb0,#1a365d);border-radius:10px;transition:width .5s ease;width:0}
+.level-selector{display:flex;gap:6px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
+.level-btn{padding:6px 16px;border-radius:8px;border:2px solid #ddd;background:#fff;cursor:pointer;font-weight:600;font-size:.8rem;transition:all .2s}
 .level-btn.completed{border-color:#38a169;background:#f0fff4;color:#38a169}
-.level-btn.active{border-color:#dd6b20;background:#fff8f0;color:#c05621;transform:translateY(-2px)}
+.level-btn.active{border-color:#2b6cb0;background:#ebf4ff;color:#1a365d;transform:translateY(-2px)}
 .level-btn.locked{border-color:#e2e8f0;background:#f7fafc;color:#a0aec0;cursor:not-allowed;transform:none}
 
-.assemble-layout{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
+.progress-qs{display:flex;gap:6px;justify-content:center;margin-top:10px}
+.pq-dot{width:22px;height:22px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:600;color:#a0aec0;transition:all .3s}
+.pq-dot.done{background:#38a169;color:#fff}
+.pq-dot.active{background:#2b6cb0;color:#fff;box-shadow:0 0 0 3px rgba(43,108,176,.3)}
 
-/* LAPTOP */
-.laptop{width:360px;flex-shrink:0;background:#e8ecf0;border-radius:16px;border:3px solid #999;padding:14px;position:relative;transition:all .3s}
-.laptop.powered .laptop-screen{background:#0a1628;box-shadow:inset 0 0 40px rgba(0,150,255,.15)}
-.laptop.powered .power-led{background:#38a169;box-shadow:0 0 8px #38a169}
-.laptop-screen{background:#1a1a2e;border-radius:8px 8px 0 0;height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:10px;transition:all .5s;position:relative;overflow:hidden}
-.laptop-screen .screen-label{color:rgba(255,255,255,.12);font-size:1.8rem;position:absolute}
-.laptop-screen .boot-content{opacity:0;transition:opacity .6s;text-align:center;z-index:2}
-.laptop-screen .boot-content .boot-icon{font-size:2rem}
-.laptop-screen .boot-content .boot-text{color:#4fc3f7;font-size:.7rem;font-family:monospace;margin-top:4px;letter-spacing:2px}
-.laptop-screen .boot-bar{width:120px;height:4px;background:rgba(255,255,255,.1);border-radius:4px;margin-top:6px;overflow:hidden}
-.laptop-screen .boot-bar-fill{height:100%;background:linear-gradient(90deg,#4fc3f7,#38a169);border-radius:4px;width:0;animation:bootLoad 1.2s ease forwards}
-@keyframes bootLoad{0%{width:0}50%{width:65%}100%{width:100%}}
-.laptop-base{background:#c0c5cc;border-radius:0 0 8px 8px;padding:10px}
-.laptop-keyboard{display:grid;grid-template-columns:repeat(10,1fr);gap:2px;margin-bottom:8px}
-.laptop-keyboard span{background:#b0b5bc;height:6px;border-radius:1px}
-.laptop-keyboard span.space{grid-column:span 4}
-.laptop-touchpad{width:60px;height:30px;background:#b0b5bc;border-radius:3px;margin:0 auto}
-.power-led{position:absolute;top:10px;right:14px;width:10px;height:10px;border-radius:50%;background:#888;transition:all .3s}
-
-/* SLOTS inside laptop */
-.slots-container{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px}
-.slot{width:64px;height:52px;border:2px dashed #888;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,.4);transition:all .3s;position:relative}
-.slot.filled{border-style:solid;border-color:#38a169;background:#f0fff4}
-.slot.wrong{border-color:#e53e3e;background:#fff5f5;animation:shake .3s}
-.slot.highlight{border-color:#dd6b20;background:#fff8f0;animation:pulse-glow 1s ease-in-out infinite}
-@keyframes pulse-glow{0%,100%{box-shadow:0 0 0 0 rgba(221,107,32,.4)}50%{box-shadow:0 0 0 6px rgba(221,107,32,.15)}}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
-.slot .slot-icon{font-size:1.1rem;line-height:1}
-.slot .slot-name{font-size:.5rem;color:#555;font-weight:600;text-align:center;line-height:1.1;margin-top:2px}
-.slot .slot-label{position:absolute;top:-13px;font-size:.6rem;font-weight:600;color:#555;white-space:nowrap}
-
-/* INSTRUCTION BAR */
-.instruction-bar{background:linear-gradient(135deg,#2b6cb0,#2c5282);color:#fff;padding:14px 18px;border-radius:10px;margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.instruction-bar .step-num{background:rgba(255,255,255,.2);border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0}
-.instruction-bar .step-text{font-size:.95rem;flex:1}
-.instruction-bar .step-part{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);padding:4px 12px;border-radius:6px;font-weight:600;font-size:.85rem}
-
-/* TOOLBOX */
-.toolbox-area{flex:1;min-width:220px}
-.toolbox-title{text-align:center;color:#555;font-size:.85rem;font-weight:600;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid #e2e8f0}
-.toolbox-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.tool-item{width:100px;padding:12px 6px;border-radius:10px;border:2px solid #e2e8f0;background:#fff;text-align:center;cursor:pointer;transition:all .2s}
-.tool-item:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
-.tool-item.selected{border-color:#dd6b20;background:#fff8f0;transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.15)}
-.tool-item .tool-icon{font-size:1.6rem;display:block;margin-bottom:4px}
-.tool-item .tool-name{font-size:.7rem;font-weight:600;color:#333;line-height:1.2}
-
-/* PARTS STATUS */
-.parts-status{display:flex;gap:6px;justify-content:center;margin-top:10px;flex-wrap:wrap}
-.part-chip{padding:4px 10px;border-radius:14px;background:#e2e8f0;font-size:.7rem;font-weight:600;color:#666;display:flex;align-items:center;gap:4px}
-.part-chip.done{background:#c6f6d5;color:#22543d}
-.part-chip.active{background:#fff8f0;color:#c05621;border:2px solid #dd6b20}
-
-.assembly-progress{display:flex;gap:6px;justify-content:center;margin-top:12px;flex-wrap:wrap}
-.prog-dot{width:28px;height:28px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:600;color:#a0aec0;transition:all .3s}
-.prog-dot.done{background:#38a169;color:#fff}
-.prog-dot.active{background:#dd6b20;color:#fff;box-shadow:0 0 0 3px rgba(221,107,32,.3)}
-
-footer{text-align:center;margin-top:30px;padding:16px 0;border-top:1px solid #ddd;font-size:.85rem;color:#888}
+footer{text-align:center;margin-top:24px;padding:14px 0;border-top:1px solid #ddd;font-size:.8rem;color:#888}
 @media(max-width:600px){
-.tabs .tab{padding:10px 16px;font-size:.85rem}
-.tab-content{padding:16px}
+.tab-content{padding:14px}
 .laptop{width:100%}
-.slot{width:52px;height:44px}
-.tool-item{width:80px}
-.instruction-bar .step-text{font-size:.85rem}
+.slot{width:52px;height:42px}
+.drag-item{width:75px;padding:8px 6px}
 }
 </style>
 </head>
@@ -141,181 +125,202 @@ footer{text-align:center;margin-top:30px;padding:16px 0;border-top:1px solid #dd
 <div class="container">
 
 <div class="tabs">
-<button class="tab guia active" onclick="switchTab('guia')">📖 Guía de Estudio</button>
-<button class="tab lab" onclick="switchTab('lab')">🔧 Taller de Ensamblaje</button>
+<button class="tab guia active" onclick="switchTab('guia')">📖 Guía</button>
+<button class="tab lab" onclick="switchTab('lab')">🔧 Taller</button>
 </div>
 
-<!-- ============ TAB GUÍA ============ -->
 <div class="tab-content guia" id="tabGuia">
-<div class="destacado" style="margin-bottom:20px"><strong>🏫 Institución Educativa San Luis — Grado Octavo — Tecnología e Informática</strong></div>
+<div class="destacado" style="margin-bottom:16px"><strong>🏫 I.E. San Luis — Grado Octavo — Tecnología</strong></div>
 <h2>1. ¿Qué es un portátil?</h2>
-<p>Un <strong>portátil</strong> es un computador que puedes llevar a cualquier lado. Tiene todo integrado: pantalla, teclado, batería y componentes internos en un solo cuerpo compacto.</p>
-<div class="destacado"><strong>💡 Idea clave:</strong> El portátil es como un "computador de escritorio en miniatura". Sus componentes ocupan poco espacio y consumen poca energía.</div>
+<p>Computador portátil con todo integrado: pantalla, teclado, batería y componentes internos.</p>
+<div class="destacado"><strong>💡</strong> Es como un "PC de escritorio en miniatura".</div>
 <h2>2. Componentes internos</h2>
-<div class="comp-card"><h4>🧠 CPU (Procesador)</h4><p>El cerebro. Procesa todas las instrucciones. Se instala con <strong>pasta térmica</strong> y se fija con un mecanismo de palanca.</p></div>
-<div class="comp-card"><h4>📋 Placa Madre</h4><p>La columna vertebral. Conecta todos los componentes. Se fija con <strong>tornillos</strong> al chasis.</p></div>
-<div class="comp-card"><h4>📝 Memoria RAM</h4><p>Memoria temporal. Se inserta con <strong>pinzas</strong> en los slots, presionando hasta que encaje.</p></div>
-<div class="comp-card"><h4>💾 SSD / HDD</h4><p>Almacenamiento. El SSD se inserta en ranura M.2 con <strong>destornillador</strong>. El HDD se fija con tornillos.</p></div>
-<div class="comp-card"><h4>🎮 GPU</h4><p>Tarjeta gráfica. Se fija con <strong>tornillos</strong> a la placa madre o chasis.</p></div>
-<div class="comp-card"><h4>🔋 Batería</h4><p>Fuente de energía. Se conecta con un cable a la placa madre y se fija con <strong>tornillos</strong>.</p></div>
-<div class="comp-card"><h4>🌡️ Refrigeración</h4><p>Ventiladores + heatpipes. Se instala con <strong>pasta térmica</strong> entre el CPU y el disipador, y se fija con tornillos.</p></div>
-<div class="comp-card"><h4>📶 Wi-Fi</h4><p>Tarjeta inalámbrica. Se inserta con <strong>pinzas</strong> en la ranura M.2 y se conectan las antenas.</p></div>
-<h2>3. Herramientas del técnico</h2>
-<ul>
-<li><strong>🔧 Destornillador de precisión:</strong> Para fijar componentes con tornillos (SSD, placa madre, GPU, batería).</li>
-<li><strong>🤏 Pinzas:</strong> Para insertar componentes delicados como la RAM y la tarjeta Wi-Fi.</li>
-<li><strong>🧊 Pasta térmica:</strong> Para mejorar la transferencia de calor entre el CPU y el disipador.</li>
-<li><strong>⚡ Pulsera antiestática:</strong> Para proteger los componentes de descargas eléctricas.</li>
-</ul>
-<div class="destacado"><strong>📌 Importante:</strong> Cada herramienta se usa para componentes específicos. ¡Elegir la herramienta correcta es parte del trabajo del técnico!</div>
+<div class="comp-card"><h4>🧠 CPU</h4><p>Procesador, el cerebro. Su velocidad se mide en GHz. Se instala con pasta térmica.</p></div>
+<div class="comp-card"><h4>📝 RAM</h4><p>Memoria temporal. Se borra al apagar. Se inserta con pinzas.</p></div>
+<div class="comp-card"><h4>💾 SSD</h4><p>Disco de estado sólido. Rápido, silencioso. Se fija con tornillo.</p></div>
+<div class="comp-card"><h4>💿 HDD</h4><p>Disco mecánico. Mayor capacidad, más lento. Se fija con tornillos.</p></div>
+<div class="comp-card"><h4>🎮 GPU</h4><p>Tarjeta gráfica. Genera imágenes. Integrada o dedicada.</p></div>
+<div class="comp-card"><h4>📋 Placa Madre</h4><p>Conecta todos los componentes.</p></div>
+<div class="comp-card"><h4>🔋 Batería</h4><p>Energía portátil. Celdas de litio. 300-500 ciclos de vida.</p></div>
+<div class="comp-card"><h4>🌡️ Refrigeración</h4><p>Ventiladores + heatpipes. Evita sobrecalentamiento.</p></div>
+<div class="comp-card"><h4>📶 Wi-Fi</h4><p>Conexión inalámbrica. Se inserta en ranura M.2.</p></div>
 </div>
 
-<!-- ============ TAB LABORATORIO ============ -->
 <div class="tab-content lab" id="tabLab">
 
 <div class="game-header">
-<h2>🔧 Taller de Ensamblaje</h2>
-<p>Selecciona la herramienta correcta para instalar cada componente en el portátil.</p>
+<h2>🔧 Arma el Portátil</h2>
+<p>Responde las preguntas arrastrando el componente correcto sobre el slot iluminado.</p>
 </div>
 
 <div class="level-selector" id="levelSelector"></div>
 <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
 
 <div class="level-info" id="levelInfo">
-<div>
-<h3 id="levelTitle">Nivel 1: Partes Esenciales</h3>
-<span class="level-badge" id="levelBadge">Fácil</span>
-</div>
-<div class="stars" id="levelStars">
-<span class="star">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span>
-</div>
+<div><h3 id="levelTitle">Nivel 1</h3><span class="level-badge" id="levelBadge">Fácil</span></div>
+<div class="stars" id="levelStars"><span class="star">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span></div>
 </div>
 
 <div class="lab-area" id="labArea"></div>
 
 <div class="controls">
-<button class="btn btn-danger" onclick="resetLevel()">🔄 Reiniciar Nivel</button>
+<button class="btn btn-danger" onclick="resetLevel()">🔄 Reiniciar</button>
 <button class="btn btn-info" onclick="newRandomGame()">🎲 Nueva Partida</button>
 </div>
 
 <div class="feedback" id="feedback"></div>
 
-<div style="text-align:center;margin-top:12px">
+<div style="text-align:center;margin-top:10px">
 <button class="btn btn-success" id="nextLevelBtn" style="display:none">➡️ Siguiente Nivel</button>
 </div>
 </div>
 
-<footer>Institución Educativa San Luis — Tecnología e Informática — Grado Octavo — 2026</footer>
+<footer>I.E. San Luis — Tecnología — Grado Octavo — 2026</footer>
 </div>
 
 <script>
 // ============================
-// TOOL-PART MAPPING
+// COMPONENT INFO
 // ============================
-var TOOLS = [
-  {id:"screwdriver",icon:"🔧",name:"Destornillador",desc:"Para fijar con tornillos"},
-  {id:"tweezers",  icon:"🤏",name:"Pinzas",        desc:"Para insertar componentes delicados"},
-  {id:"paste",     icon:"🧊",name:"Pasta Térmica", desc:"Para mejorar transferencia de calor"},
-  {id:"strap",     icon:"⚡",name:"Pulsera Anti-estática",desc:"Para proteger de descargas"}
-];
-
-var ALL_PARTS = {
-  cpu:         {icon:"🧠",name:"CPU",            tool:"paste"},
-  ram:         {icon:"📝",name:"RAM",            tool:"tweezers"},
-  ssd:         {icon:"💾",name:"SSD",            tool:"screwdriver"},
-  hdd:         {icon:"💿",name:"HDD",            tool:"screwdriver"},
-  gpu:         {icon:"🎮",name:"GPU",            tool:"screwdriver"},
-  motherboard: {icon:"📋",name:"Placa Madre",    tool:"screwdriver"},
-  battery:     {icon:"🔋",name:"Batería",        tool:"screwdriver"},
-  cooling:     {icon:"🌡️",name:"Refrigeración", tool:"paste"},
-  wifi:        {icon:"📶",name:"Wi-Fi",          tool:"tweezers"}
-};
-
-// Tool instructional messages per part
-var TOOL_MSGS = {
-  cpu:"La CPU necesita <b>pasta térmica</b> entre ella y el disipador para transferir el calor correctamente.",
-  ram:"La RAM se inserta con <b>pinzas</b> presionando suavemente hasta que los seguros encajen.",
-  ssd:"El SSD M.2 se fija con un <b>destornillador</b> de precisión en la placa madre.",
-  hdd:"El disco HDD se asegura con <b>tornillos</b> usando un destornillador.",
-  gpu:"La GPU se fija al chasis con <b>tornillos</b> usando un destornillador.",
-  motherboard:"La placa madre se fija al chasis con <b>tornillos</b> y un destornillador.",
-  battery:"La batería se asegura con <b>tornillos</b> usando un destornillador.",
-  cooling:"El sistema de refrigeración necesita <b>pasta térmica</b> entre el CPU y el disipador.",
-  wifi:"La tarjeta Wi-Fi se inserta con <b>pinzas</b> en la ranura M.2."
+var ALL = {
+  cpu:{icon:"🧠",name:"CPU (Procesador)",    slot:"cpu"},
+  ram:{icon:"📝",name:"Memoria RAM",         slot:"ram"},
+  ssd:{icon:"💾",name:"Disco SSD",          slot:"ssd"},
+  hdd:{icon:"💿",name:"Disco HDD",          slot:"hdd"},
+  gpu:{icon:"🎮",name:"Tarjeta Gráfica GPU",slot:"gpu"},
+  mb: {icon:"📋",name:"Placa Madre",         slot:"mb"},
+  bat:{icon:"🔋",name:"Batería",            slot:"bat"},
+  cool:{icon:"🌡️",name:"Refrigeración",     slot:"cool"},
+  wifi:{icon:"📶",name:"Tarjeta Wi-Fi",     slot:"wifi"}
 };
 
 // ============================
-// POOL DE NIVELES
+// POOL DE 50+ PREGUNTAS
 // ============================
-var levelPool = [
-  // N1 FÁCIL: 3 partes
-  {diff:1,title:"Partes Esenciales",badge:"Fácil",desc:"Instala los 3 componentes básicos: CPU, RAM y SSD. Cada uno necesita una herramienta diferente.",
-   parts:[{id:"cpu",label:"CPU"},{id:"ram",label:"RAM"},{id:"ssd",label:"SSD"}]},
-  {diff:1,title:"Primeros Pasos",badge:"Fácil",desc:"CPU, RAM y SSD. Elige la herramienta correcta para cada uno.",
-   parts:[{id:"cpu",label:"CPU"},{id:"ram",label:"RAM"},{id:"ssd",label:"SSD"}]},
+var questionPool = [
+  // === NIVEL 1 - FÁCIL: Identificación ===
+  {diff:1,q:"Soy el cerebro del portátil, proceso todas las instrucciones. ¿Qué componente soy?",a:"cpu",opts:["cpu","ram","ssd","bat"],icon:"🧠"},
+  {diff:1,q:"Guardo información temporal; cuando apagas el portátil me borro. ¿Qué soy?",a:"ram",opts:["ram","ssd","cpu","hdd"],icon:"📝"},
+  {diff:1,q:"Soy un disco sin partes móviles, muy rápido y silencioso. ¿Qué soy?",a:"ssd",opts:["ssd","hdd","ram","cool"],icon:"💾"},
+  {diff:1,q:"Genero las imágenes que ves en la pantalla del portátil. ¿Qué soy?",a:"gpu",opts:["gpu","cpu","ram","wifi"],icon:"🎮"},
+  {diff:1,q:"Conecto todos los componentes del portátil entre sí. ¿Qué soy?",a:"mb",opts:["mb","bat","cpu","cool"],icon:"📋"},
+  {diff:1,q:"Almaceno energía para que uses el portátil sin estar conectado. ¿Qué soy?",a:"bat",opts:["bat","cpu","ram","wifi"],icon:"🔋"},
+  {diff:1,q:"Tengo un disco que gira a gran velocidad y un brazo que lee datos. ¿Qué soy?",a:"hdd",opts:["hdd","ssd","cool","ram"],icon:"💿"},
+  {diff:1,q:"Enfrío el portátil con ventiladores y tubos de cobre. ¿Qué soy?",a:"cool",opts:["cool","cpu","gpu","bat"],icon:"🌡️"},
+  {diff:1,q:"Te conecto a internet sin cables y a dispositivos Bluetooth. ¿Qué soy?",a:"wifi",opts:["wifi","ram","ssd","mb"],icon:"📶"},
+  {diff:1,q:"Mi velocidad se mide en GHz (gigahertz). ¿Qué componente soy?",a:"cpu",opts:["cpu","ram","wifi","bat"],icon:"🧠"},
 
-  // N2 MEDIO: 4 partes
-  {diff:2,title:"Agregando Energía",badge:"Medio",desc:"Agrega la batería al ensamblaje básico. ¡Son 4 componentes!",
-   parts:[{id:"cpu",label:"CPU"},{id:"ram",label:"RAM"},{id:"ssd",label:"SSD"},{id:"battery",label:"Batería"}]},
-  {diff:2,title:"Con Gráficos",badge:"Medio",desc:"Agrega una tarjeta gráfica (GPU) al ensamblaje.",
-   parts:[{id:"cpu",label:"CPU"},{id:"ram",label:"RAM"},{id:"ssd",label:"SSD"},{id:"gpu",label:"GPU"}]},
+  // === NIVEL 2 - MEDIO: Funciones ===
+  {diff:2,q:"¿Qué componente determina cuántos programas puedes tener abiertos sin que el portátil se ponga lento?",a:"ram",opts:["ram","cpu","ssd","gpu"],icon:"📝"},
+  {diff:2,q:"Si el portátil enciende en 5 segundos, seguramente tiene un...",a:"ssd",opts:["ssd","hdd","ram","cool"],icon:"💾"},
+  {diff:2,q:"Para jugar videojuegos con buena calidad gráfica necesitas una buena...",a:"gpu",opts:["gpu","cpu","ram","bat"],icon:"🎮"},
+  {diff:2,q:"¿Qué componente tiene una vida útil limitada de 300 a 500 ciclos de carga?",a:"bat",opts:["bat","cpu","ssd","cool"],icon:"🔋"},
+  {diff:2,q:"¿Qué componente evita que el portátil se sobrecaliente cuando juegas o editas video?",a:"cool",opts:["cool","gpu","cpu","bat"],icon:"🌡️"},
+  {diff:2,q:"¿Qué componente necesitas para conectarte al Wi-Fi del colegio?",a:"wifi",opts:["wifi","ram","ssd","mb"],icon:"📶"},
+  {diff:2,q:"Es como tu escritorio de estudio: mientras más grande, más cosas puedes tener abiertas.",a:"ram",opts:["ram","hdd","cpu","gpu"],icon:"📝"},
+  {diff:2,q:"Es como un archivador electrónico: guarda todo aunque apagues el portátil.",a:"ssd",opts:["ssd","ram","bat","wifi"],icon:"💾"},
+  {diff:2,q:"¿Qué componente tradicional es más lento porque tiene partes mecánicas que giran?",a:"hdd",opts:["hdd","ssd","ram","cool"],icon:"💿"},
+  {diff:2,q:"Sin este componente, el portátil solo funciona conectado a la corriente.",a:"bat",opts:["bat","cpu","mb","wifi"],icon:"🔋"},
 
-  // N3 DIFÍCIL: 5 partes
-  {diff:3,title:"Sistema Completo",badge:"Difícil",desc:"CPU, RAM, SSD, batería y refrigeración. ¡5 componentes!",
-   parts:[{id:"cpu",label:"CPU"},{id:"ram",label:"RAM"},{id:"ssd",label:"SSD"},{id:"battery",label:"Batería"},{id:"cooling",label:"Refrigeración"}]},
-  {diff:3,title:"Potencia Gráfica",badge:"Difícil",desc:"CPU, RAM, SSD, GPU y refrigeración. La GPU necesita destornillador.",
-   parts:[{id:"cpu",label:"CPU"},{id:"ram",label:"RAM"},{id:"ssd",label:"SSD"},{id:"gpu",label:"GPU"},{id:"cooling",label:"Refrigeración"}]},
+  // === NIVEL 3 - DIFÍCIL: Instalación y herramientas ===
+  {diff:3,q:"¿Qué componente necesita pasta térmica para instalarse correctamente?",a:"cpu",opts:["cpu","ram","ssd","wifi"],icon:"🧊"},
+  {diff:3,q:"¿Qué componente se inserta con pinzas en ranuras delgadas presionando hasta que encaje?",a:"ram",opts:["ram","gpu","bat","cool"],icon:"🤏"},
+  {diff:3,q:"¿Qué componente se fija con un tornillo directamente a la placa madre (formato M.2)?",a:"ssd",opts:["ssd","hdd","gpu","wifi"],icon:"🔧"},
+  {diff:3,q:"¿Qué componente se conecta con un cable a la placa madre y se asegura con tornillos al chasis?",a:"bat",opts:["bat","cpu","ram","ssd"],icon:"🔧"},
+  {diff:3,q:"¿Qué componente se inserta con pinzas en una ranura M.2 y tiene cables para las antenas?",a:"wifi",opts:["wifi","ram","gpu","cool"],icon:"🤏"},
+  {diff:3,q:"¿Qué componente se instala sobre el CPU usando pasta térmica para mejorar la transferencia de calor?",a:"cool",opts:["cool","gpu","bat","mb"],icon:"🧊"},
+  {diff:3,q:"¿Qué componente se fija con varios tornillos al chasis y puede tener su propio sistema de refrigeración?",a:"gpu",opts:["gpu","cpu","ram","wifi"],icon:"🔧"},
+  {diff:3,q:"¿Qué herramienta debes usar para instalar la memoria RAM?",a:"ram",opts:["ram","ssd","gpu","bat"],icon:"🤏"},
+  {diff:3,q:"¿Qué herramienta debes usar para instalar el disco SSD M.2?",a:"ssd",opts:["ssd","hdd","ram","wifi"],icon:"🔧"},
+  {diff:3,q:"Al instalar la CPU, ¿qué se aplica entre el chip y el disipador?",a:"cpu",opts:["cpu","cool","gpu","mb"],icon:"🧊"},
 
-  // N4 MUY DIFÍCIL: 6 partes
-  {diff:4,title:"Portátil Conectado",badge:"Muy Difícil",desc:"Agrega la tarjeta Wi-Fi. 6 componentes en total.",
-   parts:[{id:"cpu",label:"CPU"},{id:"ram",label:"RAM"},{id:"ssd",label:"SSD"},{id:"battery",label:"Batería"},{id:"cooling",label:"Refrigeración"},{id:"wifi",label:"Wi-Fi"}]},
-  {diff:4,title:"Potencia Total",badge:"Muy Difícil",desc:"CPU, RAM, HDD, GPU, refrigeración y Wi-Fi. ¡6 componentes!",
-   parts:[{id:"cpu",label:"CPU"},{id:"ram",label:"RAM"},{id:"hdd",label:"HDD"},{id:"gpu",label:"GPU"},{id:"cooling",label:"Refrigeración"},{id:"wifi",label:"Wi-Fi"}]},
+  // === NIVEL 4 - MUY DIFÍCIL: Diagnóstico y escenarios ===
+  {diff:4,q:"El portátil solo funciona 5 minutos desconectado y luego se apaga. La batería tiene 5 años. ¿Qué falla?",a:"bat",opts:["bat","cpu","ssd","cool"],icon:"🔋"},
+  {diff:4,q:"El portátil se calienta mucho y el ventilador suena muy fuerte al jugar. ¿Qué sistema está fallando?",a:"cool",opts:["cool","gpu","cpu","bat"],icon:"🌡️"},
+  {diff:4,q:"El portátil tarda 5 minutos en encender y los programas abren muy lento. Tiene HDD. ¿Qué deberías cambiar?",a:"ssd",opts:["ssd","ram","cpu","gpu"],icon:"💾"},
+  {diff:4,q:"El juego se ve entrecortado y la imagen es muy lenta. La CPU es buena pero la imagen va mal. ¿Qué falta?",a:"gpu",opts:["gpu","ram","cpu","ssd"],icon:"🎮"},
+  {diff:4,q:"El portátil enciende pero no se conecta a ninguna red Wi-Fi. ¿Qué componente puede estar dañado?",a:"wifi",opts:["wifi","ram","bat","mb"],icon:"📶"},
+  {diff:4,q:"El portátil hace 3 beeps al encender y no muestra imagen. 3 beeps indican error de...",a:"ram",opts:["ram","gpu","cpu","bat"],icon:"📝"},
+  {diff:4,q:"Todo funciona bien pero el disco está siempre al 100% y todo es lento. Tiene HDD de 500GB. ¿Qué pones?",a:"ssd",opts:["ssd","hdd","ram","gpu"],icon:"💾"},
+  {diff:4,q:"Un portátil gaming se apaga de repente cuando juegas. Al tocarlo está muy caliente. ¿Qué hay que revisar?",a:"cool",opts:["cool","gpu","bat","cpu"],icon:"🌡️"},
+  {diff:4,q:"Instalaste un nuevo programa y el portátil se queda sin memoria. ¿Qué componente necesitas expandir?",a:"ram",opts:["ram","ssd","cpu","bat"],icon:"📝"},
+  {diff:4,q:"La batería no carga aunque el cargador está bien conectado. ¿Qué componente de la lista puede estar dañado?",a:"bat",opts:["bat","mb","cpu","wifi"],icon:"🔋"},
 
-  // N5 EXPERTO: 7+ partes
-  {diff:5,title:"Ensamblaje Experto",badge:"Experto",desc:"Coloca 7 componentes. ¡Casi el portátil completo!",
-   parts:[{id:"cpu",label:"CPU"},{id:"ram",label:"RAM"},{id:"ssd",label:"SSD"},{id:"gpu",label:"GPU"},{id:"battery",label:"Batería"},{id:"cooling",label:"Refrigeración"},{id:"wifi",label:"Wi-Fi"}]},
-  {diff:5,title:"Portátil Definitivo",badge:"Experto",desc:"¡El desafío final! 7 componentes, cada uno con su herramienta.",
-   parts:[{id:"motherboard",label:"Placa"},{id:"cpu",label:"CPU"},{id:"ram",label:"RAM"},{id:"ssd",label:"SSD"},{id:"gpu",label:"GPU"},{id:"battery",label:"Batería"},{id:"cooling",label:"Refrigeración"}]}
+  // === NIVEL 5 - EXPERTO: Preguntas avanzadas mezcladas ===
+  {diff:5,q:"Estás armando un portátil para edición de video profesional. ¿Qué componentes priorizas?",a:"gpu",opts:["gpu","hdd","wifi","bat"],icon:"🎮"},
+  {diff:5,q:"¿Qué componente va primero al ensamblar un portátil desde cero?",a:"mb",opts:["mb","cpu","ram","bat"],icon:"📋"},
+  {diff:5,q:"Un técnico dice: 'El polvo en los ventiladores puede dañar el portátil'. ¿Qué sistema afecta el polvo?",a:"cool",opts:["cool","gpu","cpu","wifi"],icon:"🌡️"},
+  {diff:5,q:"¿Qué componente es más importante para que un portátil de oficina sea rápido y económico?",a:"ssd",opts:["ssd","gpu","hdd","bat"],icon:"💾"},
+  {diff:5,q:"Tienes que elegir: ¿qué componente mejora MÁS la velocidad general del portátil?",a:"ssd",opts:["ssd","ram","cpu","gpu"],icon:"💾"},
+  {diff:5,q:"Si solo pudieras mejorar UN componente para que el portátil encienda más rápido, ¿cuál sería?",a:"ssd",opts:["ssd","ram","cpu","bat"],icon:"💾"},
+  {diff:5,q:"¿Qué dos componentes trabajan juntos para ejecutar un programa: uno lo almacena y el otro lo ejecuta?",a:"ram",opts:["ram","cpu","hdd","gpu"],icon:"📝"},
+  {diff:5,q:"¿Qué componente es el más frágil y sensible a descargas electrostáticas al manipularlo?",a:"mb",opts:["mb","bat","cool","ssd"],icon:"📋"},
+  {diff:5,q:"¿Cuál es la forma correcta de instalar un SSD M.2?",a:"ssd",opts:["ssd","ram","hdd","gpu"],icon:"💾"},
+  {diff:5,q:"Un portátil con 4 GB de RAM, HDD de 500GB y CPU i3. El usuario dice que es muy lento. ¿Qué mejoras sugieres?",a:"ram",opts:["ram","gpu","bat","wifi"],icon:"📝"}
 ];
 
 // ============================
-// ESTADO DEL JUEGO
+// ESTADO
 // ============================
 var currentLevel = 0;
 var gameLevels = [];
 var completed = [false,false,false,false,false];
-var currentStep = 0; // which part we're installing
+var currentQ = 0;
+var qAnswered = [];
 var bootTimers = [];
+var dragData = null;
 
 function shuffleArray(a){
   for(var i=a.length-1;i>0;i--){
     var j=Math.floor(Math.random()*(i+1));
-    var tmp=a[i];a[i]=a[j];a[j]=tmp;
+    var t=a[i];a[i]=a[j];a[j]=t;
   }
   return a;
 }
 
-function pickRandomLevels(pool,count){
-  var g={1:[],2:[],3:[],4:[],5:[]};
-  pool.forEach(function(l){if(g[l.diff])g[l.diff].push(l);});
-  var p=[];
-  for(var d=1;d<=5;d++){var s=shuffleArray(g[d].slice());if(s.length)p.push(s[0]);}
-  while(p.length<count){var x=pool[Math.floor(Math.random()*pool.length)];if(p.indexOf(x)<0)p.push(x);}
-  return p.slice(0,count);
+function pickQuestionsForLevel(diff,count){
+  var pool=questionPool.filter(function(q){return q.diff===diff;});
+  var picked=shuffleArray(pool.slice()).slice(0,count);
+  while(picked.length<count){
+    var extra=questionPool[Math.floor(Math.random()*questionPool.length)];
+    if(picked.indexOf(extra)<0)picked.push(extra);
+  }
+  return picked.slice(0,count);
 }
 
 function newRandomGame(){
   bootTimers.forEach(clearTimeout);bootTimers=[];
   completed=[false,false,false,false,false];
-  var picked=pickRandomLevels(levelPool,5);
-  picked.sort(function(a,b){return a.diff-b.diff;});
   gameLevels=[];
-  for(var i=0;i<picked.length;i++){
-    var l=picked[i];
-    gameLevels.push({idx:i+1,diff:l.diff,title:l.title,badge:l.badge,desc:l.desc,type:"assemble",parts:JSON.parse(JSON.stringify(l.parts))});
+  for(var d=1;d<=5;d++){
+    var qs=pickQuestionsForLevel(d,5);
+    // Assign slot targets based on answer
+    qs.forEach(function(q){
+      q._used=false;
+      // Determine which slot this component goes to
+      var slotMap={
+        cpu:"slot_cpu",ram:"slot_ram",ssd:"slot_ssd",hdd:"slot_hdd",
+        gpu:"slot_gpu",mb:"slot_mb",bat:"slot_bat",cool:"slot_cool",wifi:"slot_wifi"
+      };
+      q._slotId=slotMap[q.a]||"slot_"+q.a;
+      // Create shuffled options list for draggable items
+      q._optsAll=q.opts.slice();
+      shuffleArray(q._optsAll);
+    });
+    gameLevels.push({idx:d,diff:d,questions:qs,title:"",badge:""});
   }
-  currentLevel=0;currentStep=0;
+  gameLevels[0].title="Identifica los Componentes";
+  gameLevels[0].badge="Fácil";
+  gameLevels[1].title="Funciones y Características";
+  gameLevels[1].badge="Medio";
+  gameLevels[2].title="Instalación y Herramientas";
+  gameLevels[2].badge="Difícil";
+  gameLevels[3].title="Diagnóstico Técnico";
+  gameLevels[3].badge="Muy Difícil";
+  gameLevels[4].title="Desafío Experto";
+  gameLevels[4].badge="Experto";
+
+  currentLevel=0;currentQ=0;qAnswered=[];
   document.getElementById('feedback').className='feedback';
   document.getElementById('feedback').innerHTML='';
   document.getElementById('nextLevelBtn').style.display='none';
@@ -351,7 +356,7 @@ function renderLevel(idx){
     else if(completed[i])btn.classList.add('completed');
     else if(i===0||completed[i-1])btn.classList.remove('locked');
     else btn.classList.add('locked');
-    (function(li){btn.onclick=function(){if(li===0||completed[li-1]){currentLevel=li;currentStep=0;renderLevel(li);}};})(i);
+    (function(li){btn.onclick=function(){if(li===0||completed[li-1]){currentLevel=li;currentQ=0;qAnswered=[];renderLevel(li);}};})(i);
     sel.appendChild(btn);
   }
 
@@ -361,8 +366,13 @@ function renderLevel(idx){
   var fb=document.getElementById('feedback');
   fb.className='feedback';fb.innerHTML='';
 
-  currentStep=0;
-  renderAssemble(level);
+  // Count how many answered
+  qAnswered=[];
+  level.questions.forEach(function(q){qAnswered.push(q._used||false);});
+  currentQ=qAnswered.indexOf(false);
+  if(currentQ<0)currentQ=0;
+
+  renderGame(level);
 }
 
 function updateStars(idx){
@@ -381,51 +391,45 @@ function updateProgress(){
 }
 
 // ============================
-// RENDER
+// RENDER GAME
 // ============================
-function renderAssemble(level){
+function renderGame(level){
   var area=document.getElementById('labArea');
-  area.innerHTML='';area.className='lab-area';
+  area.innerHTML='';
 
-  if(completed[currentLevel]){renderCompletedBoot(area,level);return;}
-
-  // Calculate next uninstalled part
-  var installedCount=0;
-  level.parts.forEach(function(p){
-    if(p._done)installedCount++;
-  });
-  if(installedCount>=level.parts.length){doBootAndFinish(level);return;}
-
-  // Find current part (first not installed)
-  var curPartIdx=-1;
-  for(var i=0;i<level.parts.length;i++){
-    if(!level.parts[i]._done){curPartIdx=i;break;}
+  if(completed[currentLevel]){
+    area.innerHTML='<div style="text-align:center;padding:40px 20px"><div style="font-size:3rem;margin-bottom:12px">🖥️</div><h3 style="color:#38a169">✅ Portátil ensamblado</h3><p style="color:#666">Este nivel ya fue completado.</p></div>';
+    return;
   }
-  if(curPartIdx<0){doBootAndFinish(level);return;}
 
-  var curPart=level.parts[curPartIdx];
-  var partInfo=ALL_PARTS[curPart.id];
+  // Find current unanswered question
+  var qIdx=-1;
+  for(var i=0;i<level.questions.length;i++){if(!level.questions[i]._used){qIdx=i;break;}}
+  if(qIdx<0){doLevelComplete(level);return;}
+  currentQ=qIdx;
+  var q=level.questions[qIdx];
+  var allAnswered=level.questions.filter(function(x){return x._used;}).length;
 
-  // ---- INSTRUCTION BAR ----
-  var instr=document.createElement('div');
-  instr.className='instruction-bar';
-  var stepNum=document.createElement('div');
-  stepNum.className='step-num';
-  stepNum.textContent=(curPartIdx+1);
-  instr.appendChild(stepNum);
+  // --- QUESTION BAR ---
+  var qbar=document.createElement('div');
+  qbar.className='question-area';
+  var qNum=document.createElement('div');
+  qNum.className='q-num';
+  qNum.textContent=(qIdx+1);
+  qbar.appendChild(qNum);
 
-  var stepText=document.createElement('div');
-  stepText.className='step-text';
-  stepText.innerHTML='Instala el componente <strong>'+(partInfo?partInfo.name:curPart.id)+'</strong> — '+((partInfo&&TOOL_MSGS[curPart.id])||'Elige la herramienta correcta');
-  instr.appendChild(stepText);
+  var qIcon=document.createElement('div');
+  qIcon.className='q-icon';
+  qIcon.textContent=q.icon||'❓';
+  qbar.appendChild(qIcon);
 
-  var partBadge=document.createElement('div');
-  partBadge.className='step-part';
-  partBadge.innerHTML=(partInfo?partInfo.icon:'🔧')+' '+(partInfo?partInfo.name:curPart.id);
-  instr.appendChild(partBadge);
-  area.appendChild(instr);
+  var qText=document.createElement('div');
+  qText.className='q-text';
+  qText.innerHTML=q.q+' <span style="font-size:.8rem;color:#2b6cb0;font-weight:400">Arrastra la respuesta correcta sobre el slot iluminado.</span>';
+  qbar.appendChild(qText);
+  area.appendChild(qbar);
 
-  // ---- MAIN LAYOUT ----
+  // --- LAYOUT ---
   var layout=document.createElement('div');
   layout.className='assemble-layout';
 
@@ -444,283 +448,314 @@ function renderAssemble(level){
   sLabel.className='screen-label';
   sLabel.textContent='💻';
   screen.appendChild(sLabel);
-  var bootC=document.createElement('div');
-  bootC.className='boot-content';
-  bootC.id='bootContent';
-  screen.appendChild(bootC);
+  var bootMsg=document.createElement('div');
+  bootMsg.className='boot-msg';
+  bootMsg.id='bootMsg';
+  screen.appendChild(bootMsg);
   laptop.appendChild(screen);
 
   var base=document.createElement('div');
   base.className='laptop-base';
-  var kb=document.createElement('div');
-  kb.className='laptop-keyboard';
-  for(var i=0;i<10;i++){var k=document.createElement('span');if(i===4)k.className='space';kb.appendChild(k);}
-  base.appendChild(kb);
+  var kbRow=document.createElement('div');
+  kbRow.style.cssText='display:grid;grid-template-columns:repeat(10,1fr);gap:2px;margin-bottom:6px';
+  for(var i=0;i<10;i++){var k=document.createElement('span');k.style.cssText='background:#b0b5bc;height:5px;border-radius:1px;display:block';if(i===4)k.style.gridColumn='span 4';kbRow.appendChild(k);}
+  base.appendChild(kbRow);
   var tp=document.createElement('div');
-  tp.className='laptop-touchpad';
+  tp.style.cssText='width:50px;height:24px;background:#b0b5bc;border-radius:3px;margin:0 auto';
   base.appendChild(tp);
 
-  // Slots
-  var slotsC=document.createElement('div');
-  slotsC.className='slots-container';
-  slotsC.id='slotsContainer';
+  // SLOTS
+  var slotsG=document.createElement('div');
+  slotsG.className='slots-grid';
 
-  level.parts.forEach(function(p,pi){
+  // Define all possible slots
+  var slotDefs=[
+    {id:"slot_mb",label:"PLACA",comp:"mb"},
+    {id:"slot_cpu",label:"CPU",comp:"cpu"},
+    {id:"slot_ram",label:"RAM",comp:"ram"},
+    {id:"slot_ssd",label:"SSD",comp:"ssd"},
+    {id:"slot_hdd",label:"HDD",comp:"hdd"},
+    {id:"slot_gpu",label:"GPU",comp:"gpu"},
+    {id:"slot_bat",label:"BATERÍA",comp:"bat"},
+    {id:"slot_cool",label:"VENT.",comp:"cool"},
+    {id:"slot_wifi",label:"Wi-Fi",comp:"wifi"}
+  ];
+
+  slotDefs.forEach(function(sd){
     var slot=document.createElement('div');
     slot.className='slot';
-    slot.id='slot_'+p.id;
+    slot.id=sd.id;
     var lbl=document.createElement('div');
-    lbl.className='slot-label';
-    lbl.textContent=p.label.toUpperCase();
+    lbl.className='s-label';
+    lbl.textContent=sd.label;
     slot.appendChild(lbl);
-    var icon=document.createElement('div');
-    icon.className='slot-icon';
-    icon.textContent='?';
-    slot.appendChild(icon);
-    var nameDiv=document.createElement('div');
-    nameDiv.className='slot-name';
-    nameDiv.textContent='vacío';
-    slot.appendChild(nameDiv);
+    var ic=document.createElement('div');
+    ic.className='s-icon';
+    ic.textContent='?';
+    slot.appendChild(ic);
+    var nm=document.createElement('div');
+    nm.className='s-name';
+    nm.textContent='vacío';
+    slot.appendChild(nm);
 
-    if(p._done){
+    // Check if this slot already has a component from a previous answer
+    var answeredPart=null;
+    for(var j=0;j<level.questions.length;j++){
+      if(level.questions[j]._used && level.questions[j].a===sd.comp){
+        answeredPart=level.questions[j].a;
+      }
+    }
+    if(answeredPart){
       slot.classList.add('filled');
-      var pInfo=ALL_PARTS[p.id];
-      if(pInfo){icon.textContent=pInfo.icon;nameDiv.textContent=pInfo.name;}
-    }
-    if(pi===curPartIdx && !p._done){
-      slot.classList.add('highlight');
+      var info=ALL[answeredPart];
+      if(info){ic.textContent=info.icon;nm.textContent=info.name.split('(')[0].trim();}
     }
 
-    slotsC.appendChild(slot);
+    // If this is the current question's target slot, highlight it as drop zone
+    if(sd.comp===q.a && !q._used){
+      slot.classList.add('highlight');
+      slot.addEventListener('dragover',function(e){e.preventDefault();});
+      slot.addEventListener('drop',function(e){e.preventDefault();var data=e.dataTransfer.getData('text/plain');if(data)handleDrop(data,level,qIdx);});
+      // Touch/mobile support
+      slot.addEventListener('click',function(){
+        if(dragData){handleDrop(dragData,level,qIdx);dragData=null;}
+      });
+    }
+
+    slotsG.appendChild(slot);
   });
 
-  base.appendChild(slotsC);
+  base.appendChild(slotsG);
   laptop.appendChild(base);
   layout.appendChild(laptop);
 
-  // ---- TOOLBOX ----
-  var toolArea=document.createElement('div');
-  toolArea.className='toolbox-area';
+  // --- PARTS AREA ---
+  var pArea=document.createElement('div');
+  pArea.className='parts-area';
 
-  var tTitle=document.createElement('div');
-  tTitle.className='toolbox-title';
-  tTitle.innerHTML='🔧 ¿Qué herramienta necesitas para instalar <strong>'+(partInfo?partInfo.name:curPart.id)+'</strong>?';
-  toolArea.appendChild(tTitle);
+  var pTitle=document.createElement('div');
+  pTitle.className='pa-title';
+  pTitle.innerHTML=(allAnswered+1)+' de 5 — Arrastra el componente correcto al slot <strong>'+ALL[q.a].name.split('(')[0].trim()+'</strong>';
+  pArea.appendChild(pTitle);
 
   var grid=document.createElement('div');
-  grid.className='toolbox-grid';
+  grid.className='drag-grid';
 
-  shuffleArray(TOOLS.slice()).forEach(function(tool){
+  q._optsAll.forEach(function(optKey){
+    var info=ALL[optKey];
+    if(!info)return;
     var item=document.createElement('div');
-    item.className='tool-item';
-    item.id='tool_'+tool.id;
-    item.innerHTML='<span class="tool-icon">'+tool.icon+'</span><span class="tool-name">'+tool.name+'</span>';
-    item.dataset.toolId=tool.id;
-    item.onclick=function(){useTool(tool.id,level,curPartIdx);};
+    item.className='drag-item';
+    item.id='drag_'+optKey;
+    item.draggable=true;
+    item.innerHTML='<span class="di-icon">'+info.icon+'</span><span class="di-label">'+info.name.split('(')[0].trim()+'</span>';
+
+    item.addEventListener('dragstart',function(e){
+      e.dataTransfer.setData('text/plain',optKey);
+      this.classList.add('dragging');
+    });
+    item.addEventListener('dragend',function(e){
+      this.classList.remove('dragging');
+    });
+    // Touch support
+    item.addEventListener('touchstart',function(e){
+      dragData=optKey;
+      document.querySelectorAll('.drag-item').forEach(function(d){d.classList.remove('selected');});
+      this.classList.add('selected');
+      this.style.borderColor='#2b6cb0';
+      this.style.background='#ebf4ff';
+      var msg="✅ Seleccionaste "+info.name.split('(')[0].trim()+". Ahora toca el slot iluminado en el portátil.";
+      var fb=document.getElementById('feedback');
+      fb.className='feedback success show';
+      fb.innerHTML='<h4>👆 Componente seleccionado</h4><p>'+msg+'</p>';
+    },{passive:true});
+
+    // If wrong-answered before, show feedback
+    if(q._lastWrong && q._lastWrong===optKey){
+      // Don't re-mark
+    }
+
     grid.appendChild(item);
   });
 
-  toolArea.appendChild(grid);
-
-  // Progress chips for parts
-  var chips=document.createElement('div');
-  chips.className='parts-status';
-  chips.id='partsStatus';
-  level.parts.forEach(function(p,pi){
-    var chip=document.createElement('div');
-    chip.className='part-chip'+(p._done?' done':'')+(pi===curPartIdx?' active':'');
-    var pInfo=ALL_PARTS[p.id];
-    chip.innerHTML=(pInfo?pInfo.icon:'🔧')+' '+(pInfo?pInfo.name:p.id);
-    chips.appendChild(chip);
-  });
-  toolArea.appendChild(chips);
+  pArea.appendChild(grid);
 
   // Progress dots
-  var prog=document.createElement('div');
-  prog.className='assembly-progress';
-  prog.id='assemblyProgress';
-  level.parts.forEach(function(p,pi){
+  var pq=document.createElement('div');
+  pq.className='progress-qs';
+  for(var j=0;j<5;j++){
     var d=document.createElement('div');
-    d.className='prog-dot'+(p._done?' done':'')+(pi===curPartIdx?' active':'');
-    d.textContent=(pi+1);
-    prog.appendChild(d);
-  });
-  toolArea.appendChild(prog);
+    d.className='pq-dot';
+    if(level.questions[j]&&level.questions[j]._used)d.classList.add('done');
+    if(j===qIdx&&!(level.questions[j]&&level.questions[j]._used))d.classList.add('active');
+    d.textContent=(j+1);
+    pq.appendChild(d);
+  }
+  pArea.appendChild(pq);
 
-  layout.appendChild(toolArea);
+  layout.appendChild(pArea);
   area.appendChild(layout);
 }
 
 // ============================
-// INTERACCIÓN: USAR HERRAMIENTA
+// DROP HANDLING
 // ============================
-function useTool(toolId,level,partIdx){
-  if(completed[currentLevel])return;
+function handleDrop(partKey,level,qIdx){
+  var q=level.questions[qIdx];
+  if(!q||q._used)return;
 
-  var part=level.parts[partIdx];
-  if(!part||part._done)return;
-
-  var partInfo=ALL_PARTS[part.id];
   var fb=document.getElementById('feedback');
-  var expectedTool=partInfo?partInfo.tool:null;
 
-  document.querySelectorAll('.tool-item').forEach(function(t){t.classList.remove('selected');});
-  document.getElementById('tool_'+toolId).classList.add('selected');
+  // Remove highlight from all slots
+  document.querySelectorAll('.slot.highlight').forEach(function(s){s.classList.remove('highlight');});
 
-  if(toolId===expectedTool){
-    // Correct tool!
-    part._done=true;
+  if(partKey===q.a){
+    // CORRECT!
+    q._used=true;
 
-    // Update slot
-    var slot=document.getElementById('slot_'+part.id);
+    // Mark the drag item as correct
+    var dragEl=document.getElementById('drag_'+partKey);
+    if(dragEl){
+      dragEl.classList.add('correct');
+      dragEl.draggable=false;
+    }
+
+    // Fill the slot
+    var slot=document.getElementById(q._slotId);
     if(slot){
       slot.classList.remove('highlight');
       slot.classList.add('filled');
-      if(partInfo){slot.querySelector('.slot-icon').textContent=partInfo.icon;slot.querySelector('.slot-name').textContent=partInfo.name;}
-    }
-
-    // Update chips
-    var chips=document.getElementById('partsStatus');
-    if(chips){
-      var chipEls=chips.querySelectorAll('.part-chip');
-      if(chipEls[partIdx]){
-        chipEls[partIdx].className='part-chip done';
+      var info=ALL[partKey];
+      if(info){
+        slot.querySelector('.s-icon').textContent=info.icon;
+        slot.querySelector('.s-name').textContent=info.name.split('(')[0].trim();
       }
     }
 
-    // Update dots
-    var dots=document.querySelectorAll('.prog-dot');
-    dots.forEach(function(d,di){
-      d.className='prog-dot';
-      if(level.parts[di]&&level.parts[di]._done)d.classList.add('done');
-    });
+    // MSG
+    var msgs={
+      cpu:"🧠 La CPU es el cerebro. ¡Instalada!",
+      ram:"📝 La RAM dará memoria temporal al sistema. ¡Lista!",
+      ssd:"💾 SSD instalado. El portátil será muy rápido.",
+      hdd:"💿 HDD instalado. Mucho espacio de almacenamiento.",
+      gpu:"🎮 GPU instalada. Podrás ver gráficos y jugar.",
+      mb:"📋 Placa Madre instalada. La base del sistema.",
+      bat:"🔋 Batería instalada. Portátil funcionará sin cable.",
+      cool:"🌡️ Refrigeración instalada. Adiós al calor.",
+      wifi:"📶 Wi-Fi instalado. Internet sin cables."
+    };
 
     fb.className='feedback success show';
-    var msg='✅ '+((partInfo&&partInfo.name)||part.id)+' instalado';
-    if(toolId==='paste')msg+='<br><small>🧊 Aplicaste pasta térmica correctamente. El calor se transferirá bien.</small>';
-    else if(toolId==='screwdriver')msg+='<br><small>🔧 Ajustaste los tornillos con el destornillador. Queda firme.</small>';
-    else if(toolId==='tweezers')msg+='<br><small>🤏 Insertaste el componente con las pinzas. Queda en su lugar.</small>';
-    else if(toolId==='strap')msg+='<br><small>⚡ Usaste la pulsera antiestática. Los componentes están protegidos.</small>';
-    fb.innerHTML='<h4>'+msg+'</h4>';
+    fb.innerHTML='<h4>✅ ¡Correcto!</h4><p>'+(msgs[partKey]||'Componente instalado correctamente.')+'</p>';
 
-    // Check if all done
-    var done=level.parts.every(function(p){return p._done;});
-    if(done){
-      var t=setTimeout(function(){doBootAndFinish(level);},800);
-      bootTimers.push(t);
+    // Update progress dots
+    var dots=document.querySelectorAll('.pq-dot');
+    dots.forEach(function(d,di){
+      d.className='pq-dot';
+      if(level.questions[di]&&level.questions[di]._used)d.classList.add('done');
+      if(!(level.questions[di]&&level.questions[di]._used) && di===dots.length-1){
+        // Check if all done
+      }
+    });
+
+    // Check if all 5 done
+    var allDone=level.questions.every(function(x){return x._used;});
+    if(allDone){
+      setTimeout(function(){doLevelComplete(level);},900);
     }else{
-      // Re-render for next part
-      var t=setTimeout(function(){renderAssemble(level);},600);
-      bootTimers.push(t);
+      // Move to next question after a short delay
+      setTimeout(function(){renderGame(level);},700);
     }
   }else{
-    // Wrong tool
-    var toolName='';
-    TOOLS.forEach(function(t){if(t.id===toolId){toolName=t.name;}});
+    // WRONG
+    q._lastWrong=partKey;
+    var dragEl=document.getElementById('drag_'+partKey);
+    if(dragEl){
+      dragEl.classList.add('wrong');
+      setTimeout(function(){
+        if(dragEl)dragEl.classList.remove('wrong');
+        // Re-highlight the slot
+        var slot=document.getElementById(q._slotId);
+        if(slot)slot.classList.add('highlight');
+      },500);
+    }
 
-    var correctToolName='';
-    TOOLS.forEach(function(t){if(t.id===expectedTool){correctToolName=t.name;}});
-
+    var info=ALL[partKey];
+    var correctInfo=ALL[q.a];
     fb.className='feedback error show';
-    fb.innerHTML='<h4>❌ '+toolName+' no es la herramienta correcta para '+((partInfo&&partInfo.name)||part.id)+'</h4><p>'+((partInfo&&TOOL_MSGS[part.id])||'Revisa la guía de estudio para saber qué herramienta usar.')+'<br><strong>🔍 Pista:</strong> Necesitas <strong>'+correctToolName+'</strong>.</p>';
-
-    // Highlight the tool
-    document.querySelectorAll('.tool-item').forEach(function(t){t.classList.remove('selected');});
+    fb.innerHTML='<h4>❌ '+(info?info.name.split('(')[0].trim():partKey)+' no es correcto</h4><p>Pista: necesitas <strong>'+(correctInfo?correctInfo.name.split('(')[0].trim():q.a)+'</strong>.<br>Vuelve a intentarlo arrastrando el componente correcto al slot iluminado.</p>';
   }
 }
 
-function doBootAndFinish(level){
+function doLevelComplete(level){
+  completed[currentLevel]=true;
+  updateProgress();
+  updateStars(currentLevel);
+
   var laptop=document.getElementById('laptopBox');
   if(laptop){
     laptop.classList.add('powered');
-    laptop.querySelector('.power-led').style.background='#38a169';
+    var led=laptop.querySelector('.power-led');
+    if(led)led.style.background='#38a169';
   }
 
-  var bootEl=document.getElementById('bootContent');
+  var bootEl=document.getElementById('bootMsg');
   if(bootEl){
     bootEl.style.display='block';
-    bootEl.style.opacity='0';
-    var seq=['INICIANDO SISTEMA...','DETECTANDO CPU... OK','VERIFICANDO RAM... OK','MONTANDO ALMACENAMIENTO... OK','INICIALIZANDO GPU... OK','SISTEMA LISTO'];
+    bootEl.style.opacity='1';
+    var lines=['INICIANDO...','CPU OK','RAM OK','ALMACENAMIENTO OK','GPU OK','SISTEMA LISTO'];
     var li=0;
     var tick=function(){
-      var linesEl=document.getElementById('bootLines');
-      if(!linesEl&&li>0){return;}
-      if(!linesEl){
-        bootEl.innerHTML='<div class="boot-icon">🔄</div><div class="boot-text" id="bootLines"></div>';
-      }
-      var linesEl2=document.getElementById('bootLines');
-      if(!linesEl2)return;
-      if(li<seq.length){
-        linesEl2.textContent=seq[li];
+      if(li<lines.length){
+        bootEl.innerHTML='<div class="bi">🔄</div><div class="bt">'+lines[li]+'</div>';
         li++;
-        bootTimers.push(setTimeout(tick,li===seq.length?400:250));
+        var t=setTimeout(tick,li===lines.length?500:200);
+        bootTimers.push(t);
       }else{
-        bootEl.querySelector('.boot-icon').textContent='🖥️';
-        bootTimers.push(setTimeout(function(){
-          bootEl.innerHTML='<div class="boot-icon">🖥️</div><div class="boot-text">SISTEMA LISTO</div><div class="boot-bar"><div class="boot-bar-fill"></div></div>';
-          bootEl.style.opacity='1';
-        },400));
+        bootEl.innerHTML='<div class="bi">🖥️</div><div class="bt">SISTEMA LISTO</div><div style="margin-top:4px;width:100px;height:3px;background:rgba(255,255,255,.1);border-radius:3px;margin-left:auto;margin-right:auto;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,#4fc3f7,#38a169);border-radius:3px;width:100%"></div></div>';
       }
     };
     bootTimers.push(setTimeout(tick,200));
   }
 
-  completed[currentLevel]=true;
-  updateProgress();
-  updateStars(currentLevel);
-
   var fb=document.getElementById('feedback');
   fb.className='feedback success show';
-  fb.innerHTML='<h4>🚀 ¡Portátil encendido!</h4><p>Todos los componentes están instalados con las herramientas correctas. El sistema funciona.</p>';
+  fb.innerHTML='<h4>🚀 ¡Nivel completado!</h4><p>Respondiste las 5 preguntas correctamente. El portátil enciende.</p>';
 
   var nextBtn=document.getElementById('nextLevelBtn');
   if(currentLevel<4){
     nextBtn.style.display='inline-block';
     nextBtn.textContent='➡️ Siguiente Nivel';
-    nextBtn.onclick=function(){nextLevel();};
+    nextBtn.onclick=function(){currentLevel++;currentQ=0;qAnswered=[];renderLevel(currentLevel);};
   }else{
     nextBtn.style.display='inline-block';
-    nextBtn.innerHTML='🏆 ¡Completaste todos los niveles!';
+    nextBtn.innerHTML='🏆 ¡Completaste todo!';
     nextBtn.onclick=function(){
       fb.className='feedback success show';
-      fb.innerHTML='<h4>🏆 ¡Felicidades!</h4><p>Completaste los 5 niveles. ¡Eres un técnico en ensamblaje! Presiona "Nueva Partida" para más desafíos.</p>';
+      fb.innerHTML='<h4>🏆 ¡Felicidades!</h4><p>Completaste los 5 niveles. Presiona "Nueva Partida" para nuevos retos.</p>';
       nextBtn.style.display='none';
     };
   }
-}
-
-function renderCompletedBoot(area,level){
-  area.innerHTML='';
-  var msg=document.createElement('div');
-  msg.style.cssText='text-align:center;padding:40px 20px';
-  msg.innerHTML='<div style="font-size:4rem;margin-bottom:16px">🖥️</div><h3 style="color:#38a169;margin-bottom:8px">✅ Portátil ensamblado y funcionando</h3><p style="color:#666">Este nivel ya fue completado.</p>';
-  area.appendChild(msg);
 }
 
 function resetLevel(){
   bootTimers.forEach(clearTimeout);bootTimers=[];
   var level=gameLevels[currentLevel];
   if(!level)return;
-
-  level.parts.forEach(function(p){p._done=false;});
-
+  level.questions.forEach(function(q){q._used=false;delete q._lastWrong;});
   var laptop=document.getElementById('laptopBox');
   if(laptop){
     laptop.classList.remove('powered');
     var led=laptop.querySelector('.power-led');
     if(led)led.style.background='#888';
   }
-  var bootEl=document.getElementById('bootContent');
-  if(bootEl){bootEl.style.opacity='0';bootEl.style.display='none';}
-
-  var fb=document.getElementById('feedback');
-  fb.className='feedback';fb.innerHTML='';
+  var bootEl=document.getElementById('bootMsg');
+  if(bootEl){bootEl.style.opacity='0';bootEl.style.display='none';bootEl.innerHTML='';}
+  document.getElementById('feedback').className='feedback';
+  document.getElementById('feedback').innerHTML='';
   document.getElementById('nextLevelBtn').style.display='none';
-  renderAssemble(level);
-}
-
-function nextLevel(){
-  if(currentLevel<4){currentLevel++;renderLevel(currentLevel);}
+  currentQ=0;qAnswered=[];
+  renderGame(level);
 }
 
 newRandomGame();
