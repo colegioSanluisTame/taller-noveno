@@ -8,8 +8,6 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a1a2e;padding:20px}
 .container{max-width:1000px;margin:0 auto}
-
-/* TABS */
 .tabs{display:flex;gap:4px;margin-bottom:0}
 .tab{padding:14px 24px;border-radius:12px 12px 0 0;cursor:pointer;font-weight:600;font-size:1rem;border:none;transition:all .2s;position:relative}
 .tab.info{background:#1a1a2e;color:#fff}
@@ -19,9 +17,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a1a2e;pa
 .tab:hover{transform:translateY(-2px)}
 .tab-content{display:none;padding:30px;border-radius:0 12px 12px 12px}
 .tab-content.info{background:#fff;display:block}
-.tab-content.juego{background:#fff;display:none}
-
-/* STUDY CONTENT */
+.tab-content.juego{background:#fff}
 h2{font-size:1.5rem;margin:28px 0 12px;color:#1a1a2e;border-bottom:2px solid #e0e0e0;padding-bottom:5px}
 h3{font-size:1.15rem;margin:18px 0 8px;color:#2d2d5e}
 p{margin-bottom:10px;text-align:justify}
@@ -35,19 +31,15 @@ tr:nth-child(even){background:#f5f5f5}
 .ejemplo{background:#fafafa;border:1px solid #ddd;border-radius:8px;padding:12px;margin:12px 0}
 .ejemplo h4{color:#1a1a2e;margin-bottom:5px}
 .gate-tag{display:inline-block;background:#1a1a2e;color:#fff;padding:3px 10px;border-radius:4px;font-weight:700;font-size:.85rem;margin:2px;font-family:monospace}
-
-/* GAME */
 .game-header{text-align:center;margin-bottom:20px}
 .game-header h2{font-size:1.8rem;border:none;color:#e85d2c;margin-bottom:4px}
 .game-header p{text-align:center;color:#666;font-size:.95rem}
 .level-info{background:linear-gradient(135deg,#ff6b35,#e85d2c);color:#fff;padding:16px 24px;border-radius:12px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .level-info h3{margin:0;color:#fff;font-size:1.3rem}
 .level-badge{background:rgba(255,255,255,.2);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600}
-.stars{display:flex;gap:4px}
-.star{font-size:1.5rem;color:#ffd700;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+.stars{display:flex;gap:4px;font-size:1.5rem}
+.star{color:#ffd700;text-shadow:0 1px 3px rgba(0,0,0,.3)}
 .star.empty{color:rgba(255,255,255,.25)}
-
-/* TRUTH TABLE */
 .target-section{display:flex;gap:20px;margin-bottom:20px;flex-wrap:wrap}
 .target-table{flex:1;min-width:200px}
 .target-table h4{font-size:1rem;margin-bottom:8px;color:#2d2d5e}
@@ -55,25 +47,22 @@ tr:nth-child(even){background:#f5f5f5}
 .target-desc{flex:2;min-width:250px}
 .target-desc h4{font-size:1rem;margin-bottom:6px;color:#2d2d5e}
 .target-desc p{text-align:left;font-size:.95rem}
-
-/* CIRCUIT WORKBENCH */
-.workbench{background:#fafbfc;border:2px solid #ddd;border-radius:12px;padding:24px;margin-bottom:16px;min-height:260px;position:relative}
+.workbench{background:#fafbfc;border:2px solid #ddd;border-radius:12px;padding:24px;margin-bottom:16px;min-height:260px}
 .workbench h4{font-size:.95rem;color:#666;margin-bottom:12px;text-align:center}
-.circuit-canvas{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;min-height:160px}
+.circuit-canvas{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;min-height:160px;padding:10px 0}
 .input-group{display:flex;flex-direction:column;align-items:center;gap:8px}
-.input-label{font-weight:700;font-size:.9rem;background:#e8e8e8;padding:4px 14px;border-radius:6px;font-family:monospace}
-.wire-h{width:30px;height:2px;background:#555;position:relative}
-.wire-v{width:2px;height:30px;background:#555;margin:0 auto}
-
-.gate-slot{width:90px;height:65px;border:2px dashed #bbb;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;position:relative}
+.input-label{font-weight:700;font-size:.9rem;background:#e8e8e8;padding:6px 14px;border-radius:6px;font-family:monospace;min-width:40px;text-align:center;margin:4px 0}
+.wire-con{display:flex;flex-direction:column;align-items:center;gap:0}
+.wire-con .line{width:2px;height:18px;background:#555;margin:4px 0}
+.gate-slot{width:90px;height:68px;border:2px dashed #bbb;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;position:relative}
 .gate-slot.filled{border-style:solid;background:#f0f4ff;border-color:#2b6cb0}
-.gate-slot select{width:80px;padding:4px;border:1px solid #ccc;border-radius:6px;font-size:.8rem;text-align:center;cursor:pointer}
+.gate-slot select{width:76px;padding:4px;border:1px solid #ccc;border-radius:6px;font-size:.8rem;text-align:center;cursor:pointer;background:#fff}
 .gate-slot .gate-label{font-size:.7rem;color:#999;margin-top:2px}
 .gate-slot .slot-name{font-size:.7rem;color:#2b6cb0;font-weight:600;position:absolute;top:-12px;background:#fff;padding:0 6px}
 .connector{display:flex;flex-direction:column;align-items:center;gap:4px}
-.output-box{background:#2b6cb0;color:#fff;padding:8px 16px;border-radius:8px;font-weight:700;font-size:.85rem;font-family:monospace}
-
-/* PALETTE */
+.output-box{background:#2b6cb0;color:#fff;padding:12px 18px;border-radius:8px;font-weight:700;font-size:.85rem;font-family:monospace;min-width:70px;text-align:center}
+.output-box.val0{background:#e53e3e}
+.output-box.val1{background:#38a169}
 .palette{display:flex;gap:10px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
 .palette-item{padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:600;font-size:.9rem;border:2px solid transparent;transition:all .2s;text-align:center;min-width:80px}
 .palette-item.and{border-color:#2b6cb0;color:#2b6cb0;background:#ebf4ff}
@@ -84,8 +73,6 @@ tr:nth-child(even){background:#f5f5f5}
 .palette-item.and.selected{background:#2b6cb0;color:#fff}
 .palette-item.or.selected{background:#38a169;color:#fff}
 .palette-item.not.selected{background:#e53e3e;color:#fff}
-
-/* CONTROLS */
 .controls{display:flex;gap:12px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
 .btn{padding:12px 32px;border-radius:8px;border:none;font-weight:600;font-size:1rem;cursor:pointer;transition:all .2s}
 .btn-primary{background:#2b6cb0;color:#fff}
@@ -97,34 +84,31 @@ tr:nth-child(even){background:#f5f5f5}
 .btn-warning{background:#ff6b35;color:#fff}
 .btn-warning:hover{background:#e85d2c;transform:translateY(-1px)}
 .btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
-
-/* FEEDBACK */
+.btn-sm{padding:8px 16px;font-size:.85rem}
 .feedback{margin-top:16px;padding:20px;border-radius:12px;display:none}
 .feedback.show{display:block}
 .feedback.success{background:#c6f6d5;color:#22543d;border:2px solid #38a169}
 .feedback.error{background:#fed7d7;color:#822727;border:2px solid #e53e3e}
 .feedback h4{font-size:1.1rem;margin-bottom:6px}
 .feedback p{text-align:left;margin-bottom:4px}
-
-/* PROGRESS BAR */
 .progress-wrap{background:#e2e8f0;border-radius:10px;height:10px;margin-bottom:20px;overflow:hidden}
 .progress-bar{height:100%;background:linear-gradient(90deg,#ff6b35,#e85d2c);border-radius:10px;transition:width .5s ease;width:0}
-
-/* LEVEL SELECTOR */
 .level-selector{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
 .level-btn{padding:8px 18px;border-radius:8px;border:2px solid #ddd;background:#fff;cursor:pointer;font-weight:600;font-size:.85rem;transition:all .2s}
 .level-btn:hover{transform:translateY(-1px)}
 .level-btn.completed{border-color:#38a169;background:#f0fff4;color:#38a169}
 .level-btn.active{border-color:#ff6b35;background:#fff5f0;color:#e85d2c;transform:translateY(-2px)}
 .level-btn.locked{border-color:#e2e8f0;background:#f7fafc;color:#a0aec0;cursor:not-allowed;transform:none}
-
+.simb{display:inline-flex;align-items:center;gap:6px;margin:4px 8px 4px 0}
+.simb svg{display:block}
+.ascii-gate{font-family:monospace;font-size:.8rem;line-height:1.2;color:#333;background:#f9f9f9;padding:6px 10px;border-radius:4px;display:inline-block;margin:2px}
 @media(max-width:600px){
 .tabs .tab{padding:10px 16px;font-size:.85rem}
 .tab-content{padding:16px}
 .workbench{padding:12px}
 .circuit-canvas{gap:10px}
-.gate-slot{width:70px;height:55px}
-.gate-slot select{width:62px;font-size:.75rem}
+.gate-slot{width:70px;height:58px}
+.gate-slot select{width:60px;font-size:.75rem}
 }
 </style>
 </head>
@@ -136,51 +120,55 @@ tr:nth-child(even){background:#f5f5f5}
 <button class="tab juego" onclick="switchTab('juego')">🎮 Jugar</button>
 </div>
 
-<!-- TAB: INFO -->
+<!-- ============ TAB ESTUDIAR ============ -->
 <div class="tab-content info" id="tabInfo">
-
 <div class="destacado" style="margin-bottom:20px">
 <strong>🏫 Institución Educativa San Luis — Grado Noveno — Tecnología e Informática</strong>
 </div>
 
 <h2>1. ¿Qué es un circuito digital?</h2>
-<p>Un <strong>circuito digital</strong> es un circuito electrónico que trabaja con solo <strong>dos valores</strong>: <strong>0</strong> (apagado, sin voltaje) y <strong>1</strong> (encendido, con voltaje). Son los bloques que construyen todo aparato electrónico moderno: computadoras, celulares, calculadoras, semáforos inteligentes y más.</p>
-<div class="destacado"><strong>💡 Idea clave:</strong> Piensa en un circuito digital como un <strong>interruptor de luz</strong>: solo puede estar en dos posiciones — apagado (0) o encendido (1). Un circuito digital combina millones de estos "interruptores" (llamados <strong>transistores</strong>) para realizar tareas complejas.</div>
+<p>Un <strong>circuito digital</strong> es un circuito electrónico que trabaja con solo <strong>dos valores</strong>: <strong>0</strong> (apagado, sin voltaje) y <strong>1</strong> (encendido, con voltaje). A diferencia de los circuitos analógicos que pueden tener cualquier valor de voltaje (como 0.5V, 1.3V, 3.7V...), los circuitos digitales solo reconocen dos estados. Son los bloques fundamentales de todo aparato electrónico moderno: computadoras, celulares, calculadoras, semáforos inteligentes, televisores y más.</p>
 
-<h2>2. Diferencia analógico vs digital</h2>
+<div class="destacado"><strong>💡 Idea clave:</strong> Piensa en un circuito digital como un <strong>interruptor de luz</strong>: solo puede estar en dos posiciones — apagado (0) o encendido (1). Un circuito digital combina millones de estos "interruptores" llamados <strong>transistores</strong> para realizar tareas complejas. ¡Un procesador moderno tiene más de 10 mil millones de transistores!</div>
+
+<h2>2. Diferencia entre señal analógica y digital</h2>
 <table>
 <tr><th>Característica</th><th>Analógico</th><th>Digital</th></tr>
-<tr><td><strong>Valores</strong></td><td>Infinitos (continuos)</td><td>Solo 0 y 1 (discretos)</td></tr>
-<tr><td><strong>Ejemplo</strong></td><td>Reloj de agujas</td><td>Reloj de números</td></tr>
-<tr><td><strong>Precisión</strong></td><td>Se degrada con el tiempo</td><td>No se pierde calidad al copiar</td></tr>
-<tr><td><strong>Ruido</strong></td><td>Muy sensible a interferencias</td><td>Muy resistente al ruido</td></tr>
+<tr><td><strong>Valores</strong></td><td>Infinitos (continuos, cualquier voltaje)</td><td>Solo 0 y 1 (discretos)</td></tr>
+<tr><td><strong>Ejemplo</strong></td><td>Reloj de agujas, termómetro de mercurio</td><td>Reloj numérico, termómetro digital</td></tr>
+<tr><td><strong>Señal</strong></td><td>Onda continua (como el volumen de un micrófono)</td><td>Pulsos de encendido/apagado</td></tr>
+<tr><td><strong>Precisión</strong></td><td>Se degrada con el tiempo y las copias</td><td>No se pierde calidad al copiar información</td></tr>
+<tr><td><strong>Ruido</strong></td><td>Muy sensible a interferencias eléctricas</td><td>Muy resistente al ruido y las interferencias</td></tr>
+<tr><td><strong>Almacenamiento</strong></td><td>Ocupa mucho espacio (cintas, vinilos)</td><td>Ocupa poco espacio (microchips, memorias)</td></tr>
 </table>
-<div class="ejemplo"><h4>🎯 Ejemplo</h4><p>Un <strong>tocadiscos de vinilo</strong> es analógico. Un <strong>CD o MP3</strong> es digital. Por eso el MP3 no se "raya" ni pierde calidad aunque lo copies mil veces.</p></div>
+<div class="ejemplo"><h4>🎯 Ejemplo cotidiano</h4><p>Un <strong>tocadiscos de vinilo</strong> es analógico (la aguja lee surcos continuos que representan el sonido). Un <strong>CD o MP3</strong> es digital (la música se guarda como millones de 0 y 1). Por eso el MP3 no se "raya" ni pierde calidad aunque lo copies mil veces.</p></div>
 
-<h2>3. Los bits (0 y 1)</h2>
-<p><strong>Bit</strong> viene de <strong>B</strong>inary dig<strong>it</strong> (dígito binario). Es la unidad más pequeña de información. Solo puede tener dos valores: <strong>0</strong> (apagado) y <strong>1</strong> (encendido). Con 8 bits (un <strong>byte</strong>) puedes representar 256 valores diferentes.</p>
+<h2>3. El bit — la unidad más pequeña</h2>
+<p><strong>Bit</strong> viene de <strong>B</strong>inary dig<strong>it</strong> (dígito binario). Es la unidad más pequeña de información en un sistema digital. Solo puede tener dos valores:</p>
+<ul>
+<li><strong>0</strong> → sin voltaje, apagado, falso</li>
+<li><strong>1</strong> → con voltaje, encendido, verdadero</li>
+</ul>
+<p><strong>Agrupaciones comunes:</strong></p>
+<ul>
+<li><strong>1 bit</strong> → 2 valores posibles (0, 1)</li>
+<li><strong>2 bits</strong> → 4 combinaciones (00, 01, 10, 11)</li>
+<li><strong>4 bits</strong> → 16 combinaciones (nibble)</li>
+<li><strong>8 bits</strong> → 256 combinaciones (1 byte) — suficiente para una letra o un número del 0 al 255</li>
+<li><strong>1024 bytes</strong> → 1 kilobyte (KB)</li>
+<li><strong>1024 KB</strong> → 1 megabyte (MB)</li>
+</ul>
 
-<h2>4. Compuertas lógicas básicas</h2>
+<h2>4. Sistema binario</h2>
+<p>El <strong>sistema binario</strong> usa solo <strong>dos dígitos: 0 y 1</strong>. Nosotros usamos el sistema <strong>decimal</strong> (10 dígitos: 0-9). Las computadoras usan binario porque es más fácil construir circuitos que distingan solo dos estados (encendido/apagado) que diez.</p>
+<h3>¿Cómo convertir de binario a decimal?</h3>
+<p>Cada posición representa una potencia de 2, igual que en decimal cada posición es potencia de 10.</p>
+<div class="destacado"><strong>Ejemplo:</strong> Convertir <code>1011₂</code> a decimal:<br>
+1 × 2³ = 1 × 8 = 8 &nbsp;|&nbsp; 0 × 2² = 0 × 4 = 0 &nbsp;|&nbsp; 1 × 2¹ = 1 × 2 = 2 &nbsp;|&nbsp; 1 × 2⁰ = 1 × 1 = 1<br>
+<strong>Total: 8 + 0 + 2 + 1 = 11</strong> → <code>1011₂ = 11</code></div>
 
-<h3>AND (Y) <span class="gate-tag">AND</span></h3>
-<p>La salida es <strong>1 solo si TODAS las entradas son 1</strong>.</p>
-<table><tr><th>A</th><th>B</th><th>Salida</th></tr><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td><td><strong>1</strong></td></tr></table>
-<p><strong>Ejemplo:</strong> Dos interruptores en serie. La luz enciende SOLO si ambos están encendidos.</p>
-
-<h3>OR (O) <span class="gate-tag">OR</span></h3>
-<p>La salida es <strong>1 si AL MENOS UNA entrada es 1</strong>.</p>
-<table><tr><th>A</th><th>B</th><th>Salida</th></tr><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td><strong>1</strong></td></tr><tr><td>1</td><td>0</td><td><strong>1</strong></td></tr><tr><td>1</td><td>1</td><td><strong>1</strong></td></tr></table>
-<p><strong>Ejemplo:</strong> Dos interruptores en paralelo. La luz enciende si CUALQUIERA está encendido.</p>
-
-<h3>NOT (NO) <span class="gate-tag">NOT</span></h3>
-<p><strong>Invierte</strong> la entrada: si entra 1, sale 0; si entra 0, sale 1.</p>
-<table><tr><th>A</th><th>Salida</th></tr><tr><td>0</td><td><strong>1</strong></td></tr><tr><td>1</td><td><strong>0</strong></td></tr></table>
-<p><strong>Ejemplo:</strong> Luz de nevera que se enciende al abrir la puerta.</p>
-
-<h2>5. Sistema binario</h2>
-<p>Usa solo <strong>0 y 1</strong>. Cada posición representa una potencia de 2.</p>
-<div class="destacado"><strong>Ejemplo:</strong> <code>1011₂</code> = 1×8 + 0×4 + 1×2 + 1×1 = <strong>11</strong> en decimal.</div>
-<table><tr><th>Binario</th><th>Decimal</th><th></th><th>Binario</th><th>Decimal</th></tr>
+<table>
+<tr><th>Binario</th><th>Decimal</th><th></th><th>Binario</th><th>Decimal</th></tr>
 <tr><td>0</td><td>0</td><td></td><td>1000</td><td>8</td></tr>
 <tr><td>1</td><td>1</td><td></td><td>1001</td><td>9</td></tr>
 <tr><td>10</td><td>2</td><td></td><td>1010</td><td>10</td></tr>
@@ -188,24 +176,99 @@ tr:nth-child(even){background:#f5f5f5}
 <tr><td>100</td><td>4</td><td></td><td>1100</td><td>12</td></tr>
 <tr><td>101</td><td>5</td><td></td><td>1101</td><td>13</td></tr>
 <tr><td>110</td><td>6</td><td></td><td>1110</td><td>14</td></tr>
-<tr><td>111</td><td>7</td><td></td><td>1111</td><td>15</td></tr></table>
+<tr><td>111</td><td>7</td><td></td><td>1111</td><td>15</td></tr>
+</table>
 
-<h2>6. Aplicaciones en la vida real</h2>
+<div class="destacado"><strong>💡 Dato curioso:</strong> Con 10 dedos (decimal) podemos contar hasta 10. Con 10 dedos en <strong>binario</strong> (cada dedo levantado es 1, abajo es 0), ¡podemos contar hasta <strong>1023</strong>!</div>
+
+<h2>5. Compuertas lógicas básicas</h2>
+<p>Las <strong>compuertas lógicas</strong> son los "ladrillos" con los que se construyen los circuitos digitales. Toman una o más entradas (0 o 1) y producen una salida según una regla fija. Se llaman "compuertas" porque controlan el paso de la señal, como una compuerta de agua que se abre o se cierra.</p>
+
+<h3>AND (Y) <span class="gate-tag">AND</span></h3>
+<p>La salida es <strong>1 solo si TODAS las entradas son 1</strong>. Funciona como dos interruptores en serie: la luz solo enciende si ambos están encendidos.</p>
+<div class="ascii-gate">
+AND: A ──┬── AND ── Salida<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B ──┘
+</div>
+<table><tr><th>A</th><th>B</th><th>Salida</th></tr>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td><strong>1</strong></td></tr></table>
+<p><strong>Regla para recordar:</strong> "1 solo si todos son 1. Si hay un 0, el resultado es 0."</p>
+
+<h3>OR (O) <span class="gate-tag">OR</span></h3>
+<p>La salida es <strong>1 si AL MENOS UNA entrada es 1</strong>. Funciona como dos interruptores en paralelo: la luz enciende si cualquiera de los dos está encendido.</p>
+<div class="ascii-gate">
+OR: A ──┬── OR ── Salida<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B ──┘
+</div>
+<table><tr><th>A</th><th>B</th><th>Salida</th></tr>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td><strong>1</strong></td></tr>
+<tr><td>1</td><td>0</td><td><strong>1</strong></td></tr>
+<tr><td>1</td><td>1</td><td><strong>1</strong></td></tr></table>
+<p><strong>Regla para recordar:</strong> "Si hay al menos un 1, el resultado es 1. Solo 0 si todos son 0."</p>
+
+<h3>NOT (NO) <span class="gate-tag">NOT</span></h3>
+<p><strong>Invierte</strong> la entrada. Si entra 1, sale 0; si entra 0, sale 1. Se le llama también "inversor".</p>
+<div class="ascii-gate">
+NOT: A ── NOT ── Salida
+</div>
+<table><tr><th>A</th><th>Salida</th></tr>
+<tr><td>0</td><td><strong>1</strong></td></tr>
+<tr><td>1</td><td><strong>0</strong></td></tr></table>
+<p><strong>Regla para recordar:</strong> "El NOT es un inversor: convierte 0 en 1 y 1 en 0."</p>
+
+<h3>Tabla resumen de compuertas</h3>
+<table>
+<tr><th>A</th><th>B</th><th>AND (A·B)</th><th>OR (A+B)</th><th>NOT A</th></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+</table>
+
+<h2>6. Cómo se construye un circuito digital paso a paso</h2>
+<ol>
+<li><strong>Definir el problema</strong> — ¿Qué queremos que haga? Ej: "Encender una alarma cuando se active el sensor de puerta O el sensor de ventana".</li>
+<li><strong>Crear la tabla de verdad</strong> — Listar todas las combinaciones de entrada y la salida esperada.</li>
+<li><strong>Escribir la expresión booleana</strong> — Usar álgebra de Boole. Para el ejemplo anterior: <code>Alarma = A OR B</code>.</li>
+<li><strong>Seleccionar las compuertas</strong> — Elegir qué compuertas lógicas se necesitan (AND, OR, NOT).</li>
+<li><strong>Dibujar el diagrama</strong> — Conectar las compuertas en el orden correcto.</li>
+<li><strong>Probar</strong> — Verificar que la salida coincida con la tabla de verdad para todas las combinaciones.</li>
+</ol>
+
+<div class="ejemplo"><h4>🔧 Ejemplo práctico</h4><p>Diseñemos un circuito para una <strong>alarma de casa</strong>:</p><p>La alarma debe activarse si:<br>
+- La puerta está abierta (entrada A = 1) <strong>Y</strong> el sensor de movimiento detecta alguien (entrada B = 1)</p>
+<p>Solución: <code>Alarma = A AND B</code> → Necesitamos una compuerta AND.</p>
+<p>Si en cambio queremos: "Alarma si la puerta está abierta <strong>O</strong> la ventana está abierta": <code>Alarma = A OR B</code> → Compuerta OR.</p></div>
+
+<h2>7. Aplicaciones de los circuitos digitales en la vida real</h2>
+<table>
+<tr><th>Dispositivo</th><th>¿Cómo usa circuitos digitales?</th></tr>
+<tr><td><strong>Calculadora</strong></td><td>Recibe números (convertidos a binario), los procesa con compuertas lógicas y muestra el resultado en la pantalla.</td></tr>
+<tr><td><strong>Semáforo inteligente</strong></td><td>Un circuito digital controla los tiempos exactos de cambio de luz: verde → amarillo → rojo.</td></tr>
+<tr><td><strong>Control remoto (TV)</strong></td><td>Cada botón envía un código binario único (secuencia de 0 y 1) que el televisor reconoce e interpreta.</td></tr>
+<tr><td><strong>Teclado de computadora</strong></td><td>Cada tecla genera un código binario específico (código ASCII) que la computadora interpreta para saber qué tecla se presionó.</td></tr>
+<tr><td><strong>Horno microondas</strong></td><td>El teclado numérico y el temporizador usan circuitos digitales para contar los segundos y controlar la cocción.</td></tr>
+<tr><td><strong>Computadoras</strong></td><td>La CPU ejecuta instrucciones que son cadenas de 0 y 1. Cada operación matemática se resuelve con compuertas lógicas.</td></tr>
+<tr><td><strong>Celulares</strong></td><td>Todo lo que hace (llamar, enviar mensajes, usar apps, tomar fotos) son operaciones con millones de 0 y 1.</td></tr>
+</table>
+
+<h2>8. Videos recomendados para aprender más</h2>
 <ul>
-<li><strong>Computadoras:</strong> La CPU ejecuta instrucciones de 0 y 1.</li>
-<li><strong>Celulares:</strong> Cada app, foto o mensaje se guarda en binario.</li>
-<li><strong>Internet:</strong> Los datos viajan como pulsos representando 0 y 1.</li>
-<li><strong>Medicina:</strong> Tomógrafos y monitores convierten señales en datos digitales.</li>
-<li><strong>Autos:</strong> La computadora del auto controla frenos, combustible y bolsas de aire.</li>
-<li><strong>Videojuegos:</strong> Cada gráfico y sonido se reduce a operaciones binarias.</li>
+<li>Busca en YouTube: <strong>"Compuertas lógicas AND OR NOT - Circuitos digitales"</strong></li>
+<li>Busca en YouTube: <strong>"Sistema binario para principiantes"</strong></li>
+<li>Busca en YouTube: <strong>"Cómo funciona un procesador - Circuitos digitales"</strong></li>
 </ul>
 
 <div class="destacado">
-<strong>📌 Resumen:</strong> Un circuito digital trabaja con 0 y 1. Con compuertas AND, OR y NOT se construyen desde calculadoras hasta supercomputadores. El sistema binario es el "idioma" de todos los dispositivos electrónicos.
+<strong>📌 En resumen:</strong> Los circuitos digitales trabajan con solo dos valores (0 y 1). Con tres compuertas básicas (AND, OR, NOT) se pueden construir sistemas tan simples como una alarma o tan complejos como un supercomputador. El sistema binario es el "idioma universal" de todos los dispositivos electrónicos. ¡Ahora ve a la pestaña JUEGO y pon a prueba lo que aprendiste!
 </div>
 </div>
 
-<!-- TAB: JUEGO -->
+<!-- ============ TAB JUEGO ============ -->
 <div class="tab-content juego" id="tabJuego">
 
 <div class="game-header">
@@ -214,7 +277,6 @@ tr:nth-child(even){background:#f5f5f5}
 </div>
 
 <div class="level-selector" id="levelSelector"></div>
-
 <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
 
 <div class="level-info" id="levelInfo">
@@ -227,17 +289,17 @@ tr:nth-child(even){background:#f5f5f5}
 </div>
 </div>
 
-<div class="target-section" id="targetSection">
+<div class="target-section">
 <div class="target-table" id="targetTable"></div>
 <div class="target-desc" id="targetDesc"></div>
 </div>
 
-<div class="workbench" id="workbench">
-<h4>🔧 Área de trabajo — selecciona las compuertas correctas</h4>
+<div class="workbench">
+<h4>🔧 Área de trabajo — haz clic en una compuerta de la paleta para colocarla</h4>
 <div class="circuit-canvas" id="circuitCanvas"></div>
 </div>
 
-<div class="palette" id="palette">
+<div class="palette">
 <div class="palette-item and" data-gate="AND" onclick="selectGate(this)">AND</div>
 <div class="palette-item or" data-gate="OR" onclick="selectGate(this)">OR</div>
 <div class="palette-item not" data-gate="NOT" onclick="selectGate(this)">NOT</div>
@@ -261,65 +323,57 @@ Institución Educativa San Luis — Tecnología e Informática — Grado Noveno 
 </div>
 
 <script>
-// ===== LEVEL DEFINITIONS =====
-const levels = [
+var currentLevel = 0;
+var completed = [true,false,false,false,false];
+var selectedGate = null;
+
+var levels = [
 {
-  id:1, title:"La Compuerta AND", badge:"⭐ Fácil",
+  id:1, title:"La Compuerta AND", badge:"F\u00e1cil",
   desc:"Coloca una compuerta AND. La salida es 1 solo cuando AMBAS entradas son 1.",
   inputs:["A","B"],
-  table:{h:["A","B","Salida"],rows:[
-    [0,0,0],[0,1,0],[1,0,0],[1,1,1]
-  ]},
+  table:{h:["A","B","Salida"],rows:[[0,0,0],[0,1,0],[1,0,0],[1,1,1]]},
   slots:[
     {id:"G1",inputs:[0,1],label:"G1"}
   ],
   solution:["AND"]
 },
 {
-  id:2, title:"La Compuerta OR", badge:"⭐ Fácil",
+  id:2, title:"La Compuerta OR", badge:"F\u00e1cil",
   desc:"Coloca una compuerta OR. La salida es 1 si AL MENOS UNA entrada es 1.",
   inputs:["A","B"],
-  table:{h:["A","B","Salida"],rows:[
-    [0,0,0],[0,1,1],[1,0,1],[1,1,1]
-  ]},
+  table:{h:["A","B","Salida"],rows:[[0,0,0],[0,1,1],[1,0,1],[1,1,1]]},
   slots:[
     {id:"G1",inputs:[0,1],label:"G1"}
   ],
   solution:["OR"]
 },
 {
-  id:3, title:"El Inversor NOT", badge:"⭐⭐ Medio",
+  id:3, title:"El Inversor NOT", badge:"Medio",
   desc:"Coloca una compuerta NOT. Invierte la entrada: si entra 1 sale 0 y viceversa.",
   inputs:["A"],
-  table:{h:["A","Salida"],rows:[
-    [0,1],[1,0]
-  ]},
+  table:{h:["A","Salida"],rows:[[0,1],[1,0]]},
   slots:[
     {id:"G1",inputs:[0],label:"G1"}
   ],
   solution:["NOT"]
 },
 {
-  id:4, title:"Circuito NAND (AND + NOT)", badge:"⭐⭐⭐ Difícil",
-  desc:"Combina una AND y una NOT para crear un circuito NAND. La salida es 1 excepto cuando ambas entradas son 1.",
+  id:4, title:"Circuito NAND (AND + NOT)", badge:"Dif\u00edcil",
+  desc:"Combina una AND y una NOT para crear un circuito NAND. (\u00a1Ojo! La salida de AND va a la entrada de NOT).",
   inputs:["A","B"],
-  table:{h:["A","B","Salida"],rows:[
-    [0,0,1],[0,1,1],[1,0,1],[1,1,0]
-  ]},
+  table:{h:["A","B","Salida"],rows:[[0,0,1],[0,1,1],[1,0,1],[1,1,0]]},
   slots:[
-    {id:"G1",inputs:[0,1],label:"G1"},
-    {id:"G2",inputs:[{from:"G1"}],label:"G2"}
+    {id:"G1",inputs:[0,1],label:"G1 (AND)"},
+    {id:"G2",inputs:[{from:"G1"}],label:"G2 (NOT)"}
   ],
   solution:["AND","NOT"]
 },
 {
-  id:5, title:"Combinación AND + OR", badge:"⭐⭐⭐⭐⭐ Experto",
-  desc:"Último desafío: (A AND B) OR C. Las entradas A y B pasan por AND, ese resultado va a OR junto con C.",
+  id:5, title:"Combinaci\u00f3n AND + OR", badge:"Experto",
+  desc:"(\u00daltimo desaf\u00edo!) A y B pasan por AND, y ese resultado va a OR junto con C.",
   inputs:["A","B","C"],
-  table:{h:["A","B","C","Salida"],rows:[
-    [0,0,0,0],[0,0,1,1],[0,1,0,0],[0,1,1,1],
-    [1,0,0,0],[1,0,1,1],[1,1,0,1],[1,1,1,1]
-  ]},
+  table:{h:["A","B","C","Salida"],rows:[[0,0,0,0],[0,0,1,1],[0,1,0,0],[0,1,1,1],[1,0,0,0],[1,0,1,1],[1,1,0,1],[1,1,1,1]]},
   slots:[
     {id:"G1",inputs:[0,1],label:"G1 (AND)"},
     {id:"G2",inputs:[{from:"G1"},2],label:"G2 (OR)"}
@@ -328,241 +382,239 @@ const levels = [
 }
 ];
 
-let currentLevel = 0;
-let completed = [false,false,false,false,false];
-let selectedGate = null;
-let gateNames = {AND:"AND",OR:"OR",NOT:"NOT"};
-
 function switchTab(tab){
-document.getElementById('tabInfo').style.display=tab==='info'?'block':'none';
-document.getElementById('tabJuego').style.display=tab==='juego'?'block':'none';
-document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-if(tab==='info')document.querySelector('.tab.info').classList.add('active');
-else document.querySelector('.tab.juego').classList.add('active');
-if(tab==='juego')renderLevel(currentLevel);
+var info=document.getElementById('tabInfo');
+var juego=document.getElementById('tabJuego');
+if(tab==='info'){
+info.style.display='block';
+juego.style.display='none';
+document.querySelector('.tab.info').classList.add('active');
+document.querySelector('.tab.juego').classList.remove('active');
+} else {
+info.style.display='none';
+juego.style.display='block';
+document.querySelector('.tab.juego').classList.add('active');
+document.querySelector('.tab.info').classList.remove('active');
+renderLevel(currentLevel);
+}
 }
 
 function selectGate(el){
-document.querySelectorAll('.palette-item').forEach(p=>p.classList.remove('selected'));
+document.querySelectorAll('.palette-item').forEach(function(p){p.classList.remove('selected');});
 el.classList.add('selected');
-selectedGate = el.dataset.gate;
-const slots = document.querySelectorAll('.gate-slot select');
-if(slots.length>0){
-let firstEmpty = null;
-slots.forEach(s=>{if(!s.value)firstEmpty=s;});
-if(firstEmpty){firstEmpty.value=selectedGate;firstEmpty.dispatchEvent(new Event('change'));}
+selectedGate=el.getAttribute('data-gate');
+var slots=document.querySelectorAll('.gate-slot select');
+var firstEmpty=null;
+slots.forEach(function(s){if(!s.value)firstEmpty=s;});
+if(firstEmpty){
+firstEmpty.value=selectedGate;
+var ev=new Event('change',{bubbles:true});
+firstEmpty.dispatchEvent(ev);
 }
 }
 
 function computeGate(gate,inputs){
-if(gate==='AND')return inputs.every(v=>v===1)?1:0;
-if(gate==='OR')return inputs.some(v=>v===1)?1:0;
+if(gate==='AND')return (inputs[0]===1&&inputs[1]===1)?1:0;
+if(gate==='OR')return (inputs[0]===1||inputs[1]===1)?1:0;
 if(gate==='NOT')return inputs[0]===1?0:1;
 return 0;
 }
 
 function renderLevel(idx){
-const level=levels[idx];
+var level=levels[idx];
 if(!level)return;
-completed[0]=true;
-for(let i=1;i<5;i++){
+
+for(var i=1;i<5;i++){
 if(!completed[i-1])completed[i]=false;
 }
 
 updateStars(idx);
 updateProgress();
 
-const sel=document.getElementById('levelSelector');
+var sel=document.getElementById('levelSelector');
 sel.innerHTML='';
-for(let i=0;i<5;i++){
-const btn=document.createElement('button');
+for(var i=0;i<5;i++){
+var btn=document.createElement('button');
 btn.className='level-btn';
-btn.textContent=`Nivel ${i+1}`;
+btn.textContent='Nivel '+(i+1);
 if(i===idx)btn.classList.add('active');
 else if(completed[i])btn.classList.add('completed');
-else if(i===0||completed[i-1])btn.classList.add('active');
+else if(i===0||completed[i-1])btn.classList.remove('locked');
 else btn.classList.add('locked');
-btn.onclick=()=>{if(i===0||completed[i-1])currentLevel=i;renderLevel(currentLevel);};
+(function(levelIdx){
+btn.onclick=function(){
+if(levelIdx===0||completed[levelIdx-1]){
+currentLevel=levelIdx;
+renderLevel(currentLevel);
+}
+};
+})(i);
 sel.appendChild(btn);
 }
 
-document.getElementById('levelTitle').textContent=`Nivel ${level.id}: ${level.title}`;
+document.getElementById('levelTitle').textContent='Nivel '+level.id+': '+level.title;
 document.getElementById('levelBadge').textContent=level.badge;
 document.getElementById('nextLevelBtn').style.display='none';
-document.getElementById('feedback').className='feedback';
-document.getElementById('feedback').innerHTML='';
+var fb=document.getElementById('feedback');
+fb.className='feedback';
+fb.innerHTML='';
 
 renderTarget(level);
 renderWorkbench(level);
 }
 
 function updateStars(idx){
-const stars=document.getElementById('levelStars');
-let html='';
-for(let i=0;i<5;i++){
-if(i<idx)html+=`<span class="star">★</span>`;
-else if(i===idx)html+=class='star'>★</span>`;
-else html+=`<span class="star empty">★</span>`;
+var stars=document.getElementById('levelStars');
+var html='';
+for(var i=0;i<5;i++){
+if(i<idx)html+='<span class="star">\u2605</span>';
+else if(i===idx)html+='<span class="star">\u2605</span>';
+else html+='<span class="star empty">\u2605</span>';
 }
 stars.innerHTML=html;
 }
 
 function updateProgress(){
-const pct=completed.filter(c=>c).length/5*100;
-document.getElementById('progressBar').style.width=pct+'%';
+var count=0;
+for(var i=0;i<5;i++)if(completed[i])count++;
+document.getElementById('progressBar').style.width=(count/5*100)+'%';
 }
 
 function renderTarget(level){
-const tt=document.getElementById('targetTable');
-let html=`<h4>🎯 Tabla de verdad objetivo</h4><table><tr>`;
-level.table.h.forEach(h=>html+=`<th>${h}</th>`);
-html+=`</tr>`;
-level.table.rows.forEach(r=>{
-html+=`<tr>`;
-r.forEach(v=>html+=`<td>${v}</td>`);
-html+=`</tr>`;
+var tt=document.getElementById('targetTable');
+var html='<h4>\uD83C\uDFAF Tabla de verdad objetivo</h4><table><tr>';
+level.table.h.forEach(function(h){html+='<th>'+h+'</th>';});
+html+='</tr>';
+level.table.rows.forEach(function(r){
+html+='<tr>';
+r.forEach(function(v){html+='<td>'+v+'</td>';});
+html+='</tr>';
 });
-html+=`</table>`;
+html+='</table>';
 tt.innerHTML=html;
 
-document.getElementById('targetDesc').innerHTML=`
-<h4>📋 Descripción</h4>
-<p>${level.desc}</p>
-<p style="margin-top:8px;font-size:.85rem;color:#666">
-<strong>Entradas:</strong> ${level.inputs.join(', ')} |
-<strong>Compuertas:</strong> ${level.slots.length}
-</p>`;
+document.getElementById('targetDesc').innerHTML='<h4>\uD83D\uDCCB Descripci\u00F3n</h4><p>'+level.desc+'</p><p style="margin-top:8px;font-size:.85rem;color:#666"><strong>Entradas:</strong> '+level.inputs.join(', ')+' | <strong>Compuertas:</strong> '+level.slots.length+'</p>';
 }
 
 function renderWorkbench(level){
-const canvas=document.getElementById('circuitCanvas');
+var canvas=document.getElementById('circuitCanvas');
 canvas.innerHTML='';
 
-const rowCount=Math.max(level.inputs.length,level.slots.length*2);
-const inputLabels=level.inputs;
-
-// Build input side
-const inputDiv=document.createElement('div');
-inputDiv.className='input-group';
-inputLabels.forEach((label,i)=>{
-const el=document.createElement('div');
-el.style.cssText='padding:4px 0;font-weight:700;font-size:.9rem;background:#e8e8e8;padding:4px 14px;border-radius:6px;font-family:monospace;margin:8px 0';
+var inputDiv=document.createElement('div');
+inputDiv.style.cssText='display:flex;flex-direction:column;align-items:center;gap:6px';
+level.inputs.forEach(function(label){
+var el=document.createElement('div');
+el.className='input-label';
 el.textContent=label;
 inputDiv.appendChild(el);
 });
 canvas.appendChild(inputDiv);
 
-// Wire connector after inputs
-const wireDiv=document.createElement('div');
-wireDiv.className='connector';
-inputLabels.forEach(()=>{
-const w=document.createElement('div');
-w.style.cssText='width:2px;height:20px;background:#555;margin:8px 0';
-wireDiv.appendChild(w);
+var wireCon1=document.createElement('div');
+wireCon1.className='wire-con';
+level.inputs.forEach(function(){
+var w=document.createElement('div');
+w.className='line';
+wireCon1.appendChild(w);
 });
-canvas.appendChild(wireDiv);
+canvas.appendChild(wireCon1);
 
-// Gates
-level.slots.forEach((slot,si)=>{
-const slotDiv=document.createElement('div');
+level.slots.forEach(function(slot,si){
+var slotDiv=document.createElement('div');
 slotDiv.className='gate-slot';
-slotDiv.id=`slot_${si}`;
-
-const nameSpan=document.createElement('span');
+slotDiv.id='slot_'+si;
+var nameSpan=document.createElement('span');
 nameSpan.className='slot-name';
 nameSpan.textContent=slot.label;
 slotDiv.appendChild(nameSpan);
 
-const sel=document.createElement('select');
-sel.id=`gate_${si}`;
-sel.innerHTML=`
-<option value="">—</option>
-<option value="AND">AND</option>
-<option value="OR">OR</option>
-<option value="NOT">NOT</option>`;
+var sel=document.createElement('select');
+sel.id='gate_'+si;
+sel.innerHTML='<option value="">\u2014</option><option value="AND">AND</option><option value="OR">OR</option><option value="NOT">NOT</option>';
+(function(slotDiv){
 sel.onchange=function(){
 if(this.value){
 slotDiv.classList.add('filled');
-const label=slotDiv.querySelector('.gate-label');
-if(label)label.textContent=this.value;
+var lb=slotDiv.querySelector('.gate-label');
+if(lb)lb.textContent=this.value;
 } else {
 slotDiv.classList.remove('filled');
-const label=slotDiv.querySelector('.gate-label');
-if(label)label.textContent='?';
+var lb=slotDiv.querySelector('.gate-label');
+if(lb)lb.textContent='?';
 }
 };
+})(slotDiv);
 slotDiv.appendChild(sel);
-
-const lbl=document.createElement('div');
+var lbl=document.createElement('div');
 lbl.className='gate-label';
 lbl.textContent='?';
 slotDiv.appendChild(lbl);
-
 canvas.appendChild(slotDiv);
 
 if(si<level.slots.length-1){
-const w=document.createElement('div');
-w.style.cssText='display:flex;flex-direction:column;align-items:center;gap:4px';
-const l=document.createElement('div');
-l.style.cssText='width:30px;height:2px;background:#555';
-w.appendChild(l);
-canvas.appendChild(w);
+var arrDiv=document.createElement('div');
+arrDiv.style.cssText='display:flex;flex-direction:column;align-items:center;gap:4px';
+var arrLine=document.createElement('div');
+arrLine.style.cssText='width:24px;height:2px;background:#888';
+arrDiv.appendChild(arrLine);
+var arrText=document.createElement('div');
+arrText.style.cssText='font-size:.65rem;color:#999';
+arrText.textContent='\u2192';
+arrDiv.appendChild(arrText);
+canvas.appendChild(arrDiv);
 }
 });
 
-// Wire to output
-const wireDiv2=document.createElement('div');
-wireDiv2.className='connector';
-for(let i=0;i<level.slots.length;i++){
-const w=document.createElement('div');
-w.style.cssText='width:2px;height:20px;background:#555;margin:8px 0';
-wireDiv2.appendChild(w);
+var wireCon2=document.createElement('div');
+wireCon2.className='wire-con';
+for(var i=0;i<Math.max(1,level.slots.length);i++){
+var w=document.createElement('div');
+w.className='line';
+wireCon2.appendChild(w);
 }
-canvas.appendChild(wireDiv2);
+canvas.appendChild(wireCon2);
 
-// Output
-const outDiv=document.createElement('div');
+var outDiv=document.createElement('div');
 outDiv.className='output-box';
 outDiv.id='outputBox';
-outDiv.textContent='Salida: ?';
+outDiv.textContent='\u2713';
 canvas.appendChild(outDiv);
 
-// Auto-fill if coming back to completed level
 if(completed[idx]){
-const sol=level.solution;
-level.slots.forEach((slot,si)=>{
-const selEl=document.getElementById(`gate_${si}`);
+var sol=level.solution;
+level.slots.forEach(function(slot,si){
+var selEl=document.getElementById('gate_'+si);
 if(selEl&&sol[si]){selEl.value=sol[si];selEl.dispatchEvent(new Event('change'));}
 });
 }
 }
 
 function getGateValues(level){
-const vals=[];
-level.slots.forEach((slot,si)=>{
-const sel=document.getElementById(`gate_${si}`);
+var vals=[];
+level.slots.forEach(function(slot,si){
+var sel=document.getElementById('gate_'+si);
 vals.push(sel?sel.value:'');
 });
 return vals;
 }
 
 function simulateCircuit(gates,level){
-const rows=level.table.rows;
-const results=[];
+var rows=level.table.rows;
+var results=[];
 
-rows.forEach(row=>{
-const inputVals=row.slice(0,level.inputs.length);
-const gateOutputs={};
-let error=false;
+rows.forEach(function(row){
+var inputVals=row.slice(0,level.inputs.length);
+var gateOutputs={};
+var error=false;
 
-level.slots.forEach((slot,si)=>{
-const gType=gates[si];
+level.slots.forEach(function(slot,si){
+var gType=gates[si];
 if(!gType){error=true;return;}
-const inps=[];
-slot.inputs.forEach(inp=>{
+var inps=[];
+slot.inputs.forEach(function(inp){
 if(typeof inp==='number')inps.push(inputVals[inp]);
 else if(inp.from){
-const srcIdx=level.slots.findIndex(s=>s.id===inp.from);
+var srcIdx=level.slots.findIndex(function(s){return s.id===inp.from;});
 if(srcIdx>=0&&gateOutputs[inp.from]!==undefined)
 inps.push(gateOutputs[inp.from]);
 else inps.push(0);
@@ -572,69 +624,73 @@ gateOutputs[slot.id]=computeGate(gType,inps);
 });
 
 if(error){results.push(null);return;}
-const finalOutput=gateOutputs[level.slots[level.slots.length-1].id];
-results.push(finalOutput);
+var lastSlot=level.slots[level.slots.length-1];
+results.push(gateOutputs[lastSlot.id]);
 });
 return results;
 }
 
 function testCircuit(){
-const level=levels[currentLevel];
-const gates=getGateValues(level);
-const fb=document.getElementById('feedback');
-const nextBtn=document.getElementById('nextLevelBtn');
+var level=levels[currentLevel];
+var gates=getGateValues(level);
+var fb=document.getElementById('feedback');
+var nextBtn=document.getElementById('nextLevelBtn');
 
-// Check all gates are filled
-let empty=false;
-gates.forEach(g=>{if(!g)empty=true;});
+var empty=false;
+gates.forEach(function(g){if(!g)empty=true;});
 
 if(empty){
 fb.className='feedback error show';
-fb.innerHTML=`<h4>❌ Faltan compuertas</h4><p>Selecciona todas las compuertas antes de probar. Haz clic en una compuerta de la paleta y se colocará automáticamente en el primer espacio vacío.</p>`;
+fb.innerHTML='<h4>\u274C Faltan compuertas</h4><p>Selecciona todas las compuertas antes de probar. Haz clic en una compuerta de la paleta (AND, OR o NOT) para colocarla en un espacio vac\u00EDo.</p>';
 return;
 }
 
-const results=simulateCircuit(gates,level);
-const expected=level.table.rows.map(r=>r[r.length-1]);
+var results=simulateCircuit(gates,level);
+var expected=level.table.rows.map(function(r){return r[r.length-1];});
 
-let correct=true;
-results.forEach((r,i)=>{
+var correct=true;
+results.forEach(function(r,i){
 if(r===null||r!==expected[i])correct=false;
 });
 
 if(correct){
 fb.className='feedback success show';
-fb.innerHTML=`<h4>✅ ¡Correcto!</h4><p>El circuito funciona exactamente como la tabla de verdad objetivo.</p>`;
+fb.innerHTML='<h4>\u2705 \u00a1Correcto!</h4><p>El circuito funciona exactamente como la tabla de verdad objetivo.</p>';
 completed[currentLevel]=true;
 updateProgress();
 updateStars(currentLevel);
 if(currentLevel<4){
 nextBtn.style.display='inline-block';
 } else {
-nextBtn.innerHTML='🏆 ¡Completaste todos los niveles!';
+nextBtn.innerHTML='\uD83C\uDFC6 \u00a1Completaste todos los niveles!';
 nextBtn.style.display='inline-block';
-nextBtn.onclick=()=>{
+nextBtn.onclick=function(){
 fb.className='feedback success show';
-fb.innerHTML=`<h4>🏆 ¡Felicidades!</h4><p>Completaste los 5 niveles del Circuit Builder. Ya sabes cómo funcionan las compuertas lógicas AND, OR y NOT, y cómo combinarlas para crear circuitos digitales.</p>`;
+fb.innerHTML='<h4>\uD83C\uDFC6 \u00a1Felicidades!</h4><p>Completaste los 5 niveles de Circuit Builder. Ya sabes c\u00F3mo funcionan las compuertas AND, OR y NOT, y c\u00F3mo combinarlas para crear circuitos digitales. \u00a1Sigue practicando!</p>';
 nextBtn.style.display='none';
 };
 }
 } else {
 fb.className='feedback error show';
-let details='';
-results.forEach((r,i)=>{
+var details='';
+results.forEach(function(r,i){
 if(r===null||r!==expected[i]){
-details+=`${level.table.h.slice(0,-1).map((h,ji)=>`${h}=${level.table.rows[i][ji]}`).join(', ')} → esperado: <strong>${expected[i]}</strong>, obtuviste: <strong>${r!==null?r:'—'}</strong><br>`;
+var inputStr='';
+for(var j=0;j<level.inputs.length;j++){
+if(j>0)inputStr+=', ';
+inputStr+=level.table.h[j]+'='+level.table.rows[i][j];
+}
+details+=inputStr+' \u2192 esperado: <strong>'+expected[i]+'</strong>, obtuviste: <strong>'+(r!==null?r:'\u2014')+'</strong><br>';
 }
 });
-fb.innerHTML=`<h4>❌ Incorrecto</h4><p>Revisa las compuertas que seleccionaste. La tabla no coincide en estas filas:</p><p>${details}</p><p>💡 <strong>Pista:</strong> Revisa la tabla de verdad objetivo y piensa qué compuerta produce esa salida.</p>`;
+fb.innerHTML='<h4>\u274C Incorrecto</h4><p>Revisa las compuertas. La tabla no coincide en estas filas:</p><p>'+details+'</p><p>\uD83D\uDCA1 <strong>Pista:</strong> Revisa la tabla de verdad y piensa qu\u00E9 compuerta produce esa salida.</p>';
 }
 }
 
 function resetLevel(){
-const level=levels[currentLevel];
-level.slots.forEach((slot,si)=>{
-const sel=document.getElementById(`gate_${si}`);
+var level=levels[currentLevel];
+level.slots.forEach(function(slot,si){
+var sel=document.getElementById('gate_'+si);
 if(sel){sel.value='';sel.dispatchEvent(new Event('change'));}
 });
 document.getElementById('feedback').className='feedback';
@@ -649,8 +705,6 @@ renderLevel(currentLevel);
 }
 }
 
-// Init
-completed[0]=true;
 renderLevel(0);
 </script>
 </body>
