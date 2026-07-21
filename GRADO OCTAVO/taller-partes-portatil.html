@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laboratorio: Partes del Portátil - Grado 8°</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a1a2e;padding:20px}
+.container{max-width:1000px;margin:0 auto}
+.tabs{display:flex;gap:4px;margin-bottom:0}
+.tab{padding:14px 24px;border-radius:12px 12px 0 0;cursor:pointer;font-weight:600;font-size:1rem;border:none;transition:all .2s}
+.tab.guia{background:#1a1a2e;color:#fff}
+.tab.guia.active{background:#2b6cb0}
+.tab.lab{background:#38a169;color:#fff}
+.tab.lab.active{background:#2f855a}
+.tab:hover{transform:translateY(-2px)}
+.tab-content{display:none;padding:30px;border-radius:0 12px 12px 12px}
+.tab-content.guia{background:#fff;display:block}
+.tab-content.lab{background:#fff}
+h2{font-size:1.5rem;margin:28px 0 12px;color:#1a1a2e;border-bottom:2px solid #e0e0e0;padding-bottom:5px}
+h3{font-size:1.15rem;margin:18px 0 8px;color:#2d2d5e}
+p{margin-bottom:10px;text-align:justify}
+ul,ol{margin:8px 0 12px 22px}
+li{margin-bottom:4px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem}
+th,td{border:1px solid #999;padding:6px 10px;text-align:center}
+th{background:#1a1a2e;color:#fff;font-weight:600}
+tr:nth-child(even){background:#f5f5f5}
+.destacado{background:#f0f4ff;border-left:4px solid #1a1a2e;padding:12px 16px;margin:12px 0;border-radius:0 8px 8px 0}
+.comp-card{background:#f0f7ff;border:1px solid #cce5ff;border-radius:8px;padding:12px;margin:10px 0}
+.comp-card h4{color:#2b6cb0;font-size:1rem;margin-bottom:4px}
+
+.game-header{text-align:center;margin-bottom:20px}
+.game-header h2{font-size:1.8rem;border:none;color:#2f855a;margin-bottom:4px}
+.game-header p{text-align:center;color:#666;font-size:.95rem}
+.level-info{background:linear-gradient(135deg,#38a169,#2f855a);color:#fff;padding:16px 24px;border-radius:12px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.level-info h3{margin:0;color:#fff;font-size:1.3rem}
+.level-badge{background:rgba(255,255,255,.2);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600}
+.stars{display:flex;gap:4px;font-size:1.5rem}
+.star{color:#ffd700;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+.star.empty{color:rgba(255,255,255,.25)}
+
+.lab-area{background:#fafbfc;border:2px solid #ddd;border-radius:12px;padding:24px;margin-bottom:16px;min-height:300px}
+
+.workbench{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.laptop-frame{position:relative;width:350px;height:280px;background:linear-gradient(145deg,#e8ecf0,#d5dae0);border-radius:16px;border:3px solid #999;padding:15px;flex-shrink:0}
+.laptop-screen{background:#1a1a2e;border-radius:8px 8px 0 0;height:90px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.15);font-size:2rem;font-weight:700}
+.laptop-base{background:#c0c5cc;border-radius:0 0 8px 8px;padding:8px;min-height:130px;display:flex;flex-direction:column;gap:6px}
+.slot-row{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.comp-slot{width:70px;height:50px;border:2px dashed #888;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,.5);font-size:.55rem;color:#666;cursor:pointer;transition:all .2s;position:relative}
+.comp-slot.filled{border-style:solid;border-color:#2b6cb0;background:#e8f0fe;cursor:default}
+.comp-slot.filled-correct{border-color:#38a169;background:#f0fff4}
+.comp-slot.filled-wrong{border-color:#e53e3e;background:#fff5f5}
+.comp-slot .slot-label{position:absolute;top:-14px;font-size:.6rem;font-weight:600;color:#555;white-space:nowrap}
+.comp-slot .part-icon{font-size:1.1rem;line-height:1}
+.comp-slot .part-name{font-size:.55rem;color:#2b6cb0;font-weight:600;text-align:center;line-height:1.1}
+
+.task-desc{background:#f0faf0;border-left:4px solid #38a169;padding:12px 16px;margin-bottom:16px;border-radius:0 8px 8px 0}
+.task-desc h4{color:#2f855a;font-size:1rem;margin-bottom:4px}
+.task-desc p{text-align:left;font-size:.9rem;margin:0}
+
+.palette{display:flex;gap:8px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
+.palette-item{padding:10px 16px;border-radius:8px;cursor:pointer;font-weight:600;font-size:.85rem;border:2px solid transparent;transition:all .2s;text-align:center;min-width:80px;background:#fff}
+.palette-item:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.12)}
+.palette-item.selected{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.2);border-style:solid}
+
+.controls{display:flex;gap:12px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
+.btn{padding:12px 32px;border-radius:8px;border:none;font-weight:600;font-size:1rem;cursor:pointer;transition:all .2s}
+.btn-primary{background:#2b6cb0;color:#fff}
+.btn-primary:hover{background:#2c5282;transform:translateY(-1px)}
+.btn-success{background:#38a169;color:#fff}
+.btn-success:hover{background:#2f855a;transform:translateY(-1px)}
+.btn-danger{background:#e53e3e;color:#fff}
+.btn-danger:hover{background:#c53030;transform:translateY(-1px)}
+.btn-warning{background:#dd6b20;color:#fff}
+.btn-warning:hover{background:#c05621;transform:translateY(-1px)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn-sm{padding:8px 16px;font-size:.85rem}
+
+.feedback{margin-top:16px;padding:20px;border-radius:12px;display:none}
+.feedback.show{display:block}
+.feedback.success{background:#c6f6d5;color:#22543d;border:2px solid #38a169}
+.feedback.error{background:#fed7d7;color:#822727;border:2px solid #e53e3e}
+.feedback h4{font-size:1.1rem;margin-bottom:6px}
+.feedback p{text-align:left;margin-bottom:4px}
+
+.progress-wrap{background:#e2e8f0;border-radius:10px;height:10px;margin-bottom:20px;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,#38a169,#2f855a);border-radius:10px;transition:width .5s ease;width:0}
+
+.level-selector{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
+.level-btn{padding:8px 18px;border-radius:8px;border:2px solid #ddd;background:#fff;cursor:pointer;font-weight:600;font-size:.85rem;transition:all .2s}
+.level-btn:hover{transform:translateY(-1px)}
+.level-btn.completed{border-color:#38a169;background:#f0fff4;color:#38a169}
+.level-btn.active{border-color:#38a169;background:#f0fff4;color:#2f855a;transform:translateY(-2px)}
+.level-btn.locked{border-color:#e2e8f0;background:#f7fafc;color:#a0aec0;cursor:not-allowed;transform:none}
+
+.comp-selector{max-width:600px;margin:0 auto}
+.comp-selector select{width:100%;padding:10px;border:2px solid #ddd;border-radius:8px;font-size:1rem;margin-bottom:10px;background:#fff;cursor:pointer}
+.comp-selector select:focus{border-color:#38a169;outline:none}
+.option-desc{background:#f9f9f9;padding:12px;border-radius:8px;margin-bottom:8px;font-size:.9rem;min-height:40px;text-align:center;color:#666}
+.matching-area{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.match-col{flex:1;min-width:200px;display:flex;flex-direction:column;gap:8px}
+.match-item{padding:10px 14px;border-radius:8px;border:2px solid #ddd;background:#fff;cursor:pointer;text-align:center;font-size:.9rem;transition:all .2s;font-weight:500}
+.match-item:hover{border-color:#38a169;transform:translateY(-1px)}
+.match-item.selected{border-color:#2b6cb0;background:#ebf4ff}
+.match-item.matched{border-color:#38a169;background:#f0fff4;cursor:default;opacity:.7}
+footer{text-align:center;margin-top:30px;padding:16px 0;border-top:1px solid #ddd;font-size:.85rem;color:#888}
+@media(max-width:600px){
+.tabs .tab{padding:10px 16px;font-size:.85rem}
+.tab-content{padding:16px}
+.laptop-frame{width:100%;height:auto}
+.comp-slot{width:60px;height:44px;font-size:.5rem}
+.workbench{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="tabs">
+<button class="tab guia active" onclick="switchTab('guia')">📖 Guía de Estudio</button>
+<button class="tab lab" onclick="switchTab('lab')">🔧 Laboratorio</button>
+</div>
+
+<!-- ============ TAB GUÍA ============ -->
+<div class="tab-content guia" id="tabGuia">
+<div class="destacado" style="margin-bottom:20px">
+<strong>🏫 Institución Educativa San Luis — Grado Octavo — Tecnología e Informática</strong>
+</div>
+
+<h2>1. ¿Qué es un portátil?</h2>
+<p>Un <strong>portátil</strong> (laptop o notebook) es un computador que puedes llevar a cualquier lado. A diferencia del computador de escritorio, el portátil tiene todo integrado: pantalla, teclado, batería y los componentes internos están en un solo cuerpo compacto. Su <strong>mayor ventaja</strong> es que puedes usarlo sin estar conectado a la corriente gracias a su batería recargable.</p>
+
+<div class="destacado"><strong>💡 Idea clave:</strong> El portátil es como un "computador de escritorio en miniatura". Todos sus componentes están diseñados para ocupar poco espacio, consumir poca energía y soportar el movimiento.</div>
+
+<h2>2. Partes externas</h2>
+<p>Antes de abrir un portátil, es importante conocer sus partes externas:</p>
+<ul>
+<li><strong>Pantalla:</strong> Muestra la información. Usa tecnología LED o LCD. El tamaño se mide en pulgadas (11 a 17 pulgadas).</li>
+<li><strong>Teclado:</strong> Integrado al cuerpo. Sus teclas tienen recorrido corto para ahorrar espacio.</li>
+<li><strong>Touchpad:</strong> Reemplaza al mouse. Es una superficie táctil con dos botones (clic izquierdo y derecho).</li>
+<li><strong>Puertos:</strong> USB (para conectar mouse, memoria, impresora), HDMI (para conectar a un TV o monitor externo), conector de audio (audífonos), ranura para tarjetas SD.</li>
+<li><strong>Cargador (adaptador de corriente):</strong> Transforma la corriente de la pared (110V/220V) al voltaje que necesita el portátil.</li>
+<li><strong>Cámara web y micrófono:</strong> Para videollamadas y conferencias.</li>
+<li><strong>Altavoces:</strong> Parlantes pequeños integrados en la carcasa.</li>
+</ul>
+
+<h2>3. Componentes internos (el corazón del portátil)</h2>
+
+<div class="comp-card">
+<h4>🧠 3.1 Procesador (CPU)</h4>
+<p><strong>¿Qué es?</strong> Es el "cerebro" del portátil. Un chip que procesa todas las instrucciones.</p>
+<p><strong>Analogía:</strong> Es como el chef de una cocina. Recibe los ingredientes (datos), los procesa y entrega el plato preparado (resultado).</p>
+<p><strong>Marcas:</strong> Intel (Core i3, i5, i7, i9) y AMD (Ryzen 3, 5, 7, 9). Su velocidad se mide en GHz.</p>
+</div>
+
+<div class="comp-card">
+<h4>📋 3.2 Placa madre (Motherboard)</h4>
+<p><strong>¿Qué es?</strong> Es la "columna vertebral" del portátil. Una placa de circuito impreso que conecta todos los componentes entre sí.</p>
+<p><strong>Analogía:</strong> Es como el sistema de carreteras de una ciudad. Sin ella, los componentes no podrían comunicarse.</p>
+</div>
+
+<div class="comp-card">
+<h4>📝 3.3 Memoria RAM</h4>
+<p><strong>¿Qué es?</strong> La memoria de trabajo temporal. Guarda la información que el portátil está usando en ese momento. Al apagar el equipo, la RAM se borra.</p>
+<p><strong>Analogía:</strong> Es como tu escritorio de estudio. Mientras más grande sea, más libros puedes tener abiertos al mismo tiempo.</p>
+<p><strong>Capacidad:</strong> 4 GB (básico), 8 GB (recomendado), 16 GB (para juegos y edición).</p>
+</div>
+
+<div class="comp-card">
+<h4>💾 3.4 Disco de almacenamiento (HDD o SSD)</h4>
+<p><strong>¿Qué es?</strong> Es la "memoria a largo plazo". Aquí se guardan todos tus archivos y programas.</p>
+<p><strong>Tipos:</strong></p>
+<ul>
+<li><strong>HDD:</strong> Tiene un disco que gira y un brazo que lee los datos. Es más lento pero más barato y de mayor capacidad.</li>
+<li><strong>SSD:</strong> No tiene partes móviles, solo chips de memoria. Es mucho más rápido, silencioso y resistente a golpes.</li>
+</ul>
+<p><strong>Analogía:</strong> El HDD es como un archivador grande donde buscar un documento toma tiempo. El SSD es un archivador electrónico que encuentra todo al instante.</p>
+</div>
+
+<div class="comp-card">
+<h4>🎮 3.5 Tarjeta gráfica (GPU)</h4>
+<p><strong>¿Qué es?</strong> El componente encargado de generar las imágenes que ves en la pantalla.</p>
+<p><strong>Tipos:</strong></p>
+<ul>
+<li><strong>Integrada:</strong> Está dentro del procesador. Suficiente para tareas normales (ver videos, Office, navegar).</li>
+<li><strong>Dedicada:</strong> Es un chip separado con su propia memoria. Necesaria para juegos, edición de video y diseño 3D.</li>
+</ul>
+</div>
+
+<div class="comp-card">
+<h4>🔋 3.6 Batería</h4>
+<p><strong>¿Qué es?</strong> La fuente de energía que permite usar el portátil sin estar conectado a la corriente.</p>
+<p><strong>¿Cómo funciona?</strong> Usa celdas de litio (Li-ion o Li-Po) que almacenan energía química y la convierten en electricidad. Su capacidad se mide en Wh o mAh.</p>
+<p><strong>Vida útil:</strong> 300 a 500 ciclos de carga (aproximadamente 2 a 4 años).</p>
+</div>
+
+<div class="comp-card">
+<h4>🌡️ 3.7 Sistema de refrigeración</h4>
+<p><strong>¿Qué es?</strong> El sistema que evita que el portátil se sobrecaliente.</p>
+<p><strong>Componentes:</strong> Ventiladores (extraen el aire caliente), Heatpipes (tubos de cobre que llevan el calor al ventilador) y Disipadores (piezas metálicas con aletas que irradian el calor).</p>
+<p><strong>Analogía:</strong> Es como el radiador de un carro. Sin refrigeración, el motor (procesador) se sobrecalienta y se daña.</p>
+</div>
+
+<div class="comp-card">
+<h4>📶 3.8 Tarjeta de red inalámbrica (Wi-Fi y Bluetooth)</h4>
+<p><strong>¿Qué es?</strong> Una pequeña tarjeta que permite conectarte a internet sin cables y usar dispositivos Bluetooth (mouse, audífonos, parlantes).</p>
+<p><strong>Estándares:</strong> Wi-Fi 5, Wi-Fi 6 (más rápido y estable), Bluetooth 5.0+.</p>
+</div>
+
+<h2>4. ¿Cómo funciona todo en conjunto?</h2>
+<ol>
+<li><strong>Al encender:</strong> La batería envía energía a la placa madre.</li>
+<li><strong>La placa madre activa la CPU</strong> y carga el sistema operativo desde el disco de almacenamiento hacia la RAM.</li>
+<li><strong>El sistema operativo</strong> se carga en la RAM para que el procesador pueda acceder a él rápidamente.</li>
+<li><strong>Cuando abres un programa</strong>, el procesador lee las instrucciones desde el disco, las pasa a la RAM y las ejecuta.</li>
+<li><strong>La GPU</strong> procesa las imágenes y las envía a la pantalla.</li>
+<li><strong>La refrigeración</strong> mantiene la temperatura estable mientras todo funciona.</li>
+<li><strong>Al apagar</strong>, la RAM se borra pero el disco guarda todo permanentemente.</li>
+</ol>
+
+<div class="destacado"><strong>📌 En resumen:</strong> La CPU piensa, la RAM trabaja, el disco guarda, la placa madre conecta, la GPU dibuja, la batería alimenta y la refrigeración enfría. Todos trabajan juntos. ¡Ahora ve al LABORATORIO y pon a prueba lo que aprendiste!</div>
+</div>
+
+<!-- ============ TAB LABORATORIO ============ -->
+<div class="tab-content lab" id="tabLab">
+
+<div class="game-header">
+<h2>🔧 Laboratorio de Partes del Portátil</h2>
+<p>Arma, empareja y verifica los componentes internos de un portátil. ¡Supera los 5 niveles!</p>
+</div>
+
+<div class="level-selector" id="levelSelector"></div>
+<div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+<div class="level-info" id="levelInfo">
+<div>
+<h3 id="levelTitle">Nivel 1: Conoce los Componentes</h3>
+<span class="level-badge" id="levelBadge">Fácil</span>
+</div>
+<div class="stars" id="levelStars">
+<span class="star">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span>
+</div>
+</div>
+
+<div class="task-desc" id="taskDesc">
+<h4>📋 Tarea</h4>
+<p id="taskText">Selecciona el componente correcto según la descripción.</p>
+</div>
+
+<div class="lab-area" id="labArea">
+<!-- Rendered by JS -->
+</div>
+
+<div class="controls">
+<button class="btn btn-primary" onclick="testLevel()">✅ Verificar</button>
+<button class="btn btn-danger" onclick="resetLevel()">🔄 Reiniciar</button>
+</div>
+
+<div class="feedback" id="feedback"></div>
+
+<div style="text-align:center;margin-top:12px">
+<button class="btn btn-success" id="nextLevelBtn" style="display:none" onclick="nextLevel()">➡️ Siguiente Nivel</button>
+</div>
+</div>
+
+<footer>
+Institución Educativa San Luis — Tecnología e Informática — Grado Octavo — 2026
+</footer>
+</div>
+
+<script>
+// ============================
+// POOL DE NIVELES
+// ============================
+var COMPONENTS = {
+  cpu: { name:"CPU (Procesador)", icon:"🧠", desc:"El cerebro del portátil. Procesa todas las instrucciones." },
+  ram: { name:"Memoria RAM", icon:"📝", desc:"Memoria de trabajo temporal. Se borra al apagar." },
+  hdd: { name:"Disco HDD", icon:"💿", desc:"Disco mecánico de almacenamiento. Más lento pero mayor capacidad." },
+  ssd: { name:"Disco SSD", icon:"💾", desc:"Disco de estado sólido. Más rápido, silencioso y resistente." },
+  gpu: { name:"Tarjeta Gráfica (GPU)", icon:"🎮", desc:"Genera y procesa las imágenes que ves en la pantalla." },
+  motherboard: { name:"Placa Madre", icon:"📋", desc:"Conecta y comunica todos los componentes entre sí." },
+  battery: { name:"Batería", icon:"🔋", desc:"Fuente de energía que permite usar el portátil sin corriente." },
+  cooling: { name:"Sistema de Refrigeración", icon:"🌡️", desc:"Ventiladores y heatpipes que evitan el sobrecalentamiento." },
+  wifi: { name:"Tarjeta Wi-Fi/Bluetooth", icon:"📶", desc:"Permite conectarse a internet y dispositivos inalámbricos." }
+};
+
+var levelPool = [];
+
+// --- FÁCIL (Nivel 1): Identificar componente por descripción ---
+function makeEasyLevel(id, compKey, extraDesc) {
+  var c = COMPONENTS[compKey];
+  return {
+    diff:1, title:"Conoce los Componentes", badge:"Fácil",
+    desc: extraDesc || c.desc,
+    compKey: compKey,
+    compName: c.name,
+    compIcon: c.icon,
+    type:"identify",
+    choices: shuffleArray(["CPU (Procesador)","Memoria RAM","Disco HDD","Disco SSD","Tarjeta Gráfica (GPU)","Placa Madre","Batería","Sistema de Refrigeración","Tarjeta Wi-Fi/Bluetooth"]),
+    answer: c.name
+  };
+}
+
+levelPool.push(makeEasyLevel(1,"cpu","Es el cerebro del portátil. ¿Qué componente soy?"));
+levelPool.push(makeEasyLevel(2,"ram","Guardo información temporal mientras el portátil está encendido. Al apagarse, me borro. ¿Qué soy?"));
+levelPool.push(makeEasyLevel(3,"ssd","Soy un tipo de disco de almacenamiento, no tengo partes móviles y soy muy rápido. ¿Qué soy?"));
+levelPool.push(makeEasyLevel(4,"hdd","Tengo un disco que gira y un brazo que lee datos. Soy más lento pero de gran capacidad. ¿Qué soy?"));
+levelPool.push(makeEasyLevel(5,"gpu,","Soy la encargada de generar las imágenes en la pantalla. ¿Qué componente soy?"));
+levelPool.push(makeEasyLevel(6,"motherboard","Conecto todos los componentes del portátil. Sin mí, nada se comunicaría. ¿Qué soy?"));
+levelPool.push(makeEasyLevel(7,"battery","Almaceno energía para que el portátil funcione sin estar conectado a la corriente. ¿Qué soy?"));
+levelPool.push(makeEasyLevel(8,"cooling","Ventiladores, heatpipes y disipadores son parte de mí. Evito que el portátil se sobrecaliente. ¿Qué soy?"));
+
+// --- MEDIO (Nivel 2): Arrastrar componente a su lugar en el diagrama ---
+levelPool.push({
+  diff:2, title:"Ubica los Componentes", badge:"Medio",
+  desc:"Arrastra cada componente al lugar correcto dentro del portátil.",
+  type:"place",
+  slots:[
+    {id:"slot_cpu",label:"CPU",icon:"🧠",answer:"cpu",top:true},
+    {id:"slot_ram",label:"RAM",icon:"📝",answer:"ram",top:true},
+    {id:"slot_ssd",label:"SSD",icon:"💾",answer:"ssd",top:false},
+    {id:"slot_gpu",label:"GPU",icon:"🎮",answer:"gpu",top:false},
+    {id:"slot_battery",label:"BATERÍA",icon:"🔋",answer:"battery",top:false}
+  ],
+  palette:shuffleArray(["cpu","ram","ssd","gpu","battery"]),
+  paletteLabels:{cpu:"CPU",ram:"RAM",ssd:"SSD",gpu:"GPU",battery:"Batería"},
+  paletteIcons:{cpu:"🧠",ram:"📝",ssd:"💾",gpu:"🎮",battery:"🔋"}
+});
+
+levelPool.push({
+  diff:2, title:"Ubica los Componentes II", badge:"Medio",
+  desc:"Coloca cada componente en su posición correcta dentro del portátil.",
+  type:"place",
+  slots:[
+    {id:"slot_motherboard",label:"PLACA",icon:"📋",answer:"motherboard",top:true},
+    {id:"slot_cpu2",label:"CPU",icon:"🧠",answer:"cpu",top:true},
+    {id:"slot_hdd",label:"HDD",icon:"💿",answer:"hdd",top:false},
+    {id:"slot_cooling",label:"VENT.",icon:"🌡️",answer:"cooling",top:false},
+    {id:"slot_wifi",label:"Wi-Fi",icon:"📶",answer:"wifi",top:false}
+  ],
+  palette:shuffleArray(["motherboard","cpu","hdd","cooling","wifi"]),
+  paletteLabels:{motherboard:"Placa Madre",cpu:"CPU",hdd:"HDD",cooling:"Refrigeración",wifi:"Wi-Fi"},
+  paletteIcons:{motherboard:"📋",cpu:"🧠",hdd:"💿",cooling:"🌡️",wifi:"📶"}
+});
+
+// --- DIFÍCIL (Nivel 3): Elegir componentes para un propósito ---
+levelPool.push({
+  diff:3, title:"Arma un Portátil para...", badge:"Difícil",
+  desc:"Debes armar un portátil para un estudiante que edita video y juega. ¿Cuáles componentes necesita?",
+  type:"select",
+  needed:["cpu","gpu","ram","ssd","cooling"],
+  allComps:["cpu","ram","hdd","ssd","gpu","battery","cooling"],
+  labels:{cpu:"CPU rápida (i7/i9)",ram:"16 GB RAM",hdd:"Disco HDD 1TB",ssd:"Disco SSD 500GB",gpu:"GPU Dedicada",battery:"Batería 60Wh",cooling:"Refrigeración avanzada"}
+});
+
+levelPool.push({
+  diff:3, title:"Arma un Portátil para...", badge:"Difícil",
+  desc:"Arma un portátil básico para un estudiante que solo usa Office e internet. ¿Qué necesita?",
+  type:"select",
+  needed:["cpu","ram","hdd","battery","wifi"],
+  allComps:["cpu","ram","hdd","ssd","gpu","battery","wifi","cooling"],
+  labels:{cpu:"CPU básica (i3/Ryzen 3)",ram:"4 GB RAM",hdd:"Disco HDD 500GB",ssd:"Disco SSD 128GB",gpu:"GPU Integrada",battery:"Batería 40Wh",wifi:"Wi-Fi 5",cooling:"Refrigeración estándar"}
+});
+
+// --- MUY DIFÍCIL (Nivel 4): Encontrar el componente incorrecto ---
+levelPool.push({
+  diff:4, title:"Encuentra el Error", badge:"Muy Difícil",
+  desc:"Este portátil tiene un componente incorrecto para la tarea indicada. ¿Cuál es?",
+  type:"find-error",
+  scenario:"Portátil para edición de video profesional",
+  wrongIndex:2,
+  parts:[
+    {key:"cpu",name:"Intel Core i9", ok:true},
+    {key:"ram",name:"32 GB RAM", ok:true},
+    {key:"hdd",name:"Disco HDD 5400 RPM (lento)", ok:false},
+    {key:"gpu",name:"NVIDIA RTX 3060", ok:true},
+    {key:"cooling",name:"Refrigeración líquida", ok:true}
+  ],
+  allParts:["cpu","ram","hdd","ssd","gpu","cooling"]
+});
+
+levelPool.push({
+  diff:4, title:"Encuentra el Error II", badge:"Muy Difícil",
+  desc:"Este portátil tiene un componente incorrecto. ¿Cuál debe reemplazarse?",
+  type:"find-error",
+  wrongIndex:1,
+  scenario:"Portátil para juegos modernos",
+  parts:[
+    {key:"cpu",name:"Intel Core i5", ok:true},
+    {key:"ram",name:"4 GB RAM (insuficiente)", ok:false},
+    {key:"ssd",name:"SSD 512GB", ok:true},
+    {key:"gpu",name:"NVIDIA GTX 1650", ok:true},
+    {key:"battery",name:"Batería 50Wh", ok:true}
+  ],
+  allParts:["cpu","ram","ssd","gpu","battery"]
+});
+
+// --- EXPERTO (Nivel 5): Ensamblaje completo ---
+levelPool.push({
+  diff:5, title:"Ensamblaje Completo", badge:"Experto",
+  desc:"Ensambla el portátil paso a paso. Selecciona el componente correcto para cada paso.",
+  type:"sequence",
+  steps:[
+    {id:0,text:"Paso 1: ¿Qué componente se instala primero en la placa madre?",answer:"cpu",options:["cpu","ram","ssd","battery"]},
+    {id:1,text:"Paso 2: ¿Qué memoria se coloca para que el sistema sea rápido?",answer:"ram",options:["hdd","ram","gpu","wifi"]},
+    {id:2,text:"Paso 3: ¿Qué disco de almacenamiento es más rápido?",answer:"ssd",options:["hdd","ssd","cooling","battery"]},
+    {id:3,text:"Paso 4: ¿Qué componente permite jugar y editar video?",answer:"gpu",options:["cpu","gpu","wifi","battery"]},
+    {id:4,text:"Paso 5: ¿Qué sistema evita el sobrecalentamiento?",answer:"cooling",options:["cooling","battery","wifi","hdd"]}
+  ]
+});
+
+levelPool.push({
+  diff:5, title:"Diagnóstico Técnico", badge:"Experto",
+  desc:"Un portátil se calienta mucho y el ventilador suena muy fuerte. ¿Qué solución es la correcta?",
+  type:"diagnose",
+  symptom:"Sobrecalentamiento y ventilador ruidoso",
+  correctAnswer:"cooling",
+  options:[
+    {key:"ram",text:"Agregar más memoria RAM",correct:false},
+    {key:"cooling",text:"Limpiar el sistema de refrigeración y cambiar pasta térmica",correct:true},
+    {key:"ssd",text:"Cambiar el disco duro por uno SSD",correct:false},
+    {key:"battery",text:"Reemplazar la batería",correct:false}
+  ]
+});
+
+// ============================
+// ESTADO DEL JUEGO
+// ============================
+var currentLevel = 0;
+var gameLevels = [];
+var completed = [false,false,false,false,false];
+var selectedAnswer = null;
+
+function shuffleArray(arr) {
+  for (var i = arr.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+  }
+  return arr;
+}
+
+function pickRandomLevels(pool, count) {
+  var diff1 = pool.filter(function(l){return l.diff===1;});
+  var diff2 = pool.filter(function(l){return l.diff===2;});
+  var diff3 = pool.filter(function(l){return l.diff===3;});
+  var diff4 = pool.filter(function(l){return l.diff===4;});
+  var diff5 = pool.filter(function(l){return l.diff===5;});
+  var picked = [];
+  var pickOne = function(arr) {
+    var s = shuffleArray(arr.slice());
+    if (s.length) picked.push(s[0]);
+  };
+  pickOne(diff1);
+  pickOne(diff2);
+  pickOne(diff3);
+  pickOne(diff4);
+  pickOne(diff5);
+  while (picked.length < count) {
+    var extra = pool[Math.floor(Math.random() * pool.length)];
+    if (picked.indexOf(extra) < 0) picked.push(extra);
+  }
+  return picked.slice(0, count);
+}
+
+function newRandomGame() {
+  completed = [false,false,false,false,false];
+  var picked = pickRandomLevels(levelPool, 5);
+  picked.sort(function(a,b){return a.diff - b.diff;});
+  gameLevels = [];
+  for (var i = 0; i < picked.length; i++) {
+    var l = picked[i];
+    gameLevels.push({
+      idx: i + 1,
+      diff: l.diff,
+      title: l.title,
+      badge: l.badge,
+      desc: l.desc,
+      type: l.type,
+      data: JSON.parse(JSON.stringify(l))
+    });
+  }
+  currentLevel = 0;
+  document.getElementById('feedback').className = 'feedback';
+  document.getElementById('feedback').innerHTML = '';
+  document.getElementById('nextLevelBtn').style.display = 'none';
+  renderLevel(0);
+}
+
+function switchTab(tab) {
+  var guia = document.getElementById('tabGuia');
+  var lab = document.getElementById('tabLab');
+  if (tab === 'guia') {
+    guia.style.display = 'block';
+    lab.style.display = 'none';
+    document.querySelector('.tab.guia').classList.add('active');
+    document.querySelector('.tab.lab').classList.remove('active');
+  } else {
+    guia.style.display = 'none';
+    lab.style.display = 'block';
+    document.querySelector('.tab.lab').classList.add('active');
+    document.querySelector('.tab.guia').classList.remove('active');
+    if (gameLevels.length === 0) newRandomGame();
+    else renderLevel(currentLevel);
+  }
+}
+
+function renderLevel(idx) {
+  var level = gameLevels[idx];
+  if (!level) return;
+
+  for (var i = 1; i < 5; i++) {
+    if (!completed[i-1]) completed[i] = false;
+  }
+
+  updateStars(idx);
+  updateProgress();
+
+  var sel = document.getElementById('levelSelector');
+  sel.innerHTML = '';
+  for (var i = 0; i < 5; i++) {
+    var btn = document.createElement('button');
+    btn.className = 'level-btn';
+    btn.textContent = 'Nivel ' + (i + 1);
+    if (i === idx) btn.classList.add('active');
+    else if (completed[i]) btn.classList.add('completed');
+    else if (i === 0 || completed[i-1]) btn.classList.remove('locked');
+    else btn.classList.add('locked');
+    (function(li) {
+      btn.onclick = function() {
+        if (li === 0 || completed[li-1]) {
+          currentLevel = li;
+          renderLevel(li);
+        }
+      };
+    })(i);
+    sel.appendChild(btn);
+  }
+
+  document.getElementById('levelTitle').textContent = 'Nivel ' + level.idx + ': ' + level.title;
+  document.getElementById('levelBadge').textContent = level.badge;
+  document.getElementById('nextLevelBtn').style.display = 'none';
+  var fb = document.getElementById('feedback');
+  fb.className = 'feedback';
+  fb.innerHTML = '';
+
+  document.getElementById('taskText').textContent = level.desc;
+  renderLabArea(level);
+}
+
+function updateStars(idx) {
+  var stars = document.getElementById('levelStars');
+  var html = '';
+  for (var i = 0; i < 5; i++) {
+    if (i < idx) html += '<span class="star">★</span>';
+    else if (i === idx) html += '<span class="star">★</span>';
+    else html += '<span class="star empty">★</span>';
+  }
+  stars.innerHTML = html;
+}
+
+function updateProgress() {
+  var count = 0;
+  for (var i = 0; i < 5; i++) if (completed[i]) count++;
+  document.getElementById('progressBar').style.width = (count / 5 * 100) + '%';
+}
+
+function renderLabArea(level) {
+  var area = document.getElementById('labArea');
+  selectedAnswer = null;
+
+  if (level.type === 'identify') {
+    renderIdentify(level, area);
+  } else if (level.type === 'place') {
+    renderPlace(level, area);
+  } else if (level.type === 'select') {
+    renderSelect(level, area);
+  } else if (level.type === 'find-error') {
+    renderFindError(level, area);
+  } else if (level.type === 'sequence') {
+    renderSequence(level, area);
+  } else if (level.type === 'diagnose') {
+    renderDiagnose(level, area);
+  }
+}
+
+// --- NIVEL 1: IDENTIFICAR ---
+function renderIdentify(level, area) {
+  var d = level.data;
+  area.innerHTML = '';
+  var card = document.createElement('div');
+  card.style.cssText = 'text-align:center;padding:20px;background:#f0f7ff;border-radius:12px;margin-bottom:20px;font-size:2rem';
+  card.textContent = d.compIcon;
+  area.appendChild(card);
+
+  var desc = document.createElement('div');
+  desc.style.cssText = 'text-align:center;font-size:1.1rem;margin-bottom:20px;padding:0 20px';
+  desc.textContent = d.desc;
+  area.appendChild(desc);
+
+  var select = document.createElement('select');
+  select.id = 'identifySelect';
+  select.style.cssText = 'display:block;width:80%;max-width:400px;margin:0 auto;padding:12px;border:2px solid #ddd;border-radius:8px;font-size:1rem';
+  var opt = document.createElement('option');
+  opt.value = '';
+  opt.textContent = '-- Selecciona un componente --';
+  select.appendChild(opt);
+  d.choices.forEach(function(c) {
+    var o = document.createElement('option');
+    o.value = c;
+    o.textContent = c;
+    select.appendChild(o);
+  });
+  select.onchange = function() {
+    selectedAnswer = this.value;
+  };
+  area.appendChild(select);
+
+  if (completed[currentLevel]) {
+    select.value = d.answer;
+    selectedAnswer = d.answer;
+  }
+}
+
+// --- NIVEL 2: UBICAR ---
+function renderPlace(level, area) {
+  var d = level.data;
+  area.innerHTML = '';
+
+  var container = document.createElement('div');
+  container.className = 'workbench';
+
+  // Laptop diagram
+  var laptop = document.createElement('div');
+  laptop.className = 'laptop-frame';
+
+  var screen = document.createElement('div');
+  screen.className = 'laptop-screen';
+  screen.textContent = '💻';
+  laptop.appendChild(screen);
+
+  var base = document.createElement('div');
+  base.className = 'laptop-base';
+
+  var row1 = document.createElement('div');
+  row1.className = 'slot-row';
+  var row2 = document.createElement('div');
+  row2.className = 'slot-row';
+
+  d.slots.forEach(function(slot, si) {
+    var sdiv = document.createElement('div');
+    sdiv.className = 'comp-slot';
+    sdiv.id = 'slot_' + slot.id;
+    sdiv.style.cursor = 'pointer';
+
+    var lbl = document.createElement('div');
+    lbl.className = 'slot-label';
+    lbl.textContent = slot.label;
+    sdiv.appendChild(lbl);
+
+    var iconDiv = document.createElement('div');
+    iconDiv.className = 'part-icon';
+    iconDiv.textContent = slot.icon;
+    sdiv.appendChild(iconDiv);
+
+    var nameDiv = document.createElement('div');
+    nameDiv.className = 'part-name';
+    nameDiv.id = 'name_' + slot.id;
+    nameDiv.textContent = '?';
+    sdiv.appendChild(nameDiv);
+
+    sdiv.dataset.slotId = slot.id;
+    sdiv.dataset.answer = slot.answer;
+
+    if (completed[currentLevel]) {
+      sdiv.classList.add('filled');
+      sdiv.classList.add('filled-correct');
+      iconDiv.textContent = d.paletteIcons[slot.answer];
+      nameDiv.textContent = d.paletteLabels[slot.answer];
+      sdiv.dataset.placed = slot.answer;
+    }
+
+    if (slot.top) row1.appendChild(sdiv);
+    else row2.appendChild(sdiv);
+  });
+
+  base.appendChild(row1);
+  base.appendChild(row2);
+  laptop.appendChild(base);
+  container.appendChild(laptop);
+
+  // Palette
+  var paletteDiv = document.createElement('div');
+  paletteDiv.style.cssText = 'flex:1;min-width:200px';
+
+  var pTitle = document.createElement('h4');
+  pTitle.style.cssText = 'text-align:center;margin-bottom:10px;color:#555;font-size:.95rem';
+  pTitle.textContent = '🧩 Componentes disponibles';
+  paletteDiv.appendChild(pTitle);
+
+  var pGrid = document.createElement('div');
+  pGrid.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;justify-content:center';
+
+  d.palette.forEach(function(key) {
+    var item = document.createElement('div');
+    item.className = 'palette-item';
+    item.style.cssText += ';border-color:#38a169;color:#38a169;background:#f0fff4;cursor:' + (completed[currentLevel] ? 'default' : 'pointer');
+    item.innerHTML = d.paletteIcons[key] + ' ' + d.paletteLabels[key];
+    item.dataset.compKey = key;
+    if (!completed[currentLevel]) {
+      item.onclick = function() {
+        placeComponent(this.dataset.compKey, d);
+      };
+    }
+    pGrid.appendChild(item);
+  });
+
+  paletteDiv.appendChild(pGrid);
+  container.appendChild(paletteDiv);
+  area.appendChild(container);
+
+  if (completed[currentLevel]) {
+    var already = document.createElement('div');
+    already.style.cssText = 'text-align:center;margin-top:12px;color:#38a169;font-weight:600';
+    already.textContent = '✅ Nivel completado';
+    area.appendChild(already);
+  }
+}
+
+var currentlyPlacing = null;
+
+function placeComponent(key, d) {
+  var emptySlot = null;
+  var slots = document.querySelectorAll('.comp-slot:not(.filled)');
+  if (slots.length === 0) return;
+  emptySlot = slots[0];
+
+  emptySlot.classList.add('filled');
+  var iconDiv = emptySlot.querySelector('.part-icon');
+  var nameDiv = emptySlot.querySelector('.part-name');
+  iconDiv.textContent = d.paletteIcons[key];
+  nameDiv.textContent = d.paletteLabels[key];
+  emptySlot.dataset.placed = key;
+  emptySlot.style.cursor = 'default';
+}
+
+// --- NIVEL 3: SELECCIONAR ---
+function renderSelect(level, area) {
+  var d = level.data;
+  area.innerHTML = '';
+  area.className = 'lab-area comp-selector';
+
+  var title = document.createElement('h4');
+  title.style.cssText = 'text-align:center;margin-bottom:12px;color:#2f855a';
+  title.textContent = '✅ Selecciona TODOS los componentes que necesitas:';
+  area.appendChild(title);
+
+  var grid = document.createElement('div');
+  grid.style.cssText = 'display:flex;flex-wrap:wrap;gap:10px;justify-content:center';
+
+  d.allComps.forEach(function(key) {
+    var card = document.createElement('div');
+    card.id = 'sel_' + key;
+    card.style.cssText = 'padding:14px 18px;border-radius:10px;border:2px solid #ddd;background:#fff;cursor:pointer;text-align:center;font-size:.9rem;transition:all .2s;min-width:130px';
+    card.dataset.key = key;
+    card.dataset.selected = 'false';
+    card.innerHTML = (d.labels[key] || key);
+
+    if (completed[currentLevel]) {
+      if (d.needed.indexOf(key) >= 0) {
+        card.style.borderColor = '#38a169';
+        card.style.background = '#f0fff4';
+        card.dataset.selected = 'true';
+      }
+    } else {
+      card.onclick = function() {
+        var sel = this.dataset.selected === 'true';
+        if (sel) {
+          this.dataset.selected = 'false';
+          this.style.borderColor = '#ddd';
+          this.style.background = '#fff';
+        } else {
+          this.dataset.selected = 'true';
+          this.style.borderColor = '#2b6cb0';
+          this.style.background = '#ebf4ff';
+        }
+      };
+    }
+
+    grid.appendChild(card);
+  });
+
+  area.appendChild(grid);
+}
+
+// --- NIVEL 4: ENCONTRAR ERROR ---
+function renderFindError(level, area) {
+  var d = level.data;
+  area.innerHTML = '';
+
+  var scenario = document.createElement('div');
+  scenario.style.cssText = 'background:#fefcbf;border:2px solid #d69e2e;border-radius:8px;padding:12px;text-align:center;margin-bottom:16px;font-weight:600';
+  scenario.textContent = '📋 ' + d.scenario;
+  area.appendChild(scenario);
+
+  var list = document.createElement('div');
+  list.style.cssText = 'display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:16px';
+
+  d.parts.forEach(function(p, pi) {
+    var card = document.createElement('div');
+    card.id = 'part_' + pi;
+    card.style.cssText = 'padding:12px 16px;border-radius:8px;border:2px solid #ddd;background:#fff;text-align:center;font-size:.85rem;min-width:140px';
+    card.innerHTML = '<strong>' + p.name + '</strong>';
+    if (completed[currentLevel]) {
+      if (!p.ok) {
+        card.style.borderColor = '#e53e3e';
+        card.style.background = '#fff5f5';
+        card.innerHTML += ' ❌';
+      } else {
+        card.style.borderColor = '#38a169';
+        card.innerHTML += ' ✅';
+      }
+    } else {
+      card.style.cursor = 'pointer';
+      card.onclick = function() {
+        document.querySelectorAll('[id^="part_"]').forEach(function(el) {
+          el.style.borderColor = '#ddd';
+          el.style.background = '#fff';
+        });
+        this.style.borderColor = '#e53e3e';
+        this.style.background = '#fff5f5';
+        selectedAnswer = pi;
+      };
+    }
+    list.appendChild(card);
+  });
+
+  area.appendChild(list);
+
+  var hint = document.createElement('div');
+  hint.style.cssText = 'text-align:center;color:#666;font-size:.85rem';
+  hint.textContent = '💡 Haz clic en el componente que NO es adecuado para este portátil.';
+  if (!completed[currentLevel]) area.appendChild(hint);
+}
+
+// --- NIVEL 5: SECUENCIA ---
+function renderSequence(level, area) {
+  var d = level.data;
+  area.innerHTML = '';
+  area.className = 'lab-area';
+
+  var curStep = 0;
+  if (typeof level._step === 'number') curStep = level._step;
+  if (!d.steps[curStep]) curStep = 0;
+
+  var progressText = document.createElement('div');
+  progressText.style.cssText = 'text-align:center;margin-bottom:12px;color:#555;font-size:.9rem';
+  progressText.textContent = 'Paso ' + (curStep + 1) + ' de ' + d.steps.length;
+  area.appendChild(progressText);
+
+  var bar = document.createElement('div');
+  bar.style.cssText = 'background:#e2e8f0;border-radius:10px;height:8px;margin-bottom:16px;overflow:hidden';
+  var fill = document.createElement('div');
+  fill.style.cssText = 'height:100%;background:#38a169;border-radius:10px;width:' + ((curStep + 1) / d.steps.length * 100) + '%';
+  bar.appendChild(fill);
+  area.appendChild(bar);
+
+  if (completed[currentLevel]) {
+    var doneMsg = document.createElement('div');
+    doneMsg.style.cssText = 'text-align:center;padding:20px;color:#38a169;font-weight:600;font-size:1.1rem';
+    doneMsg.textContent = '✅ ¡Ensamblaje completado!';
+    area.appendChild(doneMsg);
+    return;
+  }
+
+  var step = d.steps[curStep];
+  var stepDiv = document.createElement('div');
+  stepDiv.style.cssText = 'text-align:center;margin-bottom:16px';
+
+  var icons = ['🧠','📝','💾','🎮','🌡️'];
+  var iconSpan = document.createElement('div');
+  iconSpan.style.cssText = 'font-size:2.5rem;margin-bottom:10px';
+  iconSpan.textContent = icons[curStep] || '🔧';
+  stepDiv.appendChild(iconSpan);
+
+  var qText = document.createElement('div');
+  qText.style.cssText = 'font-size:1.05rem;margin-bottom:16px';
+  qText.textContent = step.text;
+  stepDiv.appendChild(qText);
+
+  var optDiv = document.createElement('div');
+  optDiv.style.cssText = 'display:flex;gap:10px;justify-content:center;flex-wrap:wrap';
+
+  step.options.forEach(function(opt) {
+    var btn = document.createElement('button');
+    btn.className = 'btn';
+    btn.style.cssText += ';background:#fff;color:#1a1a2e;border:2px solid #ddd;min-width:120px';
+    btn.textContent = COMPONENTS[opt] ? COMPONENTS[opt].icon + ' ' + COMPONENTS[opt].name : opt;
+
+    btn.onclick = function() {
+      document.querySelectorAll('#stepOpts button').forEach(function(b) {
+        b.style.borderColor = '#ddd';
+        b.style.background = '#fff';
+      });
+      this.style.borderColor = '#2b6cb0';
+      this.style.background = '#ebf4ff';
+      selectedAnswer = opt;
+    };
+
+    optDiv.appendChild(btn);
+  });
+
+  stepDiv.appendChild(optDiv);
+  area.appendChild(stepDiv);
+}
+
+// --- NIVEL 5 (alternativo): DIAGNÓSTICO ---
+function renderDiagnose(level, area) {
+  var d = level.data;
+  area.innerHTML = '';
+
+  var symptom = document.createElement('div');
+  symptom.style.cssText = 'background:#fff5f5;border:2px solid #e53e3e;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px';
+  symptom.innerHTML = '<strong style="font-size:1.1rem">🚨 Síntoma:</strong><br>' + d.symptom;
+  area.appendChild(symptom);
+
+  var optsDiv = document.createElement('div');
+  optsDiv.style.cssText = 'display:flex;flex-direction:column;gap:10px;max-width:500px;margin:0 auto';
+
+  d.options.forEach(function(opt, oi) {
+    var card = document.createElement('div');
+    card.id = 'diag_' + oi;
+    card.style.cssText = 'padding:14px 18px;border-radius:8px;border:2px solid #ddd;background:#fff;cursor:pointer;text-align:center;font-size:.9rem;transition:all .2s';
+    card.textContent = opt.text;
+
+    if (completed[currentLevel]) {
+      if (opt.correct) {
+        card.style.borderColor = '#38a169';
+        card.style.background = '#f0fff4';
+      }
+    } else {
+      card.onclick = function() {
+        document.querySelectorAll('[id^="diag_"]').forEach(function(el) {
+          el.style.borderColor = '#ddd';
+          el.style.background = '#fff';
+        });
+        this.style.borderColor = '#2b6cb0';
+        this.style.background = '#ebf4ff';
+        selectedAnswer = oi;
+      };
+    }
+
+    optsDiv.appendChild(card);
+  });
+
+  area.appendChild(optsDiv);
+}
+
+// ============================
+// TEST Y VERIFICACIÓN
+// ============================
+function testLevel() {
+  var level = gameLevels[currentLevel];
+  var fb = document.getElementById('feedback');
+  var nextBtn = document.getElementById('nextLevelBtn');
+
+  if (level.type === 'identify') {
+    var sel = document.getElementById('identifySelect');
+    if (!sel || !sel.value) {
+      showError(fb, '❌ Selecciona un componente antes de verificar.');
+      return;
+    }
+    if (sel.value === level.data.answer) {
+      showSuccess(fb, level, '✅ ¡Correcto! Has identificado el componente correctamente.');
+    } else {
+      showError(fb, '❌ Incorrecto. Revisa la descripción y vuelve a intentarlo.\n💡 Pista: Piensa en la función de cada componente.');
+    }
+  } else if (level.type === 'place') {
+    var d = level.data;
+    var allFilled = true;
+    var allCorrect = true;
+
+    d.slots.forEach(function(slot) {
+      var el = document.getElementById('slot_' + slot.id);
+      if (!el || !el.dataset.placed) { allFilled = false; return; }
+      el.classList.remove('filled-correct', 'filled-wrong');
+      if (el.dataset.placed === slot.answer) {
+        el.classList.add('filled-correct');
+      } else {
+        el.classList.add('filled-wrong');
+        allCorrect = false;
+      }
+    });
+
+    if (!allFilled) {
+      showError(fb, '❌ Faltan componentes por colocar. Arrastra todos los componentes al diagrama.');
+      return;
+    }
+
+    if (allCorrect) {
+      showSuccess(fb, level, '✅ ¡Perfecto! Todos los componentes están en su lugar correcto.');
+    } else {
+      showError(fb, '❌ Algunos componentes están en el lugar equivocado. Los incorrectos se marcan en rojo. Revisa y corrige.');
+    }
+  } else if (level.type === 'select') {
+    var d = level.data;
+    var selected = [];
+    d.allComps.forEach(function(key) {
+      var el = document.getElementById('sel_' + key);
+      if (el && el.dataset.selected === 'true') selected.push(key);
+    });
+
+    if (selected.length === 0) {
+      showError(fb, '❌ Selecciona al menos un componente.');
+      return;
+    }
+
+    var needed = d.needed.slice();
+    var missing = needed.filter(function(n) { return selected.indexOf(n) < 0; });
+    var extra = selected.filter(function(s) { return needed.indexOf(s) < 0; });
+
+    if (missing.length === 0 && extra.length === 0) {
+      showSuccess(fb, level, '✅ ¡Excelente! Has seleccionado los componentes correctos para este portátil.');
+    } else {
+      var msg = '❌ Selección incorrecta.\n';
+      if (missing.length > 0) msg += '❓ Faltan: ' + missing.map(function(m){return d.labels[m];}).join(', ') + '\n';
+      if (extra.length > 0) msg += '❓ Sobran: ' + extra.map(function(e){return d.labels[e];}).join(', ');
+      showError(fb, msg);
+    }
+  } else if (level.type === 'find-error') {
+    var d = level.data;
+    if (selectedAnswer === null || selectedAnswer === undefined) {
+      showError(fb, '❌ Haz clic en el componente que crees que es incorrecto.');
+      return;
+    }
+    if (selectedAnswer === d.wrongIndex) {
+      showSuccess(fb, level, '✅ ¡Correcto! Has encontrado el componente inadecuado para este portátil.\n🔧 Solución: Cambia ese componente por uno más adecuado.');
+    } else {
+      showError(fb, '❌ Ese componente es adecuado. Busca el que NO corresponde para la tarea indicada.');
+    }
+  } else if (level.type === 'sequence') {
+    var d = level.data;
+    if (!selectedAnswer) {
+      showError(fb, '❌ Selecciona una opción para este paso.');
+      return;
+    }
+    var curStep = level._step || 0;
+    var step = d.steps[curStep];
+
+    if (selectedAnswer === step.answer) {
+      level._step = (level._step || 0) + 1;
+      if (level._step >= d.steps.length) {
+        showSuccess(fb, level, '✅ ¡Has completado todo el ensamblaje! Conoces el orden correcto de instalación.');
+      } else {
+        fb.className = 'feedback success show';
+        fb.innerHTML = '<h4>✅ ¡Paso ' + (curStep + 1) + ' correcto!</h4><p>Continúa con el siguiente paso.</p>';
+        selectedAnswer = null;
+        renderLabArea(level);
+      }
+      return;
+    } else {
+      showError(fb, '❌ Ese no es el componente correcto para este paso. Revisa la guía de estudio.');
+    }
+  } else if (level.type === 'diagnose') {
+    var d = level.data;
+    if (selectedAnswer === null || selectedAnswer === undefined) {
+      showError(fb, '❌ Selecciona una solución antes de verificar.');
+      return;
+    }
+    if (d.options[selectedAnswer].correct) {
+      showSuccess(fb, level, '✅ ¡Diagnóstico correcto! El sistema de refrigeración necesita mantenimiento: limpiar ventiladores y cambiar pasta térmica.');
+    } else {
+      showError(fb, '❌ Esa no es la solución correcta para este problema. Piensa qué componente controla la temperatura.');
+    }
+  }
+}
+
+function showSuccess(fb, level, msg) {
+  fb.className = 'feedback success show';
+  fb.innerHTML = '<h4>✅ ¡Correcto!</h4><p>' + msg.replace(/\n/g, '<br>') + '</p>';
+  completed[currentLevel] = true;
+  updateProgress();
+  updateStars(currentLevel);
+
+  var nextBtn = document.getElementById('nextLevelBtn');
+  if (currentLevel < 4) {
+    nextBtn.style.display = 'inline-block';
+    nextBtn.textContent = '➡️ Siguiente Nivel';
+    nextBtn.onclick = function() { nextLevel(); };
+  } else {
+    nextBtn.style.display = 'inline-block';
+    nextBtn.innerHTML = '🏆 ¡Completaste todos los niveles!';
+    nextBtn.onclick = function() {
+      fb.className = 'feedback success show';
+      fb.innerHTML = '<h4>🏆 ¡Felicidades!</h4><p>Completaste los 5 niveles del laboratorio. ¡Juega de nuevo con "Nuevo juego" para enfrentar nuevos desafíos!</p>';
+      nextBtn.style.display = 'none';
+    };
+  }
+}
+
+function showError(fb, msg) {
+  fb.className = 'feedback error show';
+  fb.innerHTML = '<h4>❌ Incorrecto</h4><p>' + msg.replace(/\n/g, '<br>') + '</p>';
+  document.getElementById('nextLevelBtn').style.display = 'none';
+}
+
+function resetLevel() {
+  var level = gameLevels[currentLevel];
+  if (level.type === 'identify') {
+    var sel = document.getElementById('identifySelect');
+    if (sel) sel.value = '';
+    selectedAnswer = null;
+  } else if (level.type === 'place') {
+    var d = level.data;
+    d.slots.forEach(function(slot) {
+      var el = document.getElementById('slot_' + slot.id);
+      if (el) {
+        el.classList.remove('filled', 'filled-correct', 'filled-wrong');
+        delete el.dataset.placed;
+        el.style.cursor = 'pointer';
+        var nameDiv = el.querySelector('.part-name');
+        var iconDiv = el.querySelector('.part-icon');
+        if (nameDiv) nameDiv.textContent = '?';
+        if (iconDiv) iconDiv.textContent = slot.icon;
+      }
+    });
+  } else if (level.type === 'select') {
+    var d = level.data;
+    d.allComps.forEach(function(key) {
+      var el = document.getElementById('sel_' + key);
+      if (el) {
+        el.dataset.selected = 'false';
+        el.style.borderColor = '#ddd';
+        el.style.background = '#fff';
+      }
+    });
+  } else if (level.type === 'find-error' || level.type === 'diagnose') {
+    selectedAnswer = null;
+    document.querySelectorAll('[id^="part_"], [id^="diag_"]').forEach(function(el) {
+      el.style.borderColor = '#ddd';
+      el.style.background = '#fff';
+    });
+  } else if (level.type === 'sequence') {
+    level._step = 0;
+    selectedAnswer = null;
+  }
+
+  document.getElementById('feedback').className = 'feedback';
+  document.getElementById('feedback').innerHTML = '';
+  document.getElementById('nextLevelBtn').style.display = 'none';
+  renderLabArea(level);
+}
+
+function nextLevel() {
+  if (currentLevel < 4) {
+    currentLevel++;
+    renderLevel(currentLevel);
+  }
+}
+
+// Iniciar
+newRandomGame();
+</script>
+</body>
+</html>
