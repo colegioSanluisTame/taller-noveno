@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Guía de Circuitos Digitales - Grado Noveno</title>
+    <style>
+        @page { margin: 2cm; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+            color: #1a1a2e;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .portada {
+            text-align: center;
+            padding: 80px 0 60px;
+            border-bottom: 3px solid #1a1a2e;
+            margin-bottom: 40px;
+        }
+        .portada h1 { font-size: 2.8rem; margin-bottom: 10px; letter-spacing: -1px; }
+        .portada h2 { font-size: 1.4rem; font-weight: 400; color: #444; margin-bottom: 30px; }
+        .portada .escudo { font-size: 3rem; margin-bottom: 20px; }
+        .portada .datos { font-size: 1rem; color: #666; line-height: 2; }
+        h2 { font-size: 1.6rem; margin: 30px 0 15px; color: #1a1a2e; border-bottom: 2px solid #e0e0e0; padding-bottom: 5px; }
+        h3 { font-size: 1.2rem; margin: 20px 0 10px; color: #2d2d5e; }
+        p { margin-bottom: 12px; text-align: justify; }
+        ul, ol { margin: 10px 0 15px 25px; }
+        li { margin-bottom: 6px; }
+        .destacado {
+            background: #f0f4ff;
+            border-left: 4px solid #1a1a2e;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        th { background: #1a1a2e; color: white; }
+        tr:nth-child(even) { background: #f5f5f5; }
+        .ejemplo {
+            background: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .ejemplo h4 { color: #1a1a2e; margin-bottom: 8px; }
+        .compuerta {
+            display: inline-block;
+            background: #1a1a2e;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin: 2px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        .page-break { page-break-before: always; }
+        @media print {
+            body { padding: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="portada">
+    <div class="escudo">🏫</div>
+    <h1>Circuitos Digitales</h1>
+    <h2>Guía de Estudio - Tecnología e Informática</h2>
+    <div class="datos">
+        <strong>Institución Educativa San Luis</strong><br>
+        Grado Noveno<br>
+        Año 2026
+    </div>
+</div>
+
+<!-- ===== 1 ===== -->
+<h2>1. ¿Qué es un circuito digital?</h2>
+
+<p>Un <strong>circuito digital</strong> es un circuito electrónico que trabaja con solo <strong>dos valores</strong>: <strong>0</strong> y <strong>1</strong> (apagado y encendido). A diferencia de un circuito común que puede tener cualquier voltaje, los circuitos digitales solo reconocen "hay voltaje" (1) o "no hay voltaje" (0). Son los bloques que construyen todo aparato electrónico moderno: computadoras, celulares, calculadoras, semáforos inteligentes y más.</p>
+
+<div class="destacado">
+    <strong>💡 Idea clave:</strong> Piensa en un circuito digital como un <strong>interruptor de luz</strong>: solo puede estar en dos posiciones — apagado (0) o encendido (1). Un circuito digital combina millones de estos "interruptores" (llamados <strong>transistores</strong>) para realizar tareas complejas.
+</div>
+
+<!-- ===== 2 ===== -->
+<h2>2. Diferencia entre circuito analógico y digital</h2>
+
+<table>
+    <tr><th>Característica</th><th>Analógico</th><th>Digital</th></tr>
+    <tr><td><strong>Valores</strong></td><td>Infinitos (continuos)</td><td>Solo 0 y 1 (discretos)</td></tr>
+    <tr><td><strong>Ejemplo</strong></td><td>Reloj de agujas</td><td>Reloj de números</td></tr>
+    <tr><td><strong>Señal</strong></td><td>Onda continua</td><td>Pulsos encendido/apagado</td></tr>
+    <tr><td><strong>Precisión</strong></td><td>Se degrada con el tiempo</td><td>No se pierde calidad al copiar</td></tr>
+    <tr><td><strong>Ruido</strong></td><td>Muy sensible a interferencias</td><td>Muy resistente al ruido</td></tr>
+</table>
+
+<div class="ejemplo">
+    <h4>🎯 Ejemplo cotidiano</h4>
+    <p>Un <strong>tocadiscos de vinilo</strong> es analógico (la aguja lee surcos continuos). Un <strong>CD o MP3</strong> es digital (la música se guarda como 0 y 1). Por eso el MP3 no se "raya" ni pierde calidad aunque lo copies mil veces.</p>
+</div>
+
+<!-- ===== 3 ===== -->
+<h2>3. ¿Qué son los bits? (0 y 1)</h2>
+
+<p><strong>Bit</strong> viene de <strong>B</strong>inary dig<strong>it</strong> (dígito binario). Es la unidad más pequeña de información en un sistema digital. Solo puede tener dos valores:</p>
+
+<ul>
+    <li><strong>0</strong> → sin voltaje, apagado, falso</li>
+    <li><strong>1</strong> → con voltaje, encendido, verdadero</li>
+</ul>
+
+<div class="destacado">
+    <strong>🔌 Analogía:</strong> Un bit es como una <strong>bombilla</strong>: está apagada (0) o encendida (1). No hay términos medios.
+</div>
+
+<p>Con 1 bit puedes representar 2 cosas (0 o 1). Con 2 bits puedes representar 4 combinaciones (00, 01, 10, 11). Con 8 bits (un <strong>byte</strong>) puedes representar 256 valores diferentes — suficiente para una letra del abecedario o un número del 0 al 255.</p>
+
+<!-- ===== 4 ===== -->
+<h2>4. Compuertas lógicas básicas</h2>
+
+<p>Las <strong>compuertas lógicas</strong> son los "ladrillos" con los que se construyen los circuitos digitales. Toman una o más entradas (0 o 1) y producen una salida según una regla fija.</p>
+
+<h3>🟦 Compuerta AND (Y)</h3>
+<p>La salida es <strong>1 solo si TODAS las entradas son 1</strong>.</p>
+<table>
+    <tr><th>Entrada A</th><th>Entrada B</th><th>Salida</th></tr>
+    <tr><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td><td>0</td></tr>
+    <tr><td>1</td><td>1</td><td><strong>1</strong></td></tr>
+</table>
+<p><strong>Ejemplo:</strong> Dos interruptores en serie. La luz enciende SOLO si ambos están encendidos.</p>
+
+<h3>🟩 Compuerta OR (O)</h3>
+<p>La salida es <strong>1 si AL MENOS UNA entrada es 1</strong>.</p>
+<table>
+    <tr><th>Entrada A</th><th>Entrada B</th><th>Salida</th></tr>
+    <tr><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td><td><strong>1</strong></td></tr>
+    <tr><td>1</td><td>0</td><td><strong>1</strong></td></tr>
+    <tr><td>1</td><td>1</td><td><strong>1</strong></td></tr>
+</table>
+<p><strong>Ejemplo:</strong> Dos interruptores en paralelo. La luz enciende si CUALQUIERA de los dos está encendido.</p>
+
+<h3>🟥 Compuerta NOT (NO — Inversor)</h3>
+<p><strong>Invierte</strong> la entrada: si entra 1, sale 0; si entra 0, sale 1.</p>
+<table>
+    <tr><th>Entrada</th><th>Salida</th></tr>
+    <tr><td>0</td><td><strong>1</strong></td></tr>
+    <tr><td>1</td><td><strong>0</strong></td></tr>
+</table>
+<p><strong>Ejemplo:</strong> Una luz que se enciende cuando el interruptor está apagado (como la luz de la nevera que se enciende al abrir la puerta).</p>
+
+<!-- ===== 5 ===== -->
+<h2>5. Ejemplos cotidianos de circuitos digitales</h2>
+
+<table>
+    <tr><th>Dispositivo</th><th>¿Cómo usa circuitos digitales?</th></tr>
+    <tr><td><strong>Calculadora</strong></td><td>Recibe números (en binario), los procesa con compuertas lógicas y muestra el resultado.</td></tr>
+    <tr><td><strong>Semáforo inteligente</strong></td><td>Un circuito digital controla los tiempos de cambio de verde a amarillo a rojo.</td></tr>
+    <tr><td><strong>Control remoto (TV)</strong></td><td>Cada botón envía un código único de 0 y 1 que el TV reconoce.</td></tr>
+    <tr><td><strong>Teclado de computadora</strong></td><td>Cada tecla genera un código binario específico que la PC interpreta.</td></tr>
+    <tr><td><strong>Horno microondas</strong></td><td>El teclado numérico y el temporizador usan circuitos digitales para contar segundos.</td></tr>
+    <tr><td><strong>Celular</strong></td><td>Todo lo que hace (llamar, enviar mensajes, usar apps) son operaciones con 0 y 1.</td></tr>
+</table>
+
+<!-- ===== 6 ===== -->
+<h2>6. ¿Cómo se construye un circuito digital básico?</h2>
+
+<ol>
+    <li><strong>Definir el problema</strong> — ¿Qué queremos que haga? Ej: "Encender una luz cuando dos interruptores estén activos".</li>
+    <li><strong>Crear la tabla de verdad</strong> — Listar todas las combinaciones de entrada y la salida deseada.</li>
+    <li><strong>Escribir la expresión booleana</strong> — Usar álgebra de Boole. Ej: <code>Salida = A AND B</code>.</li>
+    <li><strong>Dibujar el diagrama con compuertas</strong> — Conectar las compuertas lógicas según la expresión.</li>
+    <li><strong>Implementar con transistores</strong> — En un chip, cada compuerta se construye con transistores.</li>
+    <li><strong>Probar</strong> — Verificar que la salida coincida con la tabla de verdad.</li>
+</ol>
+
+<div class="ejemplo">
+    <h4>🔧 Ejemplo práctico</h4>
+    <p>Queremos un circuito que encienda una alarma si se activa el sensor de puerta <strong>O</strong> el sensor de ventana. Usamos una compuerta <strong>OR</strong>:</p>
+    <p style="text-align:center;font-size:1.1rem;margin-top:8px;"><strong>Alarma = SensorPuerta OR SensorVentana</strong></p>
+</div>
+
+<!-- ===== 7 ===== -->
+<h2>7. Sistema binario</h2>
+
+<p>El <strong>sistema binario</strong> es un sistema de numeración que usa solo <strong>dos dígitos: 0 y 1</strong>. Nosotros usamos el sistema <strong>decimal</strong> (10 dígitos: 0-9). La computadora usa binario porque es más fácil construir circuitos que distingan solo dos estados (encendido/apagado) que diez.</p>
+
+<h3>¿Cómo convertir de binario a decimal?</h3>
+<p>Cada posición de un número binario representa una potencia de 2.</p>
+
+<div class="destacado">
+    <strong>Ejemplo:</strong> Convertir <code>1011₂</code> a decimal:<br><br>
+    1  &nbsp;×&nbsp;  2³  =  1 × 8  =  8<br>
+    0  &nbsp;×&nbsp;  2²  =  0 × 4  =  0<br>
+    1  &nbsp;×&nbsp;  2¹  =  1 × 2  =  2<br>
+    1  &nbsp;×&nbsp;  2⁰  =  1 × 1  =  1<br><br>
+    <strong>Total: 8 + 0 + 2 + 1 = 11</strong><br>
+    <code>1011₂ = 11</code> en decimal.
+</div>
+
+<table>
+    <tr><th>Binario</th><th>Decimal</th><th></th><th>Binario</th><th>Decimal</th></tr>
+    <tr><td>0</td><td>0</td><td></td><td>1000</td><td>8</td></tr>
+    <tr><td>1</td><td>1</td><td></td><td>1001</td><td>9</td></tr>
+    <tr><td>10</td><td>2</td><td></td><td>1010</td><td>10</td></tr>
+    <tr><td>11</td><td>3</td><td></td><td>1011</td><td>11</td></tr>
+    <tr><td>100</td><td>4</td><td></td><td>1100</td><td>12</td></tr>
+    <tr><td>101</td><td>5</td><td></td><td>1101</td><td>13</td></tr>
+    <tr><td>110</td><td>6</td><td></td><td>1110</td><td>14</td></tr>
+    <tr><td>111</td><td>7</td><td></td><td>1111</td><td>15</td></tr>
+</table>
+
+<div class="destacado">
+    <strong>💡 Dato curioso:</strong> Con 10 dedos (decimal) podemos contar hasta 10. Con 10 dedos en <strong>binario</strong> (cada dedo levantado es 1, abajo es 0), ¡podemos contar hasta <strong>1023</strong>!
+</div>
+
+<!-- ===== 8 ===== -->
+<h2>8. Aplicaciones en la vida real</h2>
+
+<ul>
+    <li><strong>Computadoras y laptops</strong> — Todo el procesamiento interno es binario. La CPU ejecuta instrucciones que son cadenas de 0 y 1.</li>
+    <li><strong>Teléfonos inteligentes</strong> — Cada app, foto, video o mensaje está codificado en binario dentro de la memoria.</li>
+    <li><strong>Internet</strong> — Los datos viajan como pulsos de luz (fibra óptica) o señales de radio (WiFi) representando 0 y 1.</li>
+    <li><strong>Medicina</strong> — Tomógrafos, ecógrafos y monitores de signos vitales convierten señales del cuerpo en datos digitales.</li>
+    <li><strong>Automóviles modernos</strong> — La computadora del auto controla inyección de combustible, frenos ABS y bolsas de aire mediante circuitos digitales.</li>
+    <li><strong>Electrodomésticos</strong> — Lavadoras, neveras y aires acondicionados usan circuitos digitales para temporizadores y sensores.</li>
+    <li><strong>Videojuegos</strong> — Cada gráfico, sonido y física del juego se reduce a operaciones binarias en el procesador.</li>
+    <li><strong>Banca y comercio</strong> — Las tarjetas débito/crédito, transferencias electrónicas y cajeros funcionan con sistemas digitales.</li>
+</ul>
+
+<div class="destacado">
+    <strong>📌 En resumen:</strong> Un circuito digital es un sistema que trabaja solo con 0 y 1. Con compuertas lógicas simples (AND, OR, NOT) se pueden construir desde una calculadora básica hasta un supercomputador. Todo lo que ves con pantalla, botones o luces inteligentes tiene circuitos digitales adentro. El sistema binario es el "idioma" que todos estos dispositivos usan para entender y procesar información.
+</div>
+
+<footer>
+    Institución Educativa San Luis — Tecnología e Informática — Grado Noveno — 2026<br>
+    Material de estudio basado en el plan de estudios colombiano.
+</footer>
+
+</body>
+</html>
