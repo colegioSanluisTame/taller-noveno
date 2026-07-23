@@ -7,7 +7,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a1a2e;padding:15px}
-.container{max-width:1100px;margin:0 auto}
+.container{max-width:1120px;margin:0 auto}
 .tabs{display:flex;gap:4px;margin-bottom:0}
 .tab{padding:12px 22px;border-radius:12px 12px 0 0;cursor:pointer;font-weight:600;font-size:.95rem;border:none;transition:all .2s}
 .tab.guia{background:#1a1a2e;color:#fff}
@@ -24,69 +24,128 @@ p{margin-bottom:8px;text-align:justify}
 ul,ol{margin:6px 0 10px 20px}
 li{margin-bottom:3px}
 .destacado{background:#f0f4ff;border-left:4px solid #1a1a2e;padding:10px 14px;margin:10px 0;border-radius:0 8px 8px 0}
-.comp-card{background:#f0f7ff;border:1px solid #cce5ff;border-radius:8px;padding:10px;margin:8px 0}
-.comp-card h4{color:#2b6cb0;font-size:.95rem;margin-bottom:3px}
 .game-header{text-align:center;margin-bottom:16px}
 .game-header h2{font-size:1.6rem;border:none;color:#1a365d;margin-bottom:3px}
 .game-header p{text-align:center;color:#666;font-size:.9rem}
+.inst-step{background:linear-gradient(135deg,#ebf8ff,#dbeafe);border:2px solid #2b6cb0;border-radius:12px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.inst-step .is-num{background:#2b6cb0;color:#fff;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0}
+.inst-step .is-text{flex:1;font-size:.95rem;color:#1a365d;font-weight:500;line-height:1.4}
+.inst-step .is-hint{cursor:pointer;font-size:1.2rem;opacity:.6;transition:all .2s}
+.inst-step .is-hint:hover{opacity:1;transform:scale(1.1)}
+.slot.prefilled{border-color:#a0aec0;background:#edf2f7;opacity:.7;border-style:solid}
+.slot.prefilled .part-view .pv-name{color:#718096}
+/* ---------- GUIDE CARDS ---------- */
+.guia-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin:14px 0}
+.guia-card{border:2px solid #e2e8f0;border-radius:12px;overflow:hidden;transition:box-shadow .2s;background:#fff}
+.guia-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.guia-card .gc-head{background:linear-gradient(135deg,#f7fafc,#edf2f7);padding:10px 14px;display:flex;align-items:center;gap:12px;border-bottom:2px solid #e2e8f0}
+.guia-card .gc-head .gc-svg{width:50px;height:42px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.guia-card .gc-head .gc-svg svg{max-width:100%;max-height:100%}
+.guia-card .gc-head h4{margin:0;font-size:.95rem;color:#1a365d}
+.guia-card .gc-body{padding:10px 14px;font-size:.8rem;color:#4a5568;line-height:1.5}
+.guia-card .gc-body p{margin:0 0 6px;text-align:left}
+.guia-card .gc-body .gc-label{font-weight:700;color:#2b6cb0;margin-right:4px}
+.guia-card .gc-body .gc-inst{background:#f0f4ff;border-left:3px solid #2b6cb0;padding:6px 10px;margin:6px 0 0;border-radius:0 4px 4px 0;font-size:.75rem}
+/* ---------- IDENTIFICATION LEVEL ---------- */
+.id-step{background:linear-gradient(135deg,#fefce8,#fffbeb);border:2px solid #d69e2e;border-radius:12px;padding:18px;margin-bottom:14px;text-align:center}
+.id-step .id-svg{margin:6px auto 10px;width:90px;height:70px;display:flex;align-items:center;justify-content:center}
+.id-step .id-svg svg{max-width:100%;max-height:100%}
+.id-step .id-q{font-size:1.05rem;font-weight:600;color:#744210;margin-bottom:12px}
+.id-opts{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.id-opt{padding:8px 18px;border-radius:8px;border:2px solid #e2e8f0;cursor:pointer;font-weight:600;font-size:.85rem;transition:all .2s;background:#fff;color:#333;min-width:80px}
+.id-opt:hover{border-color:#d69e2e;background:#fefce8}
+.id-opt.selected{border-color:#d69e2e;background:#fefce8;color:#744210}
+.id-opt.correct{border-color:#38a169;background:#f0fff4;color:#22543d}
+.id-opt.wrong{border-color:#e53e3e;background:#fff5f5;color:#822727}
+.id-opt.disabled{cursor:default;opacity:.5}
+/* ---------- DIAGNOSTIC LEVEL ---------- */
+.diag-banner{background:linear-gradient(135deg,#fdf2f8,#fce7f3);border:2px solid #d53f8c;border-radius:12px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:flex-start;gap:10px}
+.diag-banner .db-icon{font-size:1.6rem;flex-shrink:0;margin-top:2px}
+.diag-banner .db-text{flex:1}
+.diag-banner .db-text .db-title{font-weight:700;color:#9d174d;font-size:.85rem}
+.diag-banner .db-text .db-desc{color:#6b21a8;font-size:.9rem;font-weight:500}
+.diag-banner .db-text .db-hint{color:#9d174d;font-size:.8rem;margin-top:4px}
 .level-info{background:linear-gradient(135deg,#2b6cb0,#1a365d);color:#fff;padding:12px 20px;border-radius:10px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 .level-info h3{margin:0;color:#fff;font-size:1.2rem}
 .level-badge{background:rgba(255,255,255,.2);padding:3px 12px;border-radius:20px;font-size:.8rem;font-weight:600}
 .stars{display:flex;gap:3px;font-size:1.3rem}
 .star{color:#ffd700;text-shadow:0 1px 3px rgba(0,0,0,.3)}
 .star.empty{color:rgba(255,255,255,.2)}
-.lab-area{background:#fafbfc;border:2px solid #e2e8f0;border-radius:12px;padding:20px;margin-bottom:14px;min-height:400px;position:relative}
+.lab-area{background:#fafbfc;border:2px solid #e2e8f0;border-radius:12px;padding:20px;margin-bottom:14px;min-height:420px;position:relative}
 
-.question-area{background:#ebf4ff;border:2px solid #2b6cb0;border-radius:12px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.question-area .q-num{background:#2b6cb0;color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
-.question-area .q-text{flex:1;font-size:.95rem;color:#1a365d;font-weight:500}
-.question-area .q-icon{font-size:1.6rem}
+/* ---------- QUESTION BAR ---------- */
+.question-area{background:linear-gradient(135deg,#ebf4ff,#dbeafe);border:2px solid #2b6cb0;border-radius:12px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.question-area .q-num{background:#2b6cb0;color:#fff;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0}
+.question-area .q-text{flex:1;font-size:.95rem;color:#1a365d;font-weight:500;line-height:1.4}
+.question-area .q-helper{cursor:pointer;font-size:1.2rem;opacity:.6;transition:all .2s}
+.question-area .q-helper:hover{opacity:1;transform:scale(1.1)}
 
+/* ---------- HELP PANEL ---------- */
+.help-panel{display:none;background:#fffbeb;border:2px solid #d69e2e;border-radius:10px;padding:14px 18px;margin-bottom:14px;font-size:.85rem;color:#744210}
+.help-panel.open{display:block}
+.help-panel .hp-title{font-weight:700;margin-bottom:6px;font-size:.9rem;color:#975a16}
+.help-panel .hp-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:4px}
+.help-panel .hp-row:last-child{margin-bottom:0}
+.help-panel .hp-label{font-weight:600;min-width:80px;color:#744210}
+.help-panel .hp-desc{flex:1}
+
+/* ---------- LAYOUT ---------- */
 .assemble-layout{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
 
-/* LAPTOP */
-.laptop{width:320px;flex-shrink:0;background:#e8ecf0;border-radius:14px;border:3px solid #999;padding:12px;position:relative;transition:all .3s}
+/* ---------- LAPTOP ---------- */
+.laptop{width:340px;flex-shrink:0;background:#e8ecf0;border-radius:14px;border:3px solid #999;padding:12px;position:relative;transition:all .3s}
 .laptop.powered{background:#d5e8d5;border-color:#38a169}
 .laptop.powered .laptop-screen{background:#0a1628;box-shadow:inset 0 0 30px rgba(0,150,255,.12)}
 .laptop.powered .power-led{background:#38a169;box-shadow:0 0 8px #38a169}
 .laptop-screen{background:#1a1a2e;border-radius:8px 8px 0 0;height:85px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:8px;transition:all .5s;position:relative;overflow:hidden}
-.laptop-screen .screen-label{color:rgba(255,255,255,.1);font-size:1.6rem;position:absolute}
+.laptop-screen .screen-label{color:rgba(255,255,255,.1);font-size:1.4rem;position:absolute}
 .laptop-screen .boot-msg{opacity:0;transition:opacity .6s;text-align:center;z-index:2}
-.laptop-screen .boot-msg .bi{font-size:1.8rem}
-.laptop-screen .boot-msg .bt{color:#4fc3f7;font-size:.65rem;font-family:monospace;margin-top:3px;letter-spacing:1px}
+.laptop-screen .boot-msg .bi{font-size:1.6rem}
+.laptop-screen .boot-msg .bt{color:#4fc3f7;font-size:.6rem;font-family:monospace;margin-top:3px;letter-spacing:1px}
 .laptop-base{background:#c0c5cc;border-radius:0 0 8px 8px;padding:8px}
-.slots-grid{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:6px}
-.slot{width:60px;height:48px;border:2px dashed #888;border-radius:7px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,.35);transition:all .3s;position:relative}
+.slots-grid{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:5px}
+.slot{width:64px;height:52px;border:2px dashed #888;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,.35);transition:all .3s;position:relative}
 .slot.filled{border-style:solid;border-color:#38a169;background:#f0fff4}
 .slot.highlight{border-color:#2b6cb0;background:#ebf4ff;animation:pulse-glow 1s ease-in-out infinite;cursor:pointer}
 @keyframes pulse-glow{0%,100%{box-shadow:0 0 0 0 rgba(43,108,176,.35)}50%{box-shadow:0 0 0 6px rgba(43,108,176,.12)}}
-.slot .s-icon{font-size:1rem;line-height:1}
-.slot .s-name{font-size:.48rem;color:#555;font-weight:600;line-height:1;margin-top:1px}
-.slot .s-label{position:absolute;top:-12px;font-size:.55rem;font-weight:600;color:#555;white-space:nowrap}
+.slot .s-label{position:absolute;top:-11px;font-size:.5rem;font-weight:600;color:#555;white-space:nowrap}
 .power-led{position:absolute;top:8px;right:12px;width:8px;height:8px;border-radius:50%;background:#888;transition:all .3s}
 
-/* PARTS TO DRAG */
-.parts-area{flex:1;min-width:220px}
-.parts-area .pa-title{text-align:center;color:#555;font-size:.8rem;font-weight:600;margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid #e2e8f0}
+/* ---------- SVG COMPONENT STYLES ---------- */
+.part-view{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%}
+.part-view svg{display:block;max-width:100%}
+.part-view .pv-name{font-size:.48rem;font-weight:600;color:#333;margin-top:2px;text-align:center;line-height:1.1}
+.slot.filled .part-view .pv-name{color:#2f855a}
+.slot.highlight .part-view .pv-name{color:#2b6cb0}
+
+/* ---------- DRAG ITEMS (realistic) ---------- */
+.parts-area{flex:1;min-width:240px}
+.parts-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid #e2e8f0;flex-wrap:wrap;gap:6px}
+.parts-header .ph-title{color:#555;font-size:.8rem;font-weight:600}
+.parts-header .ph-help{cursor:pointer;font-size:.75rem;color:#2b6cb0;font-weight:600;background:#ebf4ff;padding:3px 10px;border-radius:12px;border:1px solid #2b6cb0;transition:all .2s}
+.parts-header .ph-help:hover{background:#2b6cb0;color:#fff}
 .drag-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.drag-item{padding:10px 8px;border-radius:10px;border:2px solid #e2e8f0;background:#fff;text-align:center;cursor:grab;transition:all .2s;width:90px;user-select:none;touch-action:none}
-.drag-item:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.drag-item{border-radius:10px;border:2px solid #e2e8f0;background:#fff;text-align:center;cursor:grab;transition:all .2s;width:95px;padding:8px 4px;user-select:none;touch-action:none}
+.drag-item:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.12)}
 .drag-item:active{cursor:grabbing}
 .drag-item.dragging{opacity:.4;transform:scale(.9)}
-.drag-item.correct{border-color:#38a169;background:#f0fff4;cursor:default;opacity:.7}
+.drag-item.selected{border-color:#2b6cb0;background:#ebf4ff;transform:translateY(-2px)}
+.drag-item.correct{border-color:#38a169;background:#f0fff4;cursor:default;opacity:.6}
 .drag-item.wrong{border-color:#e53e3e;background:#fff5f5;animation:shake .35s}
 @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
-.drag-item .di-icon{font-size:1.4rem;display:block;margin-bottom:2px}
-.drag-item .di-label{font-size:.65rem;font-weight:600;color:#333;line-height:1.2}
-.drag-item .di-hint{font-size:.55rem;color:#aaa;display:block;margin-top:2px}
+.drag-item .di-view{display:flex;flex-direction:column;align-items:center}
+.drag-item .di-label{font-size:.6rem;font-weight:600;color:#333;margin-top:3px;line-height:1.2}
 
+/* ---------- FEEDBACK ---------- */
 .feedback{margin-top:14px;padding:16px 20px;border-radius:10px;display:none}
 .feedback.show{display:block}
 .feedback.success{background:#c6f6d5;color:#22543d;border:2px solid #38a169}
 .feedback.error{background:#fed7d7;color:#822727;border:2px solid #e53e3e}
-.feedback h4{font-size:1rem;margin-bottom:4px}
-.feedback p{text-align:left;font-size:.9rem;margin-bottom:2px}
+.feedback.info{background:#ebf4ff;color:#1a365d;border:2px solid #2b6cb0}
+.feedback h4{font-size:.95rem;margin-bottom:4px}
+.feedback p{text-align:left;font-size:.85rem;margin-bottom:2px}
 
+/* ---------- CONTROLS ---------- */
 .controls{display:flex;gap:10px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
 .btn{padding:10px 28px;border-radius:8px;border:none;font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s}
 .btn-primary{background:#2b6cb0;color:#fff}
@@ -96,7 +155,6 @@ li{margin-bottom:3px}
 .btn-danger{background:#e53e3e;color:#fff}
 .btn-danger:hover{background:#c53030;transform:translateY(-1px)}
 .btn-warning{background:#dd6b20;color:#fff}
-.btn-warning:hover{background:#c05621;transform:translateY(-1px)}
 .btn-info{background:#319795;color:#fff}
 
 .progress-wrap{background:#e2e8f0;border-radius:10px;height:8px;margin-bottom:16px;overflow:hidden}
@@ -106,18 +164,61 @@ li{margin-bottom:3px}
 .level-btn.completed{border-color:#38a169;background:#f0fff4;color:#38a169}
 .level-btn.active{border-color:#2b6cb0;background:#ebf4ff;color:#1a365d;transform:translateY(-2px)}
 .level-btn.locked{border-color:#e2e8f0;background:#f7fafc;color:#a0aec0;cursor:not-allowed;transform:none}
-
 .progress-qs{display:flex;gap:6px;justify-content:center;margin-top:10px}
 .pq-dot{width:22px;height:22px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:600;color:#a0aec0;transition:all .3s}
 .pq-dot.done{background:#38a169;color:#fff}
 .pq-dot.active{background:#2b6cb0;color:#fff;box-shadow:0 0 0 3px rgba(43,108,176,.3)}
 
 footer{text-align:center;margin-top:24px;padding:14px 0;border-top:1px solid #ddd;font-size:.8rem;color:#888}
+/* ---------- EVALUACIÓN ICFES ---------- */
+.eval-wrap{display:none;background:#fff;border:2px solid #2b6cb0;border-radius:12px;padding:20px;margin-bottom:14px}
+.eval-wrap.open{display:block}
+.eval-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.eval-header h3{color:#1a365d;margin:0;font-size:1.1rem;border:none}
+.eval-progress{background:#e2e8f0;border-radius:10px;height:8px;margin-bottom:16px;overflow:hidden}
+.eval-progress-bar{height:100%;background:linear-gradient(90deg,#2b6cb0,#1a365d);border-radius:10px;transition:width .4s ease;width:0}
+.eval-qbox{border:2px solid #e2e8f0;border-radius:10px;padding:18px;margin-bottom:16px}
+.eval-qbox .eq-num{font-size:.75rem;color:#2b6cb0;font-weight:700;margin-bottom:4px}
+.eval-qbox .eq-text{font-size:1rem;color:#1a1a2e;line-height:1.5;margin-bottom:14px;font-weight:500}
+.eval-opts{display:flex;flex-direction:column;gap:8px}
+.eval-opt{padding:10px 14px;border-radius:8px;border:2px solid #e2e8f0;cursor:pointer;transition:all .2s;font-size:.9rem;display:flex;align-items:center;gap:10px;background:#fff}
+.eval-opt:hover{border-color:#2b6cb0;background:#ebf4ff}
+.eval-opt .eo-letter{width:26px;height:26px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:#555;flex-shrink:0;transition:all .2s}
+.eval-opt.selected{border-color:#2b6cb0;background:#ebf4ff}
+.eval-opt.selected .eo-letter{background:#2b6cb0;color:#fff}
+.eval-opt.correct{border-color:#38a169;background:#f0fff4}
+.eval-opt.correct .eo-letter{background:#38a169;color:#fff}
+.eval-opt.wrong{border-color:#e53e3e;background:#fff5f5}
+.eval-opt.wrong .eo-letter{background:#e53e3e;color:#fff}
+.eval-opt.disabled{cursor:default;opacity:.7}
+.eval-nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:10px}
+.eval-nav .btn{min-width:120px}
+/* RESULT */
+.eval-result{display:none;text-align:center;padding:30px 20px}
+.eval-result.open{display:block}
+.eval-result .er-score{font-size:3rem;font-weight:800;margin:10px 0}
+.eval-result .er-score.pass{color:#38a169}
+.eval-result .er-score.fail{color:#e53e3e}
+.eval-result .er-label{font-size:1.1rem;color:#555;margin-bottom:4px}
+.eval-result .er-stars{margin:10px 0;font-size:1.6rem}
+.eval-result .er-det{font-size:.85rem;color:#888;margin-bottom:14px}
+.eval-result .er-detail-list{text-align:left;max-width:500px;margin:14px auto;max-height:300px;overflow-y:auto}
+.eval-result .er-detail-item{padding:6px 10px;border-radius:6px;margin-bottom:4px;font-size:.8rem;display:flex;gap:8px;align-items:flex-start}
+.eval-result .er-detail-item.er-correct{background:#f0fff4}
+.eval-result .er-detail-item.er-wrong{background:#fff5f5}
+.eval-result .er-detail-item .ed-num{font-weight:700;min-width:22px;color:#666}
+.eval-result .er-detail-item.er-correct .ed-num{color:#38a169}
+.eval-result .er-detail-item.er-wrong .ed-num{color:#e53e3e}
+.eval-result .er-detail-item .ed-ans{flex:1}
+.eval-result .er-detail-item .ed-mark{font-weight:700;font-size:.9rem}
+.eval-result .er-detail-item.er-correct .ed-mark{color:#38a169}
+.eval-result .er-detail-item.er-wrong .ed-mark{color:#e53e3e}
+
 @media(max-width:600px){
 .tab-content{padding:14px}
 .laptop{width:100%}
-.slot{width:52px;height:42px}
-.drag-item{width:75px;padding:8px 6px}
+.slot{width:56px;height:46px}
+.drag-item{width:80px}
 }
 </style>
 </head>
@@ -131,26 +232,17 @@ footer{text-align:center;margin-top:24px;padding:14px 0;border-top:1px solid #dd
 
 <div class="tab-content guia" id="tabGuia">
 <div class="destacado" style="margin-bottom:16px"><strong>🏫 I.E. San Luis — Grado Octavo — Tecnología</strong></div>
-<h2>1. ¿Qué es un portátil?</h2>
-<p>Computador portátil con todo integrado: pantalla, teclado, batería y componentes internos.</p>
-<div class="destacado"><strong>💡</strong> Es como un "PC de escritorio en miniatura".</div>
-<h2>2. Componentes internos</h2>
-<div class="comp-card"><h4>🧠 CPU</h4><p>Procesador, el cerebro. Su velocidad se mide en GHz. Se instala con pasta térmica.</p></div>
-<div class="comp-card"><h4>📝 RAM</h4><p>Memoria temporal. Se borra al apagar. Se inserta con pinzas.</p></div>
-<div class="comp-card"><h4>💾 SSD</h4><p>Disco de estado sólido. Rápido, silencioso. Se fija con tornillo.</p></div>
-<div class="comp-card"><h4>💿 HDD</h4><p>Disco mecánico. Mayor capacidad, más lento. Se fija con tornillos.</p></div>
-<div class="comp-card"><h4>🎮 GPU</h4><p>Tarjeta gráfica. Genera imágenes. Integrada o dedicada.</p></div>
-<div class="comp-card"><h4>📋 Placa Madre</h4><p>Conecta todos los componentes.</p></div>
-<div class="comp-card"><h4>🔋 Batería</h4><p>Energía portátil. Celdas de litio. 300-500 ciclos de vida.</p></div>
-<div class="comp-card"><h4>🌡️ Refrigeración</h4><p>Ventiladores + heatpipes. Evita sobrecalentamiento.</p></div>
-<div class="comp-card"><h4>📶 Wi-Fi</h4><p>Conexión inalámbrica. Se inserta en ranura M.2.</p></div>
+<h2>Componentes internos del portátil</h2>
+<p style="margin-bottom:10px">Conoce cada parte del portátil, su función y cómo se instala. Haz clic en el Taller para practicar el ensamblaje.</p>
+<div class="guia-grid" id="guiaGrid"></div>
+<div class="destacado"><strong>💡 Dato clave:</strong> Todos estos componentes trabajan juntos. La placa madre los conecta, la CPU los coordina, la RAM da velocidad, el SSD/HDD guarda tus archivos, la GPU muestra las imágenes, la batería da energía, la refrigeración evita el calor y el Wi-Fi te conecta a Internet.</div>
 </div>
 
 <div class="tab-content lab" id="tabLab">
 
 <div class="game-header">
-<h2>🔧 Arma el Portátil</h2>
-<p>Responde las preguntas arrastrando el componente correcto sobre el slot iluminado.</p>
+<h2>🔧 Taller de Ensamblaje</h2>
+<p>Ensambla el portátil paso a paso colocando cada componente en su lugar.</p>
 </div>
 
 <div class="level-selector" id="levelSelector"></div>
@@ -161,6 +253,11 @@ footer{text-align:center;margin-top:24px;padding:14px 0;border-top:1px solid #dd
 <div class="stars" id="levelStars"><span class="star">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span></div>
 </div>
 
+<div class="help-panel" id="helpPanel">
+<div class="hp-title">📖 Información de ayuda</div>
+<div id="helpContent"></div>
+</div>
+
 <div class="lab-area" id="labArea"></div>
 
 <div class="controls">
@@ -169,596 +266,773 @@ footer{text-align:center;margin-top:24px;padding:14px 0;border-top:1px solid #dd
 </div>
 
 <div class="feedback" id="feedback"></div>
-
 <div style="text-align:center;margin-top:10px">
 <button class="btn btn-success" id="nextLevelBtn" style="display:none">➡️ Siguiente Nivel</button>
-</div>
+<button class="btn btn-warning" id="evalBtn" style="display:none" onclick="startEvaluation()">📝 Evaluación Final</button>
 </div>
 
+<div class="eval-wrap" id="evalWrap">
+<div class="eval-header"><h3>📝 Evaluación ICFES</h3><span id="evalCounter" style="font-size:.85rem;color:#666">Pregunta 1 de 20</span></div>
+<div class="eval-progress"><div class="eval-progress-bar" id="evalProgressBar"></div></div>
+<div id="evalContent"></div>
+<div class="eval-nav" id="evalNav"></div>
+</div>
+</div>
 <footer>I.E. San Luis — Tecnología — Grado Octavo — 2026</footer>
 </div>
 
 <script>
 // ============================
-// COMPONENT INFO
+// COMPONENT INFO with realistic visuals
 // ============================
 var ALL = {
-  cpu:{icon:"🧠",name:"CPU (Procesador)",    slot:"cpu"},
-  ram:{icon:"📝",name:"Memoria RAM",         slot:"ram"},
-  ssd:{icon:"💾",name:"Disco SSD",          slot:"ssd"},
-  hdd:{icon:"💿",name:"Disco HDD",          slot:"hdd"},
-  gpu:{icon:"🎮",name:"Tarjeta Gráfica GPU",slot:"gpu"},
-  mb: {icon:"📋",name:"Placa Madre",         slot:"mb"},
-  bat:{icon:"🔋",name:"Batería",            slot:"bat"},
-  cool:{icon:"🌡️",name:"Refrigeración",     slot:"cool"},
-  wifi:{icon:"📶",name:"Tarjeta Wi-Fi",     slot:"wifi"}
+  cpu:{name:"CPU (Procesador)",abbr:"CPU",
+    help:"<b>🧠 CPU:</b> El procesador o cerebro. Se mide en GHz. Intel Core i3/i5/i7 o AMD Ryzen. <b>Se instala con pasta térmica</b> y un disipador encima. Sin él, nada funciona.",
+    msgsucc:"CPU instalada con pasta térmica en su socket.",
+    msgfail:"Necesitas la CPU — tiene forma cuadrada con pines dorados."},
+  ram:{name:"Memoria RAM",abbr:"RAM",
+    help:"<b>📝 RAM:</b> Memoria de trabajo temporal. Al apagar se borra. 4GB (básico), 8GB (recomendado). <b>Se inserta con pinzas</b> presionando hasta que los seguros encajen.",
+    msgsucc:"RAM insertada en la ranura con pinzas.",
+    msgfail:"Necesitas la RAM — es una tarjeta alargada con chips negros."},
+  ssd:{name:"Disco SSD",abbr:"SSD",
+    help:"<b>💾 SSD:</b> Disco de estado sólido. No tiene partes móviles. Enciende el portátil en segundos. <b>Se fija con un tornillo</b> a la placa madre (formato M.2).",
+    msgsucc:"SSD fijado con tornillo a la placa M.2.",
+    msgfail:"Necesitas el SSD — es una tarjeta pequeña sin partes móviles."},
+  hdd:{name:"Disco HDD",abbr:"HDD",
+    help:"<b>💿 HDD:</b> Disco duro mecánico. Tiene platos que giran y un brazo lector. Más lento pero más capacidad. <b>Se fija con tornillos</b> al chasis.",
+    msgsucc:"HDD asegurado con tornillos al chasis.",
+    msgfail:"Necesitas el HDD — es más grueso que el SSD y tiene partes mecánicas."},
+  gpu:{name:"GPU (Gráfica)",abbr:"GPU",
+    help:"<b>🎮 GPU:</b> Tarjeta gráfica. Genera las imágenes en pantalla. Integrada (básica) o Dedicada (para juegos). <b>La dedicada se fija con tornillos</b>.",
+    msgsucc:"GPU instalada y fijada con tornillos.",
+    msgfail:"Necesitas la GPU — tiene ventilador y salidas para monitor."},
+  mb: {name:"Placa Madre",abbr:"PLACA",
+    help:"<b>📋 Placa Madre:</b> Conecta todos los componentes. Tiene pistas de cobre por donde viajan datos y electricidad. <b>Se fija al chasis con tornillos</b>.",
+    msgsucc:"Placa madre fijada al chasis con tornillos.",
+    msgfail:"Necesitas la placa madre — es la base verde más grande."},
+  bat:{name:"Batería",abbr:"BATERÍA",
+    help:"<b>🔋 Batería:</b> Fuente de energía portátil. Celdas de litio. 300-500 ciclos de carga (2-4 años). <b>Se conecta con un cable y se fija con tornillos</b>.",
+    msgsucc:"Batería conectada y asegurada al chasis.",
+    msgfail:"Necesitas la batería — tiene forma rectangular con celdas."},
+  cool:{name:"Refrigeración",abbr:"VENT.",
+    help:"<b>🌡️ Refrigeración:</b> Ventiladores + heatpipes de cobre. Disipa el calor del CPU. <b>Necesita pasta térmica</b> entre el chip y el disipador.",
+    msgsucc:"Refrigeración montada con pasta térmica.",
+    msgfail:"Necesitas la refrigeración — tiene ventilador y aletas metálicas."},
+  wifi:{name:"Wi-Fi / Bluetooth",abbr:"Wi-Fi",
+    help:"<b>📶 Wi-Fi:</b> Tarjeta inalámbrica. Conecta a Internet sin cables y a dispositivos Bluetooth. <b>Se inserta con pinzas</b> en ranura M.2 y se conectan antenas.",
+    msgsucc:"Wi-Fi insertado en ranura M.2 con antenas conectadas.",
+    msgfail:"Necesitas la tarjeta Wi-Fi — es pequeña con conectores para antenas."}
 };
 
+function partSVG(key,w,h){
+  var svgW=Math.max(w,28), svgH=Math.max(h,22);
+  var vbW=60, vbH=50;
+  function s(w2){return Math.round(w2/60*svgW)}
+  function sc(w2){return '<svg viewBox="0 0 '+vbW+' '+vbH+'" width="'+svgW+'" height="'+svgH+'" style="max-width:100%">'}
+  function ec(){return '</svg>'}
+  // CPU: chip cuadrado gris con pines dorados
+  if(key==='cpu')return '<div class="part-view">'+sc()+
+    '<rect x="6" y="2" width="48" height="36" rx="2" fill="#6b7280" stroke="#4b5563" stroke-width="1"/>'+
+    '<rect x="14" y="10" width="32" height="20" rx="1.5" fill="#374151"/>'+
+    '<rect x="20" y="16" width="20" height="8" rx="1" fill="#3b82f6" opacity=".8"/>'+
+    '<text x="30" y="22" text-anchor="middle" font-size="6" fill="#fff" font-weight="bold" font-family="sans-serif">CPU</text>'+
+    '<g fill="#f59e0b">'+
+    '<rect x="8" y="39" width="5" height="10" rx="1"/><rect x="15" y="39" width="5" height="10" rx="1"/>'+
+    '<rect x="22" y="39" width="5" height="10" rx="1"/><rect x="29" y="39" width="5" height="10" rx="1"/>'+
+    '<rect x="36" y="39" width="5" height="10" rx="1"/><rect x="43" y="39" width="5" height="10" rx="1"/>'+
+    '</g>'+ec()+'<div class="pv-name">CPU</div></div>';
+  // RAM: tarjeta verde alargada con chips negros y pines dorados abajo
+  if(key==='ram')return '<div class="part-view">'+sc()+
+    '<rect x="4" y="4" width="52" height="38" rx="2" fill="#166534" stroke="#14532d" stroke-width="1.2"/>'+
+    '<rect x="8" y="8" width="44" height="18" rx="1" fill="#15803d"/>'+
+    '<g fill="#1f2937"><rect x="10" y="10" width="8" height="14" rx="1"/><rect x="20" y="10" width="8" height="14" rx="1"/>'+
+    '<rect x="30" y="10" width="8" height="14" rx="1"/><rect x="40" y="10" width="8" height="14" rx="1"/></g>'+
+    '<text x="30" y="34" text-anchor="middle" font-size="5" fill="#86efac" font-weight="bold" font-family="sans-serif">DDR4</text>'+
+    '<g fill="#f59e0b">'+
+    '<rect x="6" y="43" width="9" height="6" rx="1"/><rect x="17" y="43" width="9" height="6" rx="1"/>'+
+    '<rect x="28" y="43" width="9" height="6" rx="1"/><rect x="39" y="43" width="9" height="6" rx="1"/>'+
+    '</g>'+ec()+'<div class="pv-name">RAM</div></div>';
+  // SSD M.2: tarjeta angosta con conector dorado
+  if(key==='ssd')return '<div class="part-view">'+sc()+
+    '<rect x="2" y="8" width="46" height="30" rx="2" fill="#1e3a5f" stroke="#0f2440" stroke-width="1"/>'+
+    '<rect x="4" y="10" width="42" height="26" rx="1.5" fill="#1e40af"/>'+
+    '<rect x="8" y="16" width="20" height="14" rx="1" fill="#374151"/>'+
+    '<text x="18" y="25" text-anchor="middle" font-size="5" fill="#93c5fd" font-weight="bold" font-family="sans-serif">SSD</text>'+
+    '<rect x="49" y="12" width="10" height="22" rx="1" fill="#f59e0b"/>'+
+    '<rect x="49" y="14" width="10" height="3" fill="#d97706"/><rect x="49" y="19" width="10" height="3" fill="#d97706"/>'+
+    '<rect x="49" y="24" width="10" height="3" fill="#d97706"/><rect x="49" y="29" width="10" height="3" fill="#d97706"/>'+
+    ec()+'<div class="pv-name">SSD</div></div>';
+  // HDD: disco metálico con plato circular visible
+  if(key==='hdd')return '<div class="part-view">'+sc()+
+    '<rect x="4" y="4" width="52" height="40" rx="3" fill="#64748b" stroke="#475569" stroke-width="1.2"/>'+
+    '<rect x="8" y="8" width="44" height="32" rx="2" fill="#475569"/>'+
+    '<circle cx="30" cy="24" r="14" fill="none" stroke="#94a3b8" stroke-width="2"/>'+
+    '<circle cx="30" cy="24" r="10" fill="#334155" stroke="#64748b" stroke-width="1"/>'+
+    '<circle cx="30" cy="24" r="3" fill="#94a3b8"/>'+
+    '<line x1="30" y1="24" x2="30" y2="14" stroke="#cbd5e1" stroke-width="1.5"/>'+
+    '<rect x="14" y="38" width="14" height="2" rx="1" fill="#64748b"/>'+
+    '<rect x="34" y="38" width="14" height="2" rx="1" fill="#64748b"/>'+
+    ec()+'<div class="pv-name">HDD</div></div>';
+  // GPU: PCB oscura con ventilador y conectores
+  if(key==='gpu')return '<div class="part-view">'+sc()+
+    '<rect x="4" y="6" width="52" height="38" rx="2" fill="#1f2937" stroke="#111827" stroke-width="1.2"/>'+
+    '<rect x="8" y="10" width="44" height="28" rx="2" fill="#374151"/>'+
+    '<circle cx="30" cy="24" r="12" fill="#4b5563" stroke="#6b7280" stroke-width="1.5"/>'+
+    '<circle cx="30" cy="24" r="8" fill="#374151"/>'+
+    '<path d="M26 24h8M30 20v8" stroke="#9ca3af" stroke-width="1.5"/>'+
+    '<rect x="8" y="42" width="8" height="4" rx="1" fill="#f59e0b"/>'+
+    '<rect x="20" y="42" width="8" height="4" rx="1" fill="#f59e0b"/>'+
+    '<rect x="32" y="42" width="8" height="4" rx="1" fill="#f59e0b"/>'+
+    '<rect x="44" y="42" width="8" height="4" rx="1" fill="#f59e0b"/>'+
+    '<rect x="46" y="12" width="8" height="6" rx="1" fill="#d1d5db"/>'+
+    ec()+'<div class="pv-name">GPU</div></div>';
+  // Motherboard: PCB verde con pistas, slots y componentes
+  if(key==='mb')return '<div class="part-view">'+sc()+
+    '<rect x="2" y="2" width="56" height="44" rx="2" fill="#166534" stroke="#14532d" stroke-width="1.2"/>'+
+    '<g stroke="#22c55e" stroke-width=".8" opacity=".5" fill="none">'+
+    '<path d="M6 8h20v6H6zM6 18h30v8H6zM6 30h16v4H6zM36 6h18v4H36zM36 14h14v6H36zM36 24h18v8H36z"/></g>'+
+    '<rect x="8" y="10" width="12" height="4" rx="1" fill="#334155" opacity=".7"/>'+
+    '<rect x="8" y="20" width="16" height="4" rx="1" fill="#334155" opacity=".7"/>'+
+    '<rect x="8" y="30" width="10" height="3" rx=".5" fill="#334155" opacity=".7"/>'+
+    '<circle cx="50" cy="9" r="3" fill="#f59e0b" opacity=".7"/>'+
+    '<circle cx="50" cy="18" r="3" fill="#f59e0b" opacity=".7"/>'+
+    '<rect x="38" y="8" width="10" height="2" rx=".5" fill="#38bdf8" opacity=".6"/>'+
+    '<rect x="38" y="16" width="10" height="2" rx=".5" fill="#38bdf8" opacity=".6"/>'+
+    '<rect x="38" y="28" width="14" height="2" rx=".5" fill="#38bdf8" opacity=".6"/>'+
+    ec()+'<div class="pv-name">PLACA</div></div>';
+  // Batería: paquete rectangular con celdas y conector
+  if(key==='bat')return '<div class="part-view">'+sc()+
+    '<rect x="4" y="4" width="52" height="38" rx="5" fill="#dc2626" stroke="#b91c1c" stroke-width="1.2"/>'+
+    '<rect x="8" y="8" width="44" height="30" rx="3" fill="#ef4444"/>'+
+    '<g fill="#fca5a5" opacity=".6"><rect x="12" y="12" width="10" height="22" rx="2"/>'+
+    '<rect x="25" y="12" width="10" height="22" rx="2"/><rect x="38" y="12" width="10" height="22" rx="2"/></g>'+
+    '<g fill="#fff" opacity=".3"><text x="17" y="28" text-anchor="middle" font-size="5" font-family="sans-serif">+</text>'+
+    '<text x="30" y="28" text-anchor="middle" font-size="5" font-family="sans-serif">+</text>'+
+    '<text x="43" y="28" text-anchor="middle" font-size="5" font-family="sans-serif">+</text></g>'+
+    '<rect x="48" y="16" width="8" height="14" rx="2" fill="#374151"/>'+
+    '<rect x="50" y="18" width="4" height="4" rx="1" fill="#6b7280"/>'+
+    '<rect x="50" y="24" width="4" height="4" rx="1" fill="#6b7280"/>'+
+    '<line x1="52" y1="30" x2="52" y2="38" stroke="#374151" stroke-width="2" stroke-linecap="round"/>'+
+    ec()+'<div class="pv-name">BATERÍA</div></div>';
+  // Refrigeración: ventilador con aletas y heatpipes
+  if(key==='cool')return '<div class="part-view">'+sc()+
+    '<rect x="4" y="2" width="52" height="44" rx="3" fill="#4b5563" stroke="#374151" stroke-width="1"/>'+
+    '<rect x="8" y="4" width="44" height="18" rx="1" fill="#6b7280"/>'+
+    '<g fill="#9ca3af" opacity=".7"><rect x="10" y="6" width="4" height="14" rx=".5"/>'+
+    '<rect x="16" y="6" width="4" height="14" rx=".5"/><rect x="22" y="6" width="4" height="14" rx=".5"/>'+
+    '<rect x="28" y="6" width="4" height="14" rx=".5"/><rect x="34" y="6" width="4" height="14" rx=".5"/>'+
+    '<rect x="40" y="6" width="4" height="14" rx=".5"/></g>'+
+    '<circle cx="30" cy="34" r="10" fill="#4b5563" stroke="#6b7280" stroke-width="1.5"/>'+
+    '<circle cx="30" cy="34" r="6" fill="#374151"/>'+
+    '<path d="M28 30h4l-2 4 2 2-4-2z" fill="#9ca3af"/>'+
+    '<path d="M22 34l-2-2h4l2 2M38 34l2-2h-4l-2 2M30 26l-2-2v4l2-2M30 30l2 2v-4z" stroke="#9ca3af" stroke-width=".5" opacity=".5"/>'+
+    '<rect x="20" y="44" width="20" height="4" rx="1" fill="#d97706"/>'+
+    ec()+'<div class="pv-name">VENT.</div></div>';
+  // Wi-Fi: tarjeta pequeña con antenas
+  if(key==='wifi')return '<div class="part-view">'+sc()+
+    '<rect x="6" y="12" width="38" height="26" rx="2" fill="#1d4ed8" stroke="#1e3a8a" stroke-width="1"/>'+
+    '<rect x="8" y="14" width="34" height="22" rx="1.5" fill="#2563eb"/>'+
+    '<text x="25" y="28" text-anchor="middle" font-size="6" fill="#bfdbfe" font-weight="bold" font-family="sans-serif">Wi-Fi</text>'+
+    '<rect x="45" y="16" width="10" height="18" rx="1" fill="#f59e0b"/>'+
+    '<g fill="#93c5fd"><circle cx="14" cy="10" r="2.5"/><circle cx="36" cy="10" r="2.5"/></g>'+
+    '<line x1="14" y1="12" x2="14" y2="18" stroke="#93c5fd" stroke-width="1"/>'+
+    '<line x1="36" y1="12" x2="36" y2="18" stroke="#93c5fd" stroke-width="1"/>'+
+    '<path d="M10 4q15-8 30 0" fill="none" stroke="#93c5fd" stroke-width="1.5"/>'+
+    '<path d="M14 7q11-5 22 0" fill="none" stroke="#bfdbfe" stroke-width="1"/>'+
+    ec()+'<div class="pv-name">Wi-Fi</div></div>';
+  return '<div class="part-view"><div style="font-size:1.4rem">?</div><div class="pv-name">?</div></div>';
+}
+
 // ============================
-// POOL DE 50+ PREGUNTAS
+// GUIDE DATA (for dynamic rendering)
 // ============================
-var questionPool = [
-  // === NIVEL 1 - FÁCIL: Identificación ===
-  {diff:1,q:"Soy el cerebro del portátil, proceso todas las instrucciones. ¿Qué componente soy?",a:"cpu",opts:["cpu","ram","ssd","bat"],icon:"🧠"},
-  {diff:1,q:"Guardo información temporal; cuando apagas el portátil me borro. ¿Qué soy?",a:"ram",opts:["ram","ssd","cpu","hdd"],icon:"📝"},
-  {diff:1,q:"Soy un disco sin partes móviles, muy rápido y silencioso. ¿Qué soy?",a:"ssd",opts:["ssd","hdd","ram","cool"],icon:"💾"},
-  {diff:1,q:"Genero las imágenes que ves en la pantalla del portátil. ¿Qué soy?",a:"gpu",opts:["gpu","cpu","ram","wifi"],icon:"🎮"},
-  {diff:1,q:"Conecto todos los componentes del portátil entre sí. ¿Qué soy?",a:"mb",opts:["mb","bat","cpu","cool"],icon:"📋"},
-  {diff:1,q:"Almaceno energía para que uses el portátil sin estar conectado. ¿Qué soy?",a:"bat",opts:["bat","cpu","ram","wifi"],icon:"🔋"},
-  {diff:1,q:"Tengo un disco que gira a gran velocidad y un brazo que lee datos. ¿Qué soy?",a:"hdd",opts:["hdd","ssd","cool","ram"],icon:"💿"},
-  {diff:1,q:"Enfrío el portátil con ventiladores y tubos de cobre. ¿Qué soy?",a:"cool",opts:["cool","cpu","gpu","bat"],icon:"🌡️"},
-  {diff:1,q:"Te conecto a internet sin cables y a dispositivos Bluetooth. ¿Qué soy?",a:"wifi",opts:["wifi","ram","ssd","mb"],icon:"📶"},
-  {diff:1,q:"Mi velocidad se mide en GHz (gigahertz). ¿Qué componente soy?",a:"cpu",opts:["cpu","ram","wifi","bat"],icon:"🧠"},
-
-  // === NIVEL 2 - MEDIO: Funciones ===
-  {diff:2,q:"¿Qué componente determina cuántos programas puedes tener abiertos sin que el portátil se ponga lento?",a:"ram",opts:["ram","cpu","ssd","gpu"],icon:"📝"},
-  {diff:2,q:"Si el portátil enciende en 5 segundos, seguramente tiene un...",a:"ssd",opts:["ssd","hdd","ram","cool"],icon:"💾"},
-  {diff:2,q:"Para jugar videojuegos con buena calidad gráfica necesitas una buena...",a:"gpu",opts:["gpu","cpu","ram","bat"],icon:"🎮"},
-  {diff:2,q:"¿Qué componente tiene una vida útil limitada de 300 a 500 ciclos de carga?",a:"bat",opts:["bat","cpu","ssd","cool"],icon:"🔋"},
-  {diff:2,q:"¿Qué componente evita que el portátil se sobrecaliente cuando juegas o editas video?",a:"cool",opts:["cool","gpu","cpu","bat"],icon:"🌡️"},
-  {diff:2,q:"¿Qué componente necesitas para conectarte al Wi-Fi del colegio?",a:"wifi",opts:["wifi","ram","ssd","mb"],icon:"📶"},
-  {diff:2,q:"Es como tu escritorio de estudio: mientras más grande, más cosas puedes tener abiertas.",a:"ram",opts:["ram","hdd","cpu","gpu"],icon:"📝"},
-  {diff:2,q:"Es como un archivador electrónico: guarda todo aunque apagues el portátil.",a:"ssd",opts:["ssd","ram","bat","wifi"],icon:"💾"},
-  {diff:2,q:"¿Qué componente tradicional es más lento porque tiene partes mecánicas que giran?",a:"hdd",opts:["hdd","ssd","ram","cool"],icon:"💿"},
-  {diff:2,q:"Sin este componente, el portátil solo funciona conectado a la corriente.",a:"bat",opts:["bat","cpu","mb","wifi"],icon:"🔋"},
-
-  // === NIVEL 3 - DIFÍCIL: Instalación y herramientas ===
-  {diff:3,q:"¿Qué componente necesita pasta térmica para instalarse correctamente?",a:"cpu",opts:["cpu","ram","ssd","wifi"],icon:"🧊"},
-  {diff:3,q:"¿Qué componente se inserta con pinzas en ranuras delgadas presionando hasta que encaje?",a:"ram",opts:["ram","gpu","bat","cool"],icon:"🤏"},
-  {diff:3,q:"¿Qué componente se fija con un tornillo directamente a la placa madre (formato M.2)?",a:"ssd",opts:["ssd","hdd","gpu","wifi"],icon:"🔧"},
-  {diff:3,q:"¿Qué componente se conecta con un cable a la placa madre y se asegura con tornillos al chasis?",a:"bat",opts:["bat","cpu","ram","ssd"],icon:"🔧"},
-  {diff:3,q:"¿Qué componente se inserta con pinzas en una ranura M.2 y tiene cables para las antenas?",a:"wifi",opts:["wifi","ram","gpu","cool"],icon:"🤏"},
-  {diff:3,q:"¿Qué componente se instala sobre el CPU usando pasta térmica para mejorar la transferencia de calor?",a:"cool",opts:["cool","gpu","bat","mb"],icon:"🧊"},
-  {diff:3,q:"¿Qué componente se fija con varios tornillos al chasis y puede tener su propio sistema de refrigeración?",a:"gpu",opts:["gpu","cpu","ram","wifi"],icon:"🔧"},
-  {diff:3,q:"¿Qué herramienta debes usar para instalar la memoria RAM?",a:"ram",opts:["ram","ssd","gpu","bat"],icon:"🤏"},
-  {diff:3,q:"¿Qué herramienta debes usar para instalar el disco SSD M.2?",a:"ssd",opts:["ssd","hdd","ram","wifi"],icon:"🔧"},
-  {diff:3,q:"Al instalar la CPU, ¿qué se aplica entre el chip y el disipador?",a:"cpu",opts:["cpu","cool","gpu","mb"],icon:"🧊"},
-
-  // === NIVEL 4 - MUY DIFÍCIL: Diagnóstico y escenarios ===
-  {diff:4,q:"El portátil solo funciona 5 minutos desconectado y luego se apaga. La batería tiene 5 años. ¿Qué falla?",a:"bat",opts:["bat","cpu","ssd","cool"],icon:"🔋"},
-  {diff:4,q:"El portátil se calienta mucho y el ventilador suena muy fuerte al jugar. ¿Qué sistema está fallando?",a:"cool",opts:["cool","gpu","cpu","bat"],icon:"🌡️"},
-  {diff:4,q:"El portátil tarda 5 minutos en encender y los programas abren muy lento. Tiene HDD. ¿Qué deberías cambiar?",a:"ssd",opts:["ssd","ram","cpu","gpu"],icon:"💾"},
-  {diff:4,q:"El juego se ve entrecortado y la imagen es muy lenta. La CPU es buena pero la imagen va mal. ¿Qué falta?",a:"gpu",opts:["gpu","ram","cpu","ssd"],icon:"🎮"},
-  {diff:4,q:"El portátil enciende pero no se conecta a ninguna red Wi-Fi. ¿Qué componente puede estar dañado?",a:"wifi",opts:["wifi","ram","bat","mb"],icon:"📶"},
-  {diff:4,q:"El portátil hace 3 beeps al encender y no muestra imagen. 3 beeps indican error de...",a:"ram",opts:["ram","gpu","cpu","bat"],icon:"📝"},
-  {diff:4,q:"Todo funciona bien pero el disco está siempre al 100% y todo es lento. Tiene HDD de 500GB. ¿Qué pones?",a:"ssd",opts:["ssd","hdd","ram","gpu"],icon:"💾"},
-  {diff:4,q:"Un portátil gaming se apaga de repente cuando juegas. Al tocarlo está muy caliente. ¿Qué hay que revisar?",a:"cool",opts:["cool","gpu","bat","cpu"],icon:"🌡️"},
-  {diff:4,q:"Instalaste un nuevo programa y el portátil se queda sin memoria. ¿Qué componente necesitas expandir?",a:"ram",opts:["ram","ssd","cpu","bat"],icon:"📝"},
-  {diff:4,q:"La batería no carga aunque el cargador está bien conectado. ¿Qué componente de la lista puede estar dañado?",a:"bat",opts:["bat","mb","cpu","wifi"],icon:"🔋"},
-
-  // === NIVEL 5 - EXPERTO: Preguntas avanzadas mezcladas ===
-  {diff:5,q:"Estás armando un portátil para edición de video profesional. ¿Qué componentes priorizas?",a:"gpu",opts:["gpu","hdd","wifi","bat"],icon:"🎮"},
-  {diff:5,q:"¿Qué componente va primero al ensamblar un portátil desde cero?",a:"mb",opts:["mb","cpu","ram","bat"],icon:"📋"},
-  {diff:5,q:"Un técnico dice: 'El polvo en los ventiladores puede dañar el portátil'. ¿Qué sistema afecta el polvo?",a:"cool",opts:["cool","gpu","cpu","wifi"],icon:"🌡️"},
-  {diff:5,q:"¿Qué componente es más importante para que un portátil de oficina sea rápido y económico?",a:"ssd",opts:["ssd","gpu","hdd","bat"],icon:"💾"},
-  {diff:5,q:"Tienes que elegir: ¿qué componente mejora MÁS la velocidad general del portátil?",a:"ssd",opts:["ssd","ram","cpu","gpu"],icon:"💾"},
-  {diff:5,q:"Si solo pudieras mejorar UN componente para que el portátil encienda más rápido, ¿cuál sería?",a:"ssd",opts:["ssd","ram","cpu","bat"],icon:"💾"},
-  {diff:5,q:"¿Qué dos componentes trabajan juntos para ejecutar un programa: uno lo almacena y el otro lo ejecuta?",a:"ram",opts:["ram","cpu","hdd","gpu"],icon:"📝"},
-  {diff:5,q:"¿Qué componente es el más frágil y sensible a descargas electrostáticas al manipularlo?",a:"mb",opts:["mb","bat","cool","ssd"],icon:"📋"},
-  {diff:5,q:"¿Cuál es la forma correcta de instalar un SSD M.2?",a:"ssd",opts:["ssd","ram","hdd","gpu"],icon:"💾"},
-  {diff:5,q:"Un portátil con 4 GB de RAM, HDD de 500GB y CPU i3. El usuario dice que es muy lento. ¿Qué mejoras sugieres?",a:"ram",opts:["ram","gpu","bat","wifi"],icon:"📝"}
+var guiaData = [
+  {comp:"cpu", title:"CPU (Procesador)", funcion:"Ejecuta todas las instrucciones de los programas y coordina los demás componentes. Es el cerebro del portátil.",
+   caracteristicas:"Velocidad en GHz. Fabricantes: Intel (Core i3/i5/i7/i9) y AMD (Ryzen). Tiene núcleos y caché integrada.",
+   instalacion:"Se instala en el socket de la placa madre. Requiere pasta térmica entre el chip y el disipador. Nunca toques los pines dorados."},
+  {comp:"ram", title:"Memoria RAM", funcion:"Almacena temporalmente los datos que el procesador necesita en cada momento. Al apagar el portátil, se borra todo su contenido.",
+   caracteristicas:"Se mide en GB (4-16 GB típico). Formato DDR4 o DDR5 en portátiles (SO-DIMM). Más RAM = más programas abiertos sin lentitud.",
+   instalacion:"Se inserta con pinzas en las ranuras de la placa madre. Tiene una muesca que evita colocarla al revés. Presiona hasta que los seguros encajen."},
+  {comp:"ssd", title:"Disco SSD (Estado Sólido)", funcion:"Almacena el sistema operativo, programas y archivos de forma permanente. No tiene partes móviles, por eso es rápido, silencioso y resistente a golpes.",
+   caracteristicas:"Usa memoria flash NAND. Formatos: M.2 (directo a la placa) o SATA de 2.5 pulgadas. Enciende el PC en segundos (10-15s).",
+   instalacion:"M.2 se inserta en ángulo y se fija con un tornillo. SATA va en bahía y se conecta con cable. Es la mejora más notable para un portátil viejo."},
+  {comp:"hdd", title:"Disco HDD (Mecánico)", funcion:"Almacena archivos usando platos metálicos que giran y un brazo que lee/ escribe datos magnéticamente.",
+   caracteristicas:"Más lento que SSD pero ofrece más capacidad por menos precio (500GB-2TB). Tamaño de 2.5 pulgadas en portátiles. Consume más energía.",
+   instalacion:"Se fija con tornillos al chasis o a una bandeja. Se conecta mediante cable SATA a la placa madre y a la fuente de poder."},
+  {comp:"gpu", title:"GPU (Tarjeta Gráfica)", funcion:"Procesa y genera las imágenes que ves en la pantalla. Alivia al CPU del trabajo gráfico.",
+   caracteristicas:"Puede ser integrada (dentro del CPU, para tareas básicas) o dedicada (tarjeta separada con su propia memoria VRAM). Es clave para juegos y edición de video.",
+   instalacion:"En portátiles la GPU dedicada va soldada a la placa madre o en formato MXM. Se fija con tornillos y tiene su propio sistema de refrigeración."},
+  {comp:"mb", title:"Placa Madre (Motherboard)", funcion:"Conecta y comunica todos los componentes entre sí. Es la columna vertebral del portátil.",
+   caracteristicas:"Contiene el chipset, reguladores de voltaje, ranuras (RAM, M.2), conectores y pistas de cobre que transportan datos y electricidad.",
+   instalacion:"Es la primera pieza que se instala en el chasis. Se fija con tornillos. Es el componente más delicado y sensible a descargas electrostáticas."},
+  {comp:"bat", title:"Batería", funcion:"Proporciona energía al portátil cuando no está conectado a la corriente eléctrica.",
+   caracteristicas:"Tecnología de iones de litio (Li-Ion). Capacidad en Wh o mAh. Vida útil de 300-500 ciclos (2-4 años). Pierde capacidad con el tiempo.",
+   instalacion:"Se conecta mediante un cable a la placa madre y se asegura con tornillos al chasis. Algunos modelos la tienen integrada sin posibilidad de cambio."},
+  {comp:"cool", title:"Sistema de Refrigeración", funcion:"Disipa el calor generado por el procesador y la tarjeta gráfica para evitar que se sobrecalienten.",
+   caracteristicas:"Compuesto por heatpipes de cobre que transportan el calor, aletas de aluminio que lo disipan y un ventilador que expulsa el aire caliente.",
+   instalacion:"Se monta sobre el CPU/GPU con pasta térmica de por medio. Se fija con tornillos a la placa madre. El polvo acumulado reduce su eficiencia."},
+  {comp:"wifi", title:"Tarjeta Wi-Fi / Bluetooth", funcion:"Permite la conexión a redes inalámbricas (Wi-Fi) y dispositivos Bluetooth como mouse, teclado o audífonos.",
+   caracteristicas:"Estándares 802.11 (Wi-Fi 5/6/7). Velocidad variable según el estándar. Incluye Bluetooth integrado.",
+   instalacion:"Se inserta en ranura M.2 o PCIe. Tiene dos conectores para las antenas que van a la pantalla. Se fija con un tornillo."}
 ];
 
 // ============================
-// ESTADO
+// LEVEL DESIGN: 4 niveles
 // ============================
-var currentLevel = 0;
-var gameLevels = [];
-var completed = [false,false,false,false,false];
-var currentQ = 0;
-var qAnswered = [];
-var bootTimers = [];
-var dragData = null;
+var levelDesign = [
+  {type:"identify", title:"Reconocer las Partes", badge:"Fácil",
+   desc:"Identifica cada componente por su imagen y función.",
+   steps:[
+     {comp:"cpu",question:"¿Qué componente electrónico es el cerebro del portátil y procesa todas las instrucciones?"},
+     {comp:"ram",question:"¿Qué componente guarda datos temporalmente mientras trabajas y se borra al apagar?"},
+     {comp:"ssd",question:"¿Qué disco de almacenamiento NO tiene partes móviles y enciende el PC en segundos?"},
+     {comp:"hdd",question:"¿Qué componente tiene platos giratorios y un brazo que lee datos magnéticos?"},
+     {comp:"gpu",question:"¿Qué componente se encarga de generar las imágenes en la pantalla?"}
+   ]},
+  {type:"assemble", title:"Colocar Componentes", badge:"Medio",
+   desc:"Arrastra cada componente al slot correcto en el portátil.",
+   steps:[
+     {comp:"mb",  instruction:"Coloca la placa madre como base del portátil"},
+     {comp:"cpu", instruction:"Instala el procesador en el socket de la placa"},
+     {comp:"ram", instruction:"Inserta la memoria RAM en la ranura correspondiente"},
+     {comp:"ssd", instruction:"Fija el SSD M.2 directamente a la placa madre"},
+     {comp:"cool",instruction:"Monta el sistema de refrigeración sobre el CPU"}
+   ]},
+  {type:"diagnose", title:"Diagnóstico y Reparación", badge:"Difícil",
+   desc:"Identifica y soluciona problemas reales del portátil.",
+   steps:[
+     {comp:"cool",problem:"El portátil se calienta mucho y el ventilador suena muy fuerte", instruction:"Arrastra el sistema de refrigeración para reemplazar el dañado"},
+     {comp:"bat",problem:"El portátil solo funciona conectado al cargador (batería agotada)", instruction:"Arrastra la batería nueva para reemplazar la vieja"},
+     {comp:"ssd",problem:"El portátil tarda 5 minutos en encender porque tiene un HDD muy lento", instruction:"Arrastra el SSD para reemplazar el HDD y acelerar el sistema"},
+     {comp:"wifi",problem:"El portátil no detecta ninguna red Wi-Fi (tarjeta dañada)", instruction:"Arrastra la tarjeta Wi-Fi para reemplazar la defectuosa"},
+     {comp:"ram",problem:"El portátil se queda lento con varios programas abiertos (poca memoria)", instruction:"Arrastra más memoria RAM para ampliar la capacidad"}
+   ]},
+  {type:"eval", title:"Evaluación ICFES", badge:"Final",
+   desc:"Demuestra todo lo que aprendiste con 20 preguntas tipo ICFES."}
+];
 
-function shuffleArray(a){
-  for(var i=a.length-1;i>0;i--){
-    var j=Math.floor(Math.random()*(i+1));
-    var t=a[i];a[i]=a[j];a[j]=t;
-  }
-  return a;
-}
+// ============================
+// HINTS
+// ============================
+var hintQuestions = {
+  cpu: "Soy el cerebro del portátil, proceso instrucciones. ¿Qué componente soy?",
+  ram: "Guardo información temporal; al apagar me borro. ¿Qué componente soy?",
+  ssd: "Soy un disco sin partes móviles, muy rápido. ¿Qué componente soy?",
+  hdd: "Tengo platos que giran y un brazo que lee datos. ¿Qué soy?",
+  gpu: "Genero las imágenes en la pantalla. ¿Qué componente soy?",
+  mb: "Conecto todos los componentes entre sí. ¿Qué soy?",
+  bat: "Doy energía sin estar conectado a la corriente. ¿Qué soy?",
+  cool: "Enfrío el portátil con ventiladores. ¿Qué soy?",
+  wifi: "Conecto a Internet sin cables. ¿Qué componente soy?"
+};
 
-function pickQuestionsForLevel(diff,count){
-  var pool=questionPool.filter(function(q){return q.diff===diff;});
-  var picked=shuffleArray(pool.slice()).slice(0,count);
-  while(picked.length<count){
-    var extra=questionPool[Math.floor(Math.random()*questionPool.length)];
-    if(picked.indexOf(extra)<0)picked.push(extra);
-  }
-  return picked.slice(0,count);
-}
+// ============================
+// GAME STATE
+// ============================
+var currentLevel=0,currentStep=0;
+var completed=[false,false,false,false];
+var bootTimers=[],dragData=null;
+var gameLevels=[];
+var evalQuestions=[],evalCurrentQ=0,evalAnswers=[],evalStarted=false;
 
-function newRandomGame(){
+function shuffleArray(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a}
+
+function buildLevels(){
   bootTimers.forEach(clearTimeout);bootTimers=[];
-  completed=[false,false,false,false,false];
-  gameLevels=[];
-  for(var d=1;d<=5;d++){
-    var qs=pickQuestionsForLevel(d,5);
-    // Assign slot targets based on answer
-    qs.forEach(function(q){
-      q._used=false;
-      // Determine which slot this component goes to
-      var slotMap={
-        cpu:"slot_cpu",ram:"slot_ram",ssd:"slot_ssd",hdd:"slot_hdd",
-        gpu:"slot_gpu",mb:"slot_mb",bat:"slot_bat",cool:"slot_cool",wifi:"slot_wifi"
-      };
-      q._slotId=slotMap[q.a]||"slot_"+q.a;
-      // Create shuffled options list for draggable items
-      q._optsAll=q.opts.slice();
-      shuffleArray(q._optsAll);
-    });
-    gameLevels.push({idx:d,diff:d,questions:qs,title:"",badge:""});
-  }
-  gameLevels[0].title="Identifica los Componentes";
-  gameLevels[0].badge="Fácil";
-  gameLevels[1].title="Funciones y Características";
-  gameLevels[1].badge="Medio";
-  gameLevels[2].title="Instalación y Herramientas";
-  gameLevels[2].badge="Difícil";
-  gameLevels[3].title="Diagnóstico Técnico";
-  gameLevels[3].badge="Muy Difícil";
-  gameLevels[4].title="Desafío Experto";
-  gameLevels[4].badge="Experto";
-
-  currentLevel=0;currentQ=0;qAnswered=[];
-  document.getElementById('feedback').className='feedback';
-  document.getElementById('feedback').innerHTML='';
-  document.getElementById('nextLevelBtn').style.display='none';
+  completed=[false,false,false,false];
+  gameLevels=levelDesign.map(function(ld,idx){
+    var steps=null;
+    if(ld.type==='identify'){
+      steps=ld.steps.map(function(s){
+        var others=Object.keys(ALL).filter(function(k){return k!==s.comp;});
+        var opts=shuffleArray(others).slice(0,3);opts.push(s.comp);opts=shuffleArray(opts);
+        return{comp:s.comp,question:s.question,_done:false,_optsAll:opts};
+      });
+    }else if(ld.type==='assemble'||ld.type==='diagnose'){
+      steps=ld.steps.map(function(s){
+        var others=Object.keys(ALL).filter(function(k){return k!==s.comp;});
+        var dists=shuffleArray(others).slice(0,3);dists.push(s.comp);
+        return{comp:s.comp,instruction:s.instruction,problem:s.problem||'',_done:false,_optsAll:shuffleArray(dists)};
+      });
+    }else steps=[];
+    return{idx:idx+1,type:ld.type,title:ld.title,badge:ld.badge,desc:ld.desc,steps:steps,stepComps:steps?steps.map(function(s){return s.comp;}):[]};
+  });
+  currentLevel=0;currentStep=0;
+  document.getElementById('helpPanel').classList.remove('open');
+  document.getElementById('feedback').className='feedback';document.getElementById('feedback').innerHTML='';
+  document.getElementById('nextLevelBtn').style.display='none';document.getElementById('evalBtn').style.display='none';
+  document.getElementById('evalWrap').classList.remove('open');document.getElementById('labArea').style.display='block';
+  evalStarted=false;
   renderLevel(0);
 }
+var newRandomGame=buildLevels;
 
 function switchTab(tab){
-  var g=document.getElementById('tabGuia');
-  var l=document.getElementById('tabLab');
-  if(tab==='guia'){g.style.display='block';l.style.display='none';
-    document.querySelector('.tab.guia').classList.add('active');
-    document.querySelector('.tab.lab').classList.remove('active');
-  }else{g.style.display='none';l.style.display='block';
-    document.querySelector('.tab.lab').classList.add('active');
-    document.querySelector('.tab.guia').classList.remove('active');
-    if(gameLevels.length===0)newRandomGame();else renderLevel(currentLevel);
+  var g=document.getElementById('tabGuia'),l=document.getElementById('tabLab');
+  if(tab==='guia'){
+    g.style.display='block';l.style.display='none';
+    document.querySelector('.tab.guia').classList.add('active');document.querySelector('.tab.lab').classList.remove('active');
+    if(!document.getElementById('guiaGrid').children.length)renderGuia();
+  }else{
+    g.style.display='none';l.style.display='block';
+    document.querySelector('.tab.lab').classList.add('active');document.querySelector('.tab.guia').classList.remove('active');
+    if(!gameLevels.length)buildLevels();else renderLevel(currentLevel);
   }
+}
+
+function renderGuia(){
+  var grid=document.getElementById('guiaGrid');grid.innerHTML='';
+  guiaData.forEach(function(gd){
+    var card=document.createElement('div');card.className='guia-card';
+    var head=document.createElement('div');head.className='gc-head';
+    var svgDiv=document.createElement('div');svgDiv.className='gc-svg';svgDiv.innerHTML=partSVG(gd.comp,50,42);
+    head.appendChild(svgDiv);
+    var h4=document.createElement('h4');h4.textContent=gd.title;head.appendChild(h4);
+    card.appendChild(head);
+    var body=document.createElement('div');body.className='gc-body';
+    body.innerHTML='<p><span class="gc-label">Función:</span>'+gd.funcion+'</p>'+
+      '<p><span class="gc-label">Características:</span>'+gd.caracteristicas+'</p>'+
+      '<div class="gc-inst">🔧 <strong>Instalación:</strong> '+gd.instalacion+'</div>';
+    card.appendChild(body);
+    grid.appendChild(card);
+  });
 }
 
 function renderLevel(idx){
-  var level=gameLevels[idx];
-  if(!level)return;
-  for(var i=1;i<5;i++)if(!completed[i-1])completed[i]=false;
+  var level=gameLevels[idx];if(!level)return;
+  for(var i=1;i<4;i++)if(!completed[i-1])completed[i]=false;
   updateStars(idx);updateProgress();
-
-  var sel=document.getElementById('levelSelector');
-  sel.innerHTML='';
-  for(var i=0;i<5;i++){
+  var sel=document.getElementById('levelSelector');sel.innerHTML='';
+  for(var i=0;i<4;i++){
     var btn=document.createElement('button');
-    btn.className='level-btn';
-    btn.textContent='Nivel '+(i+1);
+    btn.className='level-btn';btn.textContent='Nivel '+(i+1);
     if(i===idx)btn.classList.add('active');
     else if(completed[i])btn.classList.add('completed');
     else if(i===0||completed[i-1])btn.classList.remove('locked');
     else btn.classList.add('locked');
-    (function(li){btn.onclick=function(){if(li===0||completed[li-1]){currentLevel=li;currentQ=0;qAnswered=[];renderLevel(li);}};})(i);
+    (function(li){btn.onclick=function(){if(li===0||completed[li-1]){currentLevel=li;currentStep=0;renderLevel(li);}};})(i);
     sel.appendChild(btn);
   }
-
   document.getElementById('levelTitle').textContent='Nivel '+level.idx+': '+level.title;
   document.getElementById('levelBadge').textContent=level.badge;
   document.getElementById('nextLevelBtn').style.display='none';
-  var fb=document.getElementById('feedback');
-  fb.className='feedback';fb.innerHTML='';
-
-  // Count how many answered
-  qAnswered=[];
-  level.questions.forEach(function(q){qAnswered.push(q._used||false);});
-  currentQ=qAnswered.indexOf(false);
-  if(currentQ<0)currentQ=0;
-
-  renderGame(level);
+  document.getElementById('feedback').className='feedback';document.getElementById('feedback').innerHTML='';
+  // Render according to type
+  if(level.type==='identify')renderIdentify(level);
+  else if(level.type==='assemble'||level.type==='diagnose')renderAssembly(level);
+  else if(level.type==='eval'){document.getElementById('labArea').innerHTML='<div style="text-align:center;padding:40px 20px"><div style="font-size:2.5rem;margin-bottom:10px">📝</div><h3 style="color:#1a365d">Evaluación ICFES</h3><p style="color:#666;margin:8px 0">Has completado los niveles de práctica. Ahora demuestra tus conocimientos con 20 preguntas tipo ICFES.</p><button class="btn btn-warning" style="margin-top:10px" onclick="startEvaluation()">📝 Iniciar Evaluación</button></div>';}
 }
 
 function updateStars(idx){
   var s=document.getElementById('levelStars');
-  var h='';
-  for(var i=0;i<5;i++){
-    if(i<idx||i===idx)h+='<span class="star">★</span>';
-    else h+='<span class="star empty">★</span>';
-  }
+  var h='';for(var i=0;i<4;i++)h+=(completed[i])?'<span class="star">★</span>':'<span class="star empty">★</span>';
   s.innerHTML=h;
 }
+function updateProgress(){var c=0;for(var i=0;i<4;i++)if(completed[i])c++;document.getElementById('progressBar').style.width=(c/4*100)+'%';}
 
-function updateProgress(){
-  var c=0;for(var i=0;i<5;i++)if(completed[i])c++;
-  document.getElementById('progressBar').style.width=(c/5*100)+'%';
+// ============================
+// LEVEL 1: IDENTIFY
+// ============================
+function renderIdentify(level){
+  var area=document.getElementById('labArea');area.innerHTML='';
+  if(completed[currentLevel]){
+    area.innerHTML='<div style="text-align:center;padding:50px 20px"><div style="font-size:3rem;margin-bottom:12px">✅</div><h3 style="color:#38a169">¡Nivel completado!</h3><p style="color:#666">Ya reconoces todos los componentes.</p></div>';
+    return;
+  }
+  var si=-1;for(var i=0;i<level.steps.length;i++){if(!level.steps[i]._done){si=i;break;}}
+  if(si<0){doLevelComplete(level);return;}
+  currentStep=si;
+  var step=level.steps[si];
+  var info=ALL[step.comp];
+
+  // Identification card
+  var card=document.createElement('div');card.className='id-step';
+  var svgDiv=document.createElement('div');svgDiv.className='id-svg';svgDiv.innerHTML=partSVG(step.comp,80,65);
+  card.appendChild(svgDiv);
+  var qDiv=document.createElement('div');qDiv.className='id-q';qDiv.textContent=step.question;
+  card.appendChild(qDiv);
+  var optsDiv=document.createElement('div');optsDiv.className='id-opts';
+  // Map component keys to display names
+  var compNames={cpu:"CPU (Procesador)",ram:"Memoria RAM",ssd:"Disco SSD",hdd:"Disco HDD",gpu:"GPU (Gráfica)",mb:"Placa Madre",bat:"Batería",cool:"Refrigeración",wifi:"Wi-Fi / Bluetooth"};
+  step._optsAll.forEach(function(k){
+    var btn=document.createElement('button');btn.className='id-opt';btn.textContent=compNames[k]||k;
+    btn.onclick=function(){
+      if(step._done)return;
+      if(k===step.comp){
+        step._done=true;
+        document.querySelectorAll('.id-opt').forEach(function(b){b.classList.add('disabled');});
+        btn.classList.add('correct');
+        document.getElementById('feedback').className='feedback success show';
+        document.getElementById('feedback').innerHTML='<h4>✅ ¡Correcto!</h4><p>'+info.name+': '+info.msgsucc+'</p>';
+        var allDone=level.steps.every(function(x){return x._done;});
+        if(allDone){setTimeout(function(){doLevelComplete(level);},800);}else{setTimeout(function(){renderIdentify(level);},700);}
+      }else{
+        btn.classList.add('wrong');
+        setTimeout(function(){btn.classList.remove('wrong');},400);
+        document.getElementById('feedback').className='feedback error show';
+        document.getElementById('feedback').innerHTML='<h4>❌ Incorrecto</h4><p>Este no es el componente. Observa bien la imagen y lee la función.</p>';
+      }
+    };
+    optsDiv.appendChild(btn);
+  });
+  card.appendChild(optsDiv);
+  area.appendChild(card);
+
+  // Help bar
+  var hbar=document.createElement('div');hbar.style.cssText='display:flex;justify-content:space-between;align-items:center;margin-top:10px;flex-wrap:wrap;gap:6px';
+  var hInfo=document.createElement('span');hInfo.style.cssText='font-size:.8rem;color:#888';
+  var done=level.steps.filter(function(x){return x._done;}).length;
+  hInfo.textContent='Paso '+(si+1)+' de 5 — Acertados: '+done;
+  hbar.appendChild(hInfo);
+  var hBtn=document.createElement('button');hBtn.className='btn btn-info';hBtn.style.cssText='padding:5px 14px;font-size:.75rem';
+  hBtn.textContent='❓ Pista';hBtn.onclick=function(){toggleHelp(step.comp);};hbar.appendChild(hBtn);
+  area.appendChild(hbar);
 }
 
 // ============================
-// RENDER GAME
+// LEVELS 2 & 3: ASSEMBLY / DIAGNOSE
 // ============================
-function renderGame(level){
-  var area=document.getElementById('labArea');
-  area.innerHTML='';
-
+function renderAssembly(level){
+  var area=document.getElementById('labArea');area.innerHTML='';
   if(completed[currentLevel]){
-    area.innerHTML='<div style="text-align:center;padding:40px 20px"><div style="font-size:3rem;margin-bottom:12px">🖥️</div><h3 style="color:#38a169">✅ Portátil ensamblado</h3><p style="color:#666">Este nivel ya fue completado.</p></div>';
+    area.innerHTML='<div style="text-align:center;padding:50px 20px"><div style="font-size:3rem;margin-bottom:12px">🖥️</div><h3 style="color:#38a169">✅ Portátil ensamblado y funcionando</h3><p style="color:#666">Todos los componentes están en su lugar.</p></div>';
     return;
   }
+  var si=-1;for(var i=0;i<level.steps.length;i++){if(!level.steps[i]._done){si=i;break;}}
+  if(si<0){doLevelComplete(level);return;}
+  currentStep=si;
+  var step=level.steps[si];
+  var info=ALL[step.comp];
+  var isDiag=level.type==='diagnose';
 
-  // Find current unanswered question
-  var qIdx=-1;
-  for(var i=0;i<level.questions.length;i++){if(!level.questions[i]._used){qIdx=i;break;}}
-  if(qIdx<0){doLevelComplete(level);return;}
-  currentQ=qIdx;
-  var q=level.questions[qIdx];
-  var allAnswered=level.questions.filter(function(x){return x._used;}).length;
+  // Diagnostic banner
+  if(isDiag && step.problem){
+    var banner=document.createElement('div');banner.className='diag-banner';
+    banner.innerHTML='<div class="db-icon">⚠️</div><div class="db-text"><div class="db-title">PROBLEMA</div><div class="db-desc">'+step.problem+'</div><div class="db-hint">💡 Arrastra el componente correcto al slot iluminado para solucionarlo.</div></div>';
+    area.appendChild(banner);
+  }
 
-  // --- QUESTION BAR ---
-  var qbar=document.createElement('div');
-  qbar.className='question-area';
-  var qNum=document.createElement('div');
-  qNum.className='q-num';
-  qNum.textContent=(qIdx+1);
-  qbar.appendChild(qNum);
+  // Instruction bar
+  var ibar=document.createElement('div');ibar.className='inst-step';
+  var iNum=document.createElement('div');iNum.className='is-num';iNum.textContent=(si+1);ibar.appendChild(iNum);
+  var iText=document.createElement('div');iText.className='is-text';
+  iText.textContent=step.instruction;ibar.appendChild(iText);
+  var iHint=document.createElement('div');iHint.className='is-hint';iHint.textContent='❓';iHint.title='Ver pista';
+  iHint.onclick=function(){toggleHelp(step.comp);};ibar.appendChild(iHint);
+  area.appendChild(ibar);
 
-  var qIcon=document.createElement('div');
-  qIcon.className='q-icon';
-  qIcon.textContent=q.icon||'❓';
-  qbar.appendChild(qIcon);
+  // Layout
+  var layout=document.createElement('div');layout.className='assemble-layout';
 
-  var qText=document.createElement('div');
-  qText.className='q-text';
-  qText.innerHTML=q.q+' <span style="font-size:.8rem;color:#2b6cb0;font-weight:400">Arrastra la respuesta correcta sobre el slot iluminado.</span>';
-  qbar.appendChild(qText);
-  area.appendChild(qbar);
-
-  // --- LAYOUT ---
-  var layout=document.createElement('div');
-  layout.className='assemble-layout';
-
-  // LAPTOP
-  var laptop=document.createElement('div');
-  laptop.className='laptop';
-  laptop.id='laptopBox';
-
-  var powerLed=document.createElement('div');
-  powerLed.className='power-led';
-  laptop.appendChild(powerLed);
-
-  var screen=document.createElement('div');
-  screen.className='laptop-screen';
-  var sLabel=document.createElement('div');
-  sLabel.className='screen-label';
-  sLabel.textContent='💻';
-  screen.appendChild(sLabel);
-  var bootMsg=document.createElement('div');
-  bootMsg.className='boot-msg';
-  bootMsg.id='bootMsg';
-  screen.appendChild(bootMsg);
+  // Laptop
+  var laptop=document.createElement('div');laptop.className='laptop';laptop.id='laptopBox';
+  var powerLed=document.createElement('div');powerLed.className='power-led';laptop.appendChild(powerLed);
+  var screen=document.createElement('div');screen.className='laptop-screen';
+  var sLabel=document.createElement('div');sLabel.className='screen-label';sLabel.textContent='💻';screen.appendChild(sLabel);
+  var bootMsg=document.createElement('div');bootMsg.className='boot-msg';bootMsg.id='bootMsg';screen.appendChild(bootMsg);
   laptop.appendChild(screen);
-
-  var base=document.createElement('div');
-  base.className='laptop-base';
+  var base=document.createElement('div');base.className='laptop-base';
   var kbRow=document.createElement('div');
   kbRow.style.cssText='display:grid;grid-template-columns:repeat(10,1fr);gap:2px;margin-bottom:6px';
   for(var i=0;i<10;i++){var k=document.createElement('span');k.style.cssText='background:#b0b5bc;height:5px;border-radius:1px;display:block';if(i===4)k.style.gridColumn='span 4';kbRow.appendChild(k);}
   base.appendChild(kbRow);
-  var tp=document.createElement('div');
-  tp.style.cssText='width:50px;height:24px;background:#b0b5bc;border-radius:3px;margin:0 auto';
-  base.appendChild(tp);
+  var tp=document.createElement('div');tp.style.cssText='width:50px;height:24px;background:#b0b5bc;border-radius:3px;margin:0 auto';base.appendChild(tp);
 
-  // SLOTS
-  var slotsG=document.createElement('div');
-  slotsG.className='slots-grid';
-
-  // Define all possible slots
-  var slotDefs=[
-    {id:"slot_mb",label:"PLACA",comp:"mb"},
-    {id:"slot_cpu",label:"CPU",comp:"cpu"},
-    {id:"slot_ram",label:"RAM",comp:"ram"},
-    {id:"slot_ssd",label:"SSD",comp:"ssd"},
-    {id:"slot_hdd",label:"HDD",comp:"hdd"},
-    {id:"slot_gpu",label:"GPU",comp:"gpu"},
-    {id:"slot_bat",label:"BATERÍA",comp:"bat"},
-    {id:"slot_cool",label:"VENT.",comp:"cool"},
-    {id:"slot_wifi",label:"Wi-Fi",comp:"wifi"}
-  ];
+  // Slots
+  var slotsG=document.createElement('div');slotsG.className='slots-grid';
+  var slotDefs=[{id:"slot_mb",label:"PLACA",comp:"mb"},{id:"slot_cpu",label:"CPU",comp:"cpu"},{id:"slot_ram",label:"RAM",comp:"ram"},{id:"slot_ssd",label:"SSD",comp:"ssd"},{id:"slot_hdd",label:"HDD",comp:"hdd"},{id:"slot_gpu",label:"GPU",comp:"gpu"},{id:"slot_bat",label:"BATERÍA",comp:"bat"},{id:"slot_cool",label:"VENT.",comp:"cool"},{id:"slot_wifi",label:"Wi-Fi",comp:"wifi"}];
+  var levelComps=level.steps.map(function(s){return s.comp;});
+  var doneComps=[];level.steps.forEach(function(s){if(s._done)doneComps.push(s.comp);});
 
   slotDefs.forEach(function(sd){
-    var slot=document.createElement('div');
-    slot.className='slot';
-    slot.id=sd.id;
-    var lbl=document.createElement('div');
-    lbl.className='s-label';
-    lbl.textContent=sd.label;
-    slot.appendChild(lbl);
-    var ic=document.createElement('div');
-    ic.className='s-icon';
-    ic.textContent='?';
-    slot.appendChild(ic);
-    var nm=document.createElement('div');
-    nm.className='s-name';
-    nm.textContent='vacío';
-    slot.appendChild(nm);
-
-    // Check if this slot already has a component from a previous answer
-    var answeredPart=null;
-    for(var j=0;j<level.questions.length;j++){
-      if(level.questions[j]._used && level.questions[j].a===sd.comp){
-        answeredPart=level.questions[j].a;
-      }
-    }
-    if(answeredPart){
+    var slot=document.createElement('div');slot.className='slot';slot.id=sd.id;
+    var lbl=document.createElement('div');lbl.className='s-label';lbl.textContent=sd.label;slot.appendChild(lbl);
+    var viewDiv=document.createElement('div');viewDiv.className='part-view';
+    viewDiv.style.cssText='width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center';
+    slot.appendChild(viewDiv);
+    var isInLevel=levelComps.indexOf(sd.comp)>=0;
+    var isDone=doneComps.indexOf(sd.comp)>=0;
+    if(isDone){
       slot.classList.add('filled');
-      var info=ALL[answeredPart];
-      if(info){ic.textContent=info.icon;nm.textContent=info.name.split('(')[0].trim();}
-    }
-
-    // If this is the current question's target slot, highlight it as drop zone
-    if(sd.comp===q.a && !q._used){
+      viewDiv.innerHTML=partSVG(sd.comp,32,28);
+    }else if(isInLevel&&sd.comp===step.comp){
       slot.classList.add('highlight');
       slot.addEventListener('dragover',function(e){e.preventDefault();});
-      slot.addEventListener('drop',function(e){e.preventDefault();var data=e.dataTransfer.getData('text/plain');if(data)handleDrop(data,level,qIdx);});
-      // Touch/mobile support
-      slot.addEventListener('click',function(){
-        if(dragData){handleDrop(dragData,level,qIdx);dragData=null;}
-      });
+      slot.addEventListener('drop',function(e){e.preventDefault();var d=e.dataTransfer.getData('text/plain');if(d)handleDrop(d,level,si);});
+      slot.addEventListener('click',function(){if(dragData){handleDrop(dragData,level,si);dragData=null;}});
+      viewDiv.innerHTML=partSVG(sd.comp,32,28);
+    }else if(isInLevel){
+      viewDiv.innerHTML=partSVG(sd.comp,32,28);
+    }else{
+      slot.classList.add('prefilled');
+      viewDiv.innerHTML=partSVG(sd.comp,32,28);
     }
-
     slotsG.appendChild(slot);
   });
+  base.appendChild(slotsG);laptop.appendChild(base);layout.appendChild(laptop);
 
-  base.appendChild(slotsG);
-  laptop.appendChild(base);
-  layout.appendChild(laptop);
+  // Parts area
+  var pArea=document.createElement('div');pArea.className='parts-area';
+  var pHeader=document.createElement('div');pHeader.className='parts-header';
+  var pTitle=document.createElement('div');pTitle.className='ph-title';
+  pTitle.innerHTML='Elige: <strong>'+ALL[step.comp].name+'</strong>';
+  pHeader.appendChild(pTitle);
+  var pHelp=document.createElement('div');pHelp.className='ph-help';pHelp.textContent='📖 Ayuda';
+  pHelp.onclick=function(){toggleHelp(step.comp);};pHeader.appendChild(pHelp);
+  pArea.appendChild(pHeader);
 
-  // --- PARTS AREA ---
-  var pArea=document.createElement('div');
-  pArea.className='parts-area';
-
-  var pTitle=document.createElement('div');
-  pTitle.className='pa-title';
-  pTitle.innerHTML=(allAnswered+1)+' de 5 — Arrastra el componente correcto al slot <strong>'+ALL[q.a].name.split('(')[0].trim()+'</strong>';
-  pArea.appendChild(pTitle);
-
-  var grid=document.createElement('div');
-  grid.className='drag-grid';
-
-  q._optsAll.forEach(function(optKey){
-    var info=ALL[optKey];
-    if(!info)return;
-    var item=document.createElement('div');
-    item.className='drag-item';
-    item.id='drag_'+optKey;
-    item.draggable=true;
-    item.innerHTML='<span class="di-icon">'+info.icon+'</span><span class="di-label">'+info.name.split('(')[0].trim()+'</span>';
-
-    item.addEventListener('dragstart',function(e){
-      e.dataTransfer.setData('text/plain',optKey);
-      this.classList.add('dragging');
-    });
-    item.addEventListener('dragend',function(e){
-      this.classList.remove('dragging');
-    });
-    // Touch support
+  var grid=document.createElement('div');grid.className='drag-grid';
+  step._optsAll.forEach(function(optKey){
+    var info2=ALL[optKey];if(!info2)return;
+    var item=document.createElement('div');item.className='drag-item';item.id='drag_'+optKey;item.draggable=true;
+    var diView=document.createElement('div');diView.className='di-view';
+    diView.innerHTML=partSVG(optKey,38,34);
+    item.appendChild(diView);
+    var diLabel=document.createElement('div');diLabel.className='di-label';diLabel.textContent=info2.abbr;item.appendChild(diLabel);
+    (function(k){item.addEventListener('dragstart',function(e){e.dataTransfer.setData('text/plain',k);this.classList.add('dragging');});
+    item.addEventListener('dragend',function(e){this.classList.remove('dragging');});
     item.addEventListener('touchstart',function(e){
-      dragData=optKey;
+      dragData=k;
       document.querySelectorAll('.drag-item').forEach(function(d){d.classList.remove('selected');});
       this.classList.add('selected');
-      this.style.borderColor='#2b6cb0';
-      this.style.background='#ebf4ff';
-      var msg="✅ Seleccionaste "+info.name.split('(')[0].trim()+". Ahora toca el slot iluminado en el portátil.";
-      var fb=document.getElementById('feedback');
-      fb.className='feedback success show';
-      fb.innerHTML='<h4>👆 Componente seleccionado</h4><p>'+msg+'</p>';
-    },{passive:true});
-
-    // If wrong-answered before, show feedback
-    if(q._lastWrong && q._lastWrong===optKey){
-      // Don't re-mark
-    }
-
+      document.getElementById('feedback').className='feedback info show';
+      document.getElementById('feedback').innerHTML='<h4>👆 Toca el slot iluminado</h4><p>Seleccionaste <strong>'+info2.name+'</strong>. Ahora toca el slot parpadeante.</p>';
+    },{passive:true});})(optKey);
     grid.appendChild(item);
   });
-
   pArea.appendChild(grid);
 
-  // Progress dots
-  var pq=document.createElement('div');
-  pq.className='progress-qs';
+  // Progress
+  var pq=document.createElement('div');pq.className='progress-qs';
   for(var j=0;j<5;j++){
-    var d=document.createElement('div');
-    d.className='pq-dot';
-    if(level.questions[j]&&level.questions[j]._used)d.classList.add('done');
-    if(j===qIdx&&!(level.questions[j]&&level.questions[j]._used))d.classList.add('active');
-    d.textContent=(j+1);
-    pq.appendChild(d);
+    var d=document.createElement('div');d.className='pq-dot';
+    if(level.steps[j]&&level.steps[j]._done)d.classList.add('done');
+    if(j===si&&!(level.steps[j]&&level.steps[j]._done))d.classList.add('active');
+    d.textContent=(j+1);pq.appendChild(d);
   }
   pArea.appendChild(pq);
-
   layout.appendChild(pArea);
   area.appendChild(layout);
 }
 
 // ============================
-// DROP HANDLING
+// HELP
 // ============================
-function handleDrop(partKey,level,qIdx){
-  var q=level.questions[qIdx];
-  if(!q||q._used)return;
+function toggleHelp(compKey){
+  var panel=document.getElementById('helpPanel');
+  var content=document.getElementById('helpContent');
+  var info=ALL[compKey];
+  if(!info)return;
+  var hintQ=hintQuestions[compKey]||'';
+  content.innerHTML='<div class="hp-row"><span class="hp-label">Componente:</span><span class="hp-desc"><strong>'+info.name+'</strong></span></div>'+
+    '<div class="hp-row"><span class="hp-label">Descripción:</span><span class="hp-desc">'+info.help+'</span></div>'+
+    '<div class="hp-row"><span class="hp-label">💡 Pista:</span><span class="hp-desc">Busca el slot etiquetado <strong>'+info.abbr+'</strong></span></div>'+
+    (hintQ?'<div class="hp-row"><span class="hp-label">❓ Pregunta:</span><span class="hp-desc">'+hintQ+'</span></div>':'');
+  if(!panel.classList.contains('open'))panel.classList.add('open');
+  else panel.classList.remove('open');
+}
 
+// ============================
+// DROP
+// ============================
+function handleDrop(partKey,level,si){
+  var step=level.steps[si];if(!step||step._done)return;
   var fb=document.getElementById('feedback');
-
-  // Remove highlight from all slots
   document.querySelectorAll('.slot.highlight').forEach(function(s){s.classList.remove('highlight');});
-
-  if(partKey===q.a){
-    // CORRECT!
-    q._used=true;
-
-    // Mark the drag item as correct
+  if(partKey===step.comp){
+    step._done=true;
     var dragEl=document.getElementById('drag_'+partKey);
-    if(dragEl){
-      dragEl.classList.add('correct');
-      dragEl.draggable=false;
-    }
-
-    // Fill the slot
-    var slot=document.getElementById(q._slotId);
-    if(slot){
-      slot.classList.remove('highlight');
-      slot.classList.add('filled');
-      var info=ALL[partKey];
-      if(info){
-        slot.querySelector('.s-icon').textContent=info.icon;
-        slot.querySelector('.s-name').textContent=info.name.split('(')[0].trim();
-      }
-    }
-
-    // MSG
-    var msgs={
-      cpu:"🧠 La CPU es el cerebro. ¡Instalada!",
-      ram:"📝 La RAM dará memoria temporal al sistema. ¡Lista!",
-      ssd:"💾 SSD instalado. El portátil será muy rápido.",
-      hdd:"💿 HDD instalado. Mucho espacio de almacenamiento.",
-      gpu:"🎮 GPU instalada. Podrás ver gráficos y jugar.",
-      mb:"📋 Placa Madre instalada. La base del sistema.",
-      bat:"🔋 Batería instalada. Portátil funcionará sin cable.",
-      cool:"🌡️ Refrigeración instalada. Adiós al calor.",
-      wifi:"📶 Wi-Fi instalado. Internet sin cables."
-    };
-
-    fb.className='feedback success show';
-    fb.innerHTML='<h4>✅ ¡Correcto!</h4><p>'+(msgs[partKey]||'Componente instalado correctamente.')+'</p>';
-
-    // Update progress dots
-    var dots=document.querySelectorAll('.pq-dot');
-    dots.forEach(function(d,di){
-      d.className='pq-dot';
-      if(level.questions[di]&&level.questions[di]._used)d.classList.add('done');
-      if(!(level.questions[di]&&level.questions[di]._used) && di===dots.length-1){
-        // Check if all done
-      }
-    });
-
-    // Check if all 5 done
-    var allDone=level.questions.every(function(x){return x._used;});
-    if(allDone){
-      setTimeout(function(){doLevelComplete(level);},900);
-    }else{
-      // Move to next question after a short delay
-      setTimeout(function(){renderGame(level);},700);
-    }
-  }else{
-    // WRONG
-    q._lastWrong=partKey;
-    var dragEl=document.getElementById('drag_'+partKey);
-    if(dragEl){
-      dragEl.classList.add('wrong');
-      setTimeout(function(){
-        if(dragEl)dragEl.classList.remove('wrong');
-        // Re-highlight the slot
-        var slot=document.getElementById(q._slotId);
-        if(slot)slot.classList.add('highlight');
-      },500);
-    }
-
+    if(dragEl){dragEl.classList.add('correct');dragEl.draggable=false;}
+    var slotMap={cpu:"slot_cpu",ram:"slot_ram",ssd:"slot_ssd",hdd:"slot_hdd",gpu:"slot_gpu",mb:"slot_mb",bat:"slot_bat",cool:"slot_cool",wifi:"slot_wifi"};
+    var slot=document.getElementById(slotMap[partKey]);
+    if(slot){slot.classList.remove('highlight');slot.classList.add('filled');
+      var view=slot.querySelector('.part-view');if(view)view.innerHTML=partSVG(partKey,32,28);}
     var info=ALL[partKey];
-    var correctInfo=ALL[q.a];
+    fb.className='feedback success show';
+    fb.innerHTML='<h4>✅ '+info.name+' instalado</h4><p>'+(info.msgsucc||'Componente colocado correctamente.')+'</p>';
+    var allDone=level.steps.every(function(x){return x._done;});
+    if(allDone){setTimeout(function(){doLevelComplete(level);},900);}else{setTimeout(function(){renderAssembly(level);},600);}
+  }else{
+    var dragEl=document.getElementById('drag_'+partKey);
+    if(dragEl){dragEl.classList.add('wrong');setTimeout(function(){if(dragEl)dragEl.classList.remove('wrong');
+      var slotMap={cpu:"slot_cpu",ram:"slot_ram",ssd:"slot_ssd",hdd:"slot_hdd",gpu:"slot_gpu",mb:"slot_mb",bat:"slot_bat",cool:"slot_cool",wifi:"slot_wifi"};
+      var slot=document.getElementById(slotMap[step.comp]);if(slot)slot.classList.add('highlight');},500);}
+    var correctInfo=ALL[step.comp];
     fb.className='feedback error show';
-    fb.innerHTML='<h4>❌ '+(info?info.name.split('(')[0].trim():partKey)+' no es correcto</h4><p>Pista: necesitas <strong>'+(correctInfo?correctInfo.name.split('(')[0].trim():q.a)+'</strong>.<br>Vuelve a intentarlo arrastrando el componente correcto al slot iluminado.</p>';
+    fb.innerHTML='<h4>❌ Componente incorrecto</h4><p>Necesitas <strong>'+(correctInfo?correctInfo.name:'')+'</strong>.<br>'+(correctInfo?correctInfo.msgfail:'')+'<br>Usa ❓ o "Ayuda" para pistas.</p>';
   }
 }
 
+// ============================
+// LEVEL COMPLETE
+// ============================
 function doLevelComplete(level){
-  completed[currentLevel]=true;
-  updateProgress();
-  updateStars(currentLevel);
-
-  var laptop=document.getElementById('laptopBox');
-  if(laptop){
-    laptop.classList.add('powered');
-    var led=laptop.querySelector('.power-led');
-    if(led)led.style.background='#38a169';
+  completed[currentLevel]=true;updateProgress();updateStars(currentLevel);
+  bootTimers.forEach(clearTimeout);bootTimers=[];
+  if(level.type==='assemble'||level.type==='diagnose'){
+    var laptop=document.getElementById('laptopBox');
+    if(laptop){laptop.classList.add('powered');var led=laptop.querySelector('.power-led');if(led)led.style.background='#38a169';}
+    var bootEl=document.getElementById('bootMsg');
+    if(bootEl){
+      bootEl.style.display='block';bootEl.style.opacity='1';
+      var lines=level.type==='diagnose'?['INICIANDO...','DIAGNÓSTICO OK','SISTEMA REPARADO','TODO FUNCIONANDO']:['INICIANDO...','PLACA MADRE OK','CPU OK','RAM OK','SSD OK','SISTEMA LISTO'];
+      var li=0;
+      var tick=function(){
+        if(li<lines.length){bootEl.innerHTML='<div class="bi">🔄</div><div class="bt">'+lines[li]+'</div>';li++;bootTimers.push(setTimeout(tick,li===lines.length?600:200));}
+        else{bootEl.innerHTML='<div class="bi">🖥️</div><div class="bt">SISTEMA LISTO</div>';}
+      };
+      bootTimers.push(setTimeout(tick,200));
+    }
   }
-
-  var bootEl=document.getElementById('bootMsg');
-  if(bootEl){
-    bootEl.style.display='block';
-    bootEl.style.opacity='1';
-    var lines=['INICIANDO...','CPU OK','RAM OK','ALMACENAMIENTO OK','GPU OK','SISTEMA LISTO'];
-    var li=0;
-    var tick=function(){
-      if(li<lines.length){
-        bootEl.innerHTML='<div class="bi">🔄</div><div class="bt">'+lines[li]+'</div>';
-        li++;
-        var t=setTimeout(tick,li===lines.length?500:200);
-        bootTimers.push(t);
-      }else{
-        bootEl.innerHTML='<div class="bi">🖥️</div><div class="bt">SISTEMA LISTO</div><div style="margin-top:4px;width:100px;height:3px;background:rgba(255,255,255,.1);border-radius:3px;margin-left:auto;margin-right:auto;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,#4fc3f7,#38a169);border-radius:3px;width:100%"></div></div>';
-      }
-    };
-    bootTimers.push(setTimeout(tick,200));
-  }
-
   var fb=document.getElementById('feedback');
   fb.className='feedback success show';
-  fb.innerHTML='<h4>🚀 ¡Nivel completado!</h4><p>Respondiste las 5 preguntas correctamente. El portátil enciende.</p>';
-
+  var msgs={identify:'<h4>✅ ¡Reconociste todos los componentes!</h4><p>Ya sabes identificar cada parte del portátil. Pasa al siguiente nivel.</p>',
+    assemble:'<h4>🚀 ¡Portátil ensamblado!</h4><p>Los 5 componentes están instalados correctamente. El sistema enciende.</p>',
+    diagnose:'<h4>🔧 ¡Problemas solucionados!</h4><p>Diagnosticaste y reparaste todas las fallas del portátil.</p>'};
+  fb.innerHTML=msgs[level.type]||'<h4>✅ Nivel completado</h4>';
   var nextBtn=document.getElementById('nextLevelBtn');
-  if(currentLevel<4){
-    nextBtn.style.display='inline-block';
-    nextBtn.textContent='➡️ Siguiente Nivel';
-    nextBtn.onclick=function(){currentLevel++;currentQ=0;qAnswered=[];renderLevel(currentLevel);};
+  if(currentLevel<3){
+    nextBtn.style.display='inline-block';nextBtn.textContent='➡️ Siguiente Nivel';
+    nextBtn.onclick=function(){currentLevel++;renderLevel(currentLevel);};
   }else{
-    nextBtn.style.display='inline-block';
-    nextBtn.innerHTML='🏆 ¡Completaste todo!';
-    nextBtn.onclick=function(){
-      fb.className='feedback success show';
-      fb.innerHTML='<h4>🏆 ¡Felicidades!</h4><p>Completaste los 5 niveles. Presiona "Nueva Partida" para nuevos retos.</p>';
-      nextBtn.style.display='none';
-    };
+    nextBtn.style.display='none';
+    document.getElementById('evalBtn').style.display='inline-block';
+    fb.innerHTML='<h4>🏆 ¡Felicidades!</h4><p>Completaste los 3 niveles de práctica. Ahora presenta la <strong>Evaluación ICFES</strong>.</p>';
   }
 }
 
 function resetLevel(){
   bootTimers.forEach(clearTimeout);bootTimers=[];
-  var level=gameLevels[currentLevel];
-  if(!level)return;
-  level.questions.forEach(function(q){q._used=false;delete q._lastWrong;});
-  var laptop=document.getElementById('laptopBox');
-  if(laptop){
-    laptop.classList.remove('powered');
-    var led=laptop.querySelector('.power-led');
-    if(led)led.style.background='#888';
+  if(evalStarted){
+    document.getElementById('evalWrap').classList.remove('open');document.getElementById('labArea').style.display='block';evalStarted=false;
   }
-  var bootEl=document.getElementById('bootMsg');
-  if(bootEl){bootEl.style.opacity='0';bootEl.style.display='none';bootEl.innerHTML='';}
-  document.getElementById('feedback').className='feedback';
-  document.getElementById('feedback').innerHTML='';
-  document.getElementById('nextLevelBtn').style.display='none';
-  currentQ=0;qAnswered=[];
-  renderGame(level);
+  var level=gameLevels[currentLevel];if(!level)return;
+  if(level.steps)level.steps.forEach(function(s){s._done=false;});
+  var laptop=document.getElementById('laptopBox');
+  if(laptop){laptop.classList.remove('powered');var led=laptop.querySelector('.power-led');if(led)led.style.background='#888';}
+  var bootEl=document.getElementById('bootMsg');if(bootEl){bootEl.style.opacity='0';bootEl.style.display='none';bootEl.innerHTML='';}
+  document.getElementById('helpPanel').classList.remove('open');
+  document.getElementById('feedback').className='feedback';document.getElementById('feedback').innerHTML='';
+  document.getElementById('nextLevelBtn').style.display='none';document.getElementById('evalBtn').style.display='none';
+  renderLevel(currentLevel);
 }
 
-newRandomGame();
+// ============================
+// EVALUACIÓN ICFES
+// ============================
+var evalQuestionBank = [
+  {q:"¿Cuál es la función principal del procesador (CPU) en un portátil?",opts:["Almacenar archivos permanentemente","Procesar instrucciones y ejecutar programas","Conectar el equipo a Internet","Refrigerar los componentes internos"],a:1},
+  {q:"¿Qué componente se conoce como 'memoria de trabajo temporal'?",opts:["Disco SSD","Memoria RAM","Disco HDD","Tarjeta Wi-Fi"],a:1},
+  {q:"¿Cuál de los siguientes discos de almacenamiento es más rápido?",opts:["HDD mecánico","SSD de estado sólido","Disco flexible","CD-ROM"],a:1},
+  {q:"¿Qué componente se encarga de generar las imágenes en la pantalla?",opts:["CPU","RAM","GPU","Fuente de poder"],a:2},
+  {q:"¿Qué componente conecta todos los demás entre sí?",opts:["Batería","Placa madre","Refrigeración","Disco duro"],a:1},
+  {q:"¿Qué componente permite usar el portátil sin estar conectado a la corriente?",opts:["Cargador","Batería","Fuente interna","Regulador"],a:1},
+  {q:"¿Qué herramienta se recomienda para instalar la memoria RAM?",opts:["Destornillador","Pinzas","Martillo","Alicate"],a:1},
+  {q:"¿Qué elemento se aplica entre el procesador y el disipador para mejorar la conducción térmica?",opts:["Pegamento industrial","Pasta térmica","Aceite lubricante","Cinta aislante"],a:1},
+  {q:"Si el portátil enciende en solo segundos, probablemente tiene:",opts:["Disco HDD","Memoria RAM de 32GB","Disco SSD","Procesador de última generación"],a:2},
+  {q:"¿Qué componente del portátil tiene platos que giran y un brazo lector?",opts:["SSD","HDD","RAM","CPU"],a:1},
+  {q:"La velocidad del procesador se mide en:",opts:["Megapíxeles","Gigahertz (GHz)","Gigabytes (GB)","Watts (W)"],a:1},
+  {q:"¿Qué significa SSD?",opts:["Super Speed Disk","Solid State Drive","System Storage Device","Secure Data Drive"],a:1},
+  {q:"¿Cuántos ciclos de carga promedio tiene una batería de portátil antes de degradarse?",opts:["100-200","300-500","800-1000","No tiene límite"],a:1},
+  {q:"Si el portátil se sobrecalienta y se apaga, ¿qué componente debes revisar primero?",opts:["Disco duro","Memoria RAM","Sistema de refrigeración","Tarjeta Wi-Fi"],a:2},
+  {q:"¿Qué componente se conecta en una ranura M.2?",opts:["Batería","Procesador","SSD o tarjeta Wi-Fi","Memoria RAM"],a:2},
+  {q:"¿Qué tipo de memoria conserva los datos incluso cuando el equipo está apagado?",opts:["Memoria RAM","Memoria Caché","Disco SSD/HDD","Registros del procesador"],a:2},
+  {q:"¿Qué componente es más sensible a las descargas electrostáticas?",opts:["Placa madre","Batería","Ventilador","Teclado"],a:0},
+  {q:"Si el portátil no se conecta a ninguna red Wi-Fi, ¿qué componente puede estar dañado?",opts:["CPU","RAM","Tarjeta Wi-Fi","Disco duro"],a:2},
+  {q:"¿Cuál es el orden correcto de instalación de componentes desde cero?",opts:["RAM → CPU → Placa → SSD","Placa → CPU → RAM → SSD","CPU → RAM → Placa → SSD","SSD → Placa → CPU → RAM"],a:1},
+  {q:"¿Qué mejora MÁS la velocidad general al iniciar un portátil?",opts:["Cambiar el procesador","Agregar más RAM","Cambiar HDD por SSD","Actualizar la tarjeta Wi-Fi"],a:2},
+  {q:"La memoria RAM de 8GB permite tener:",opts:["Más almacenamiento de fotos","Más programas abiertos sin lentitud","Mejor conexión a Internet","Gráficos más realistas"],a:1},
+  {q:"¿Qué componente necesita pasta térmica para su correcta instalación?",opts:["Disco duro","Memoria RAM","Procesador (CPU)","Tarjeta Wi-Fi"],a:2},
+  {q:"Si el portátil hace 3 pitidos al encender y no da imagen, probablemente falla:",opts:["La batería","La memoria RAM","El disco duro","El cargador"],a:1},
+  {q:"¿Cuál de estos componentes NO es esencial para que un portátil funcione?",opts:["CPU","RAM","Tarjeta Wi-Fi","Placa madre"],a:2},
+  {q:"¿Qué ventilador ayuda a disipar el calor del procesador?",opts:["Ventilador del chasis","Ventilador de la fuente","Ventilador del disipador (cooler)","Ventilador de la GPU"],a:2},
+  {q:"¿Qué debes hacer antes de tocar componentes internos?",opts:["Lavarte las manos con agua","Descargar electricidad estática tocando metal","Soplar los componentes","Conectar el cargador"],a:1},
+  {q:"El formato M.2 se usa principalmente para:",opts:["Conectar la pantalla","Conectar SSD y tarjetas de expansión","Conectar la batería","Conectar el teclado"],a:1},
+  {q:"¿Qué componente ejecuta las instrucciones de los programas?",opts:["RAM","Disco duro","CPU","Tarjeta gráfica"],a:2},
+  {q:"Si tienes 4GB de RAM y el portátil va muy lento, ¿qué debes hacer?",opts:["Cambiar el procesador","Aumentar la memoria RAM","Cambiar el sistema operativo","Desfragmentar el disco"],a:1},
+  {q:"¿Cuál de estos es un fabricante de procesadores?",opts:["NVIDIA","Seagate","Intel","Corsair"],a:2},
+  {q:"La tarjeta gráfica integrada se encuentra:",opts:["En el disco duro","Dentro del procesador o placa madre","En la batería","En el cargador"],a:1},
+  {q:"¿Qué componente convierte la energía de la batería para alimentar el portátil?",opts:["El cargador externo","La placa madre con sus reguladores","El procesador","El disco duro"],a:1},
+  {q:"Si el portátil funciona solo cuando está conectado al cargador, probablemente:",opts:["La batería está agotada o dañada","El procesador está dañado","La memoria RAM falla","El disco duro está lleno"],a:0},
+  {q:"¿Para qué sirve la pasta térmica en el procesador?",opts:["Pegar el procesador a la placa","Mejorar la transferencia de calor","Aislar eléctricamente","Lubricar los pines"],a:1},
+  {q:"¿Cuántos lados tiene el socket de un procesador moderno?",opts:["Cuatro (cuadrado)","Tres (triangular)","Seis (hexagonal)","Ocho (octagonal)"],a:0},
+  {q:"¿Qué pasa si instalas la RAM al revés?",opts:["Funciona igual","No entra porque tiene una muesca","Se daña la placa","El portátil explota"],a:1},
+  {q:"¿Cuál de estos componentes tiene partes móviles?",opts:["SSD","Memoria RAM","HDD","CPU"],a:2},
+  {q:"¿Qué tecnología usan los SSD para almacenar datos?",opts:["Discos magnéticos","Memoria flash NAND","CD-ROM","Cintas magnéticas"],a:1},
+  {q:"¿Cuál es la capacidad típica de una RAM en portátiles modernos?",opts:["1-2 GB","4-16 GB","32-64 GB","128-256 GB"],a:1},
+  {q:"¿Qué debes revisar si el ventilador del portátil suena muy fuerte?",opts:["El disco duro","La memoria RAM","El sistema de refrigeración","La tarjeta Wi-Fi"],a:2},
+  {q:"¿Qué estándar inalámbrico usan las tarjetas Wi-Fi de portátiles?",opts:["Bluetooth 2.0","802.11 (Wi-Fi)","USB 3.0","HDMI"],a:1},
+  {q:"¿Cuál es la función de la placa madre?",opts:["Almacenar archivos","Conectar y comunicar todos los componentes","Procesar gráficos","Suministrar energía"],a:1},
+  {q:"¿Qué herramienta necesitas para abrir un portátil?",opts:["Martillo y cincel","Destornilladores de precisión","Sierra eléctrica","Taladro"],a:1},
+  {q:"¿Qué significa que un portátil tenga '8GB de RAM'?",opts:["8GB de almacenamiento","8GB de memoria temporal","8Gb de velocidad de red","8GB de caché"],a:1}
+];
+
+function startEvaluation(){
+  document.getElementById('evalBtn').style.display='none';
+  document.getElementById('labArea').style.display='none';
+  document.getElementById('feedback').className='feedback';document.getElementById('feedback').innerHTML='';
+  document.getElementById('helpPanel').classList.remove('open');
+  var shuffled=shuffleArray(evalQuestionBank.slice());
+  evalQuestions=shuffled.slice(0,20);
+  evalCurrentQ=0;evalAnswers=[];evalStarted=true;
+  document.getElementById('evalWrap').classList.add('open');
+  renderEvalQuestion();
+}
+function renderEvalQuestion(){
+  if(evalCurrentQ>=evalQuestions.length){finishEvaluation();return;}
+  var q=evalQuestions[evalCurrentQ],total=evalQuestions.length;
+  document.getElementById('evalCounter').textContent='Pregunta '+(evalCurrentQ+1)+' de '+total;
+  document.getElementById('evalProgressBar').style.width=((evalCurrentQ)/total*100)+'%';
+  var content=document.getElementById('evalContent'),letters=['A','B','C','D'];
+  var saved=evalAnswers[evalCurrentQ],selectedIdx=saved!==undefined?saved:-1;
+  var html='<div class="eval-qbox"><div class="eq-num">PREGUNTA '+(evalCurrentQ+1)+'</div><div class="eq-text">'+q.q+'</div><div class="eval-opts">';
+  for(var i=0;i<q.opts.length;i++){
+    var cls='eval-opt';if(selectedIdx===i)cls+=' selected';
+    html+='<div class="'+cls+'" onclick="selectEvalOption('+i+')"><span class="eo-letter">'+letters[i]+'</span><span>'+q.opts[i]+'</span></div>';
+  }
+  html+='</div></div>';content.innerHTML=html;
+  var nav=document.getElementById('evalNav');
+  var prevDisabled=evalCurrentQ===0?'disabled':'';
+  var nextText=evalCurrentQ<total-1?'Siguiente ➡️':'Finalizar 🏁';
+  var nextDisabled=selectedIdx===-1?'disabled':'';
+  nav.innerHTML='<button class="btn btn-info" onclick="prevEvalQuestion()" '+prevDisabled+'>⬅️ Anterior</button><button class="btn btn-primary" onclick="nextEvalQuestion()" '+nextDisabled+'>'+nextText+'</button>';
+}
+function selectEvalOption(idx){evalAnswers[evalCurrentQ]=idx;renderEvalQuestion();}
+function prevEvalQuestion(){if(evalCurrentQ>0){evalCurrentQ--;renderEvalQuestion();}}
+function nextEvalQuestion(){
+  if(evalAnswers[evalCurrentQ]===undefined)return;
+  if(evalCurrentQ<evalQuestions.length-1){evalCurrentQ++;renderEvalQuestion();}else finishEvaluation();
+}
+function finishEvaluation(){
+  var total=evalQuestions.length,correct=0;
+  for(var i=0;i<total;i++)if(evalAnswers[i]===evalQuestions[i].a)correct++;
+  var percent=Math.round(correct/total*100),passed=percent>=60;
+  var stars=passed?(percent>=90?'⭐⭐⭐':percent>=75?'⭐⭐':'⭐'):'';
+  document.getElementById('evalCounter').textContent='Evaluación completada';
+  document.getElementById('evalProgressBar').style.width='100%';
+  var content=document.getElementById('evalContent'),letters=['A','B','C','D'];
+  var html='<div class="eval-result open"><div class="er-stars">'+(stars||'💪')+'</div><div class="er-label">Tu puntuación</div>'+
+    '<div class="er-score '+(passed?'pass':'fail')+'">'+correct+' / '+total+'</div>'+
+    '<div class="er-label">'+percent+'% - '+(passed?'✅ Aprobado':'❌ Necesitas mejorar')+'</div>'+
+    '<div class="er-det">Revisa tus respuestas:</div><div class="er-detail-list">';
+  for(var i=0;i<total;i++){
+    var q=evalQuestions[i],ans=evalAnswers[i],isCorrect=ans===q.a;
+    html+='<div class="er-detail-item '+(isCorrect?'er-correct':'er-wrong')+'"><span class="ed-num">'+(i+1)+'.</span>'+
+      '<span class="ed-ans"><strong>'+q.opts[q.a]+'</strong>'+
+      (!isCorrect?'<br><span style="color:#e53e3e;font-size:.75rem">Respondiste: '+letters[ans]+'. '+q.opts[ans]+'</span>':'')+'</span>'+
+      '<span class="ed-mark">'+(isCorrect?'✓':'✗')+'</span></div>';
+  }
+  html+='</div></div>';content.innerHTML=html;
+  document.getElementById('evalNav').innerHTML='<button class="btn btn-success" onclick="cerrarEvaluacion()">🔄 Volver al Taller</button><button class="btn btn-info" onclick="nuevaEvaluacion()">🎲 Nueva Evaluación</button>';
+}
+function cerrarEvaluacion(){document.getElementById('evalWrap').classList.remove('open');document.getElementById('labArea').style.display='block';evalStarted=false;renderLevel(currentLevel);}
+function nuevaEvaluacion(){startEvaluation();}
+
+// ============================
+// INIT
+// ============================
+if(!document.getElementById('guiaGrid').children.length)renderGuia();
+buildLevels();
 </script>
 </body>
 </html>
